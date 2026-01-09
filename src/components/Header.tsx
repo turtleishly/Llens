@@ -19,9 +19,9 @@ const Header = () => {
         <div className="flex h-16 items-center justify-between">
           <a href="#" className="flex items-center gap-2">
             <div className="w-8 h-8 rounded-full bg-coral flex items-center justify-center">
-              <span className="text-primary-foreground font-bold text-sm">R</span>
+              <span className="text-primary-foreground font-bold text-sm">N</span>
             </div>
-            <span className="text-xl font-bold text-primary">Rakan Tutor</span>
+            <span className="text-xl font-bold text-primary">NAIC</span>
           </a>
 
           {/* Desktop Navigation */}
