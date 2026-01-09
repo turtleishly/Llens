@@ -13,7 +13,19 @@ export default {
       },
     },
     extend: {
+      fontFamily: {
+        sans: ['Inter', 'sans-serif'],
+      },
       colors: {
+        coral: {
+          DEFAULT: "hsl(20, 85%, 70%)",
+          light: "hsl(20, 85%, 90%)",
+        },
+        navy: {
+          DEFAULT: "hsl(215, 50%, 23%)",
+          dark: "hsl(215, 60%, 15%)",
+        },
+        "light-blue": "hsl(199, 44%, 95%)",
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
@@ -80,10 +92,15 @@ export default {
             height: "0",
           },
         },
+        "fade-in": {
+          from: { opacity: "0", transform: "translateY(10px)" },
+          to: { opacity: "1", transform: "translateY(0)" },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+        "fade-in": "fade-in 0.5s ease-out forwards",
       },
     },
   },
