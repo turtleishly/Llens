@@ -4,10 +4,26 @@ import BlurFade from "@/components/ui/blur-fade";
 const BLUR_FADE_DELAY = 0.04;
 
 const timelineEvents = [
-  { date: "31 Mar - 2 Apr 2026", event: "Masterclass (by category)" },
-  { date: "4 May 2026 (Monday)", event: "Proposal Submission Deadline" },
-  { date: "15 May 2026, 4:00 PM (Friday)", event: "Announcement of Finalists" },
-  { date: "13 Jun 2026, 8:30 AM - 2:00 PM", event: "Grand Finals at Sunway University" },
+  {
+    date: "31 Mar - 2 Apr 2026",
+    event: "Masterclass (by category)",
+    description: "Attend specialized workshops tailored to each competition track. Learn essential skills and tools from industry experts."
+  },
+  {
+    date: "4 May 2026 (Monday)",
+    event: "Proposal Submission Deadline",
+    description: "Submit your team's project proposal outlining your approach, methodology, and expected outcomes."
+  },
+  {
+    date: "15 May 2026, 4:00 PM (Friday)",
+    event: "Announcement of Finalists",
+    description: "Top teams from each category will be selected to advance to the Grand Finals at Sunway University."
+  },
+  {
+    date: "13 Jun 2026, 8:30 AM - 2:00 PM",
+    event: "Grand Finals at Sunway University",
+    description: "Present your final project to judges and compete for prizes. Network with mentors, sponsors, and fellow innovators."
+  },
 ];
 
 const Timeline = () => {
@@ -15,7 +31,7 @@ const Timeline = () => {
     <section id="timeline" className="py-24 relative transition-colors duration-300">
       <div className="container mx-auto px-4 md:px-6">
         <h2 className="text-4xl md:text-5xl font-bold font-display text-center text-foreground mb-16">
-          ROADMAP TO VICTORY
+          Timeline
         </h2>
 
         <div className="max-w-3xl mx-auto">
@@ -37,7 +53,8 @@ const Timeline = () => {
                       <p className="text-sm font-bold tracking-[0.2em] text-muted-foreground mb-1 uppercase">
                         {item.date}
                       </p>
-                      <p className="text-foreground font-display text-lg font-medium">{item.event}</p>
+                      <p className="text-foreground font-display text-lg font-medium mb-2">{item.event}</p>
+                      <p className="text-sm text-muted-foreground leading-relaxed">{item.description}</p>
                     </div>
                   </div>
                 </BlurFade>

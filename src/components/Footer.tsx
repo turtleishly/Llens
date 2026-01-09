@@ -22,24 +22,13 @@ const Footer = () => {
           </div>
 
           {/* Navigation Links */}
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-12 md:gap-20">
-            <div className="space-y-4">
-              <p className="text-xs font-semibold text-muted-foreground/40 uppercase tracking-[0.3em]">Tracks</p>
-              <nav className="flex flex-col gap-3">
-                <a href="#tracks" className="text-lg text-foreground/70 hover:text-foreground transition-colors font-light">Architecture</a>
-                <a href="#tracks" className="text-lg text-foreground/70 hover:text-foreground transition-colors font-light">Innovation</a>
-                <a href="#tracks" className="text-lg text-foreground/70 hover:text-foreground transition-colors font-light">Computing</a>
-              </nav>
-            </div>
-
-            <div className="space-y-4">
-              <p className="text-xs font-semibold text-muted-foreground/40 uppercase tracking-[0.3em]">Support</p>
-              <nav className="flex flex-col gap-3">
-                <a href="#" className="text-lg text-foreground/70 hover:text-foreground transition-colors font-light">FAQ</a>
-                <a href="#" className="text-lg text-foreground/70 hover:text-foreground transition-colors font-light">Contact Us</a>
-                <a href="#" className="text-lg text-foreground/70 hover:text-foreground transition-colors font-light">Privacy</a>
-              </nav>
-            </div>
+          <div className="space-y-4">
+            <p className="text-xs font-semibold text-muted-foreground/40 uppercase tracking-[0.3em]">Support</p>
+            <nav className="flex flex-col gap-3">
+              <a href="#" className="text-lg text-foreground/70 hover:text-foreground transition-colors font-light">FAQ</a>
+              <a href="#" className="text-lg text-foreground/70 hover:text-foreground transition-colors font-light">Contact Us</a>
+              <a href="#" className="text-lg text-foreground/70 hover:text-foreground transition-colors font-light">Privacy</a>
+            </nav>
           </div>
 
           {/* Scroll to top */}

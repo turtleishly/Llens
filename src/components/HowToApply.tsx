@@ -1,6 +1,7 @@
 import { ArrowRight, CheckCircle, UserPlus, GraduationCap, Send } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
 
 import BlurFade from "@/components/ui/blur-fade";
 
@@ -97,10 +98,10 @@ const HowToApply = () => {
             size="lg"
             className="h-12 px-8 rounded-full text-base font-medium bg-primary text-primary-foreground hover:opacity-90 transition-all shadow-lg hover:shadow-primary/25"
           >
-            <a href="#registration">
+            <Link to="/register">
               Register Now
               <ArrowRight className="ml-2 h-4 w-4" />
-            </a>
+            </Link>
           </Button>
         </div>
       </div>

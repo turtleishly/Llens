@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import DitheredBackground from "@/components/DitheredBackground";
 import BlurFade from "@/components/ui/blur-fade";
+import { Link } from "react-router-dom";
 
 const CTA = () => {
     return (
@@ -17,9 +18,7 @@ const CTA = () => {
                         asChild
                         className="h-16 px-12 rounded-full text-xl font-semibold bg-cyan-500 text-white hover:bg-cyan-600 hover:scale-105 transition-all duration-300 shadow-xl shadow-cyan-500/20"
                     >
-                        <a href="#registration">
-                            Register Now
-                        </a>
+                        <Link to="/register">Register Now</Link>
                     </Button>
                 </BlurFade>
             </div>

@@ -1,4 +1,4 @@
-import { useMemo } from "react";
+import { useMemo, useState } from "react";
 import { z } from "zod";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -136,6 +136,8 @@ const RegistrationForm = () => {
       .replace(/[^a-z0-9]+/g, "-")
       .replace(/(^-|-$)+/g, "");
 
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
   const defaultValues = useMemo<RegistrationValues>(
     () => ({
       heardAbout: "School Counsellor/Teacher",
@@ -185,16 +187,44 @@ const RegistrationForm = () => {
     defaultValues,
   });
 
-  const onSubmit = (values: RegistrationValues) => {
-    toast("Registration captured", {
-      description: "Thanks! We received your team details.",
-    });
-    form.reset({
-      ...defaultValues,
-      track: values.track,
-      category: values.category,
-      heardAbout: values.heardAbout,
-    });
+  const onSubmit = async (values: RegistrationValues) => {
+    const endpoint = import.meta.env.VITE_REGISTRATION_SHEETS_URL;
+
+    if (!endpoint) {
+      toast("Missing Google Sheets endpoint", {
+        description: "Set VITE_REGISTRATION_SHEETS_URL in your environment before submitting.",
+      });
+      return;
+    }
+
+    try {
+      setIsSubmitting(true);
+      const response = await fetch(endpoint, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(values),
+      });
+
+      if (!response.ok) {
+        throw new Error("Submission failed.");
+      }
+
+      toast("Registration captured", {
+        description: "Thanks! We received your team details.",
+      });
+      form.reset({
+        ...defaultValues,
+        track: values.track,
+        category: values.category,
+        heardAbout: values.heardAbout,
+      });
+    } catch (error) {
+      toast("Unable to submit registration", {
+        description: "Please try again or contact the organizers.",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -204,7 +234,7 @@ const RegistrationForm = () => {
           <p className="text-xs font-semibold text-muted-foreground/70 uppercase tracking-[0.35em]">
             The National AI Competition 2026 Registration
           </p>
-          <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-foreground">
+          <h2 className="text-5xl md:text-6xl font-bold tracking-tight text-foreground">
             Register Your Team
           </h2>
           <p className="text-base md:text-lg text-muted-foreground max-w-3xl mx-auto">
@@ -218,7 +248,7 @@ const RegistrationForm = () => {
 
         <Card className="max-w-4xl mx-auto border-border/60 bg-background/90 shadow-lg">
           <CardHeader>
-            <CardTitle className="text-2xl md:text-3xl">Competition Track & Category</CardTitle>
+            <CardTitle className="text-3xl md:text-4xl">Competition Track & Category</CardTitle>
           </CardHeader>
           <CardContent>
             <Form {...form}>
@@ -351,7 +381,7 @@ const RegistrationForm = () => {
                       className="rounded-2xl border border-border/60 bg-secondary/40 p-6 md:p-8 space-y-6"
                     >
                       <div className="space-y-2">
-                        <h3 className="text-xl md:text-2xl font-semibold text-foreground">
+                        <h3 className="text-2xl md:text-3xl font-semibold text-foreground">
                           Category A {member.label}
                         </h3>
                         <p className="text-sm text-muted-foreground">
@@ -497,7 +527,7 @@ const RegistrationForm = () => {
                       <div className="inline-flex items-center gap-2 rounded-full border border-border/60 bg-secondary/40 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.25em] text-muted-foreground/70">
                         Required
                       </div>
-                      <h3 className="text-xl md:text-2xl font-semibold text-foreground">Advisor Details</h3>
+                      <h3 className="text-2xl md:text-3xl font-semibold text-foreground">Advisor Details</h3>
                     </div>
                     <p className="text-sm text-muted-foreground">
                       You are required to have an advisor during this competition. The advisor&apos;s role is to be the
@@ -592,7 +622,7 @@ const RegistrationForm = () => {
                     <div className="inline-flex items-center gap-2 rounded-full border border-border/60 bg-background/70 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.25em] text-muted-foreground/70">
                       Required
                     </div>
-                    <h3 className="text-xl md:text-2xl font-semibold text-foreground">Terms and Conditions</h3>
+                    <h3 className="text-2xl md:text-3xl font-semibold text-foreground">Terms and Conditions</h3>
                   </div>
                   <p className="text-sm text-muted-foreground">
                     Please read and agree on the terms and conditions for the competitions.{" "}
@@ -631,9 +661,10 @@ const RegistrationForm = () => {
                   </p>
                   <Button
                     type="submit"
+                    disabled={isSubmitting}
                     className="h-12 rounded-full px-8 text-base font-semibold bg-cyan-500 text-white hover:bg-cyan-600 hover:scale-105 transition-all duration-300 shadow-lg shadow-cyan-500/20"
                   >
-                    Submit Registration
+                    {isSubmitting ? "Submitting..." : "Submit Registration"}
                   </Button>
                 </div>
               </form>

@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { Menu, X, Sun, Moon } from "lucide-react";
+import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
@@ -37,11 +38,11 @@ const Header = () => {
   };
 
   const navLinks = [
-    { label: "Tracks", href: "#tracks" },
-    { label: "Prizes", href: "#prizes" },
-    { label: "Timeline", href: "#timeline" },
-    { label: "FAQ", href: "#faq" },
-    { label: "Register", href: "#registration" },
+    { label: "Tracks", href: "/#tracks" },
+    { label: "Prizes", href: "/#prizes" },
+    { label: "Timeline", href: "/#timeline" },
+    { label: "FAQ", href: "/#faq" },
+    { label: "Register", href: "/register" },
   ];
 
   return (
@@ -57,22 +58,22 @@ const Header = () => {
         <div className="max-w-[1400px] mx-auto flex items-center">
           {/* Left: Logo Container */}
           <div className="flex-1 flex justify-start">
-            <a href="#" className="flex items-center gap-2 hover:opacity-80 transition-opacity">
+            <Link to="/" className="flex items-center gap-2 hover:opacity-80 transition-opacity">
               <img src="/naic_logo_mark.png" alt="NAIC Logo" className="w-8 h-8 object-contain" />
               <span className="font-display font-bold text-xl tracking-tight text-foreground">NAIC '26</span>
-            </a>
+            </Link>
           </div>
 
           {/* Center: Desktop Navigation */}
           <nav className="hidden md:flex items-center gap-10">
             {navLinks.map((link) => (
-              <a
+              <Link
                 key={link.label}
-                href={link.href}
+                to={link.href}
                 className="text-base font-medium font-display text-foreground/70 hover:text-foreground transition-colors tracking-wide"
               >
                 {link.label}
-              </a>
+              </Link>
             ))}
           </nav>
 
@@ -83,9 +84,7 @@ const Header = () => {
                 asChild
                 className="h-10 rounded-full px-6 text-base font-semibold bg-cyan-500 text-white border-none shadow-md hover:shadow-lg transition-all hover:scale-105 hover:bg-cyan-600"
               >
-                <a href="#registration">
-                  Register Now
-                </a>
+                <Link to="/register">Register Now</Link>
               </Button>
             </div>
 
@@ -107,19 +106,19 @@ const Header = () => {
         {isMenuOpen && (
           <nav className="md:hidden pt-4 pb-4 px-6 border-t border-black/5 dark:border-white/10 animate-fade-in flex flex-col gap-4 backdrop-blur-lg bg-black/5 dark:bg-white/5">
             {navLinks.map((link) => (
-              <a
+              <Link
                 key={link.label}
-                href={link.href}
+                to={link.href}
                 className="text-lg font-medium font-display text-muted-foreground hover:text-foreground transition-colors"
                 onClick={() => setIsMenuOpen(false)}
               >
                 {link.label}
-              </a>
+              </Link>
             ))}
             <Button asChild className="w-full rounded-full bg-cyan-500 hover:bg-cyan-600 text-white mt-2">
-              <a href="#registration" onClick={() => setIsMenuOpen(false)}>
+              <Link to="/register" onClick={() => setIsMenuOpen(false)}>
                 Register Now
-              </a>
+              </Link>
             </Button>
           </nav>
         )}

@@ -5,7 +5,6 @@ import Tracks from "@/components/Tracks";
 import Prizes from "@/components/Prizes";
 import HowToApply from "@/components/HowToApply";
 import Timeline from "@/components/Timeline";
-import RegistrationForm from "@/components/RegistrationForm";
 import CTA from "@/components/CTA";
 import FAQ from "@/components/FAQ";
 import Footer from "@/components/Footer";
@@ -31,9 +30,6 @@ const Index = () => {
         </BlurFade>
         <BlurFade inView>
           <Timeline />
-        </BlurFade>
-        <BlurFade inView>
-          <RegistrationForm />
         </BlurFade>
         <CTA />
         <BlurFade inView>
