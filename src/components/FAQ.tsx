@@ -4,8 +4,9 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import { Button } from "@/components/ui/button";
-import { ArrowRight } from "lucide-react";
+import BlurFade from "@/components/ui/blur-fade";
+
+const BLUR_FADE_DELAY = 0.04;
 
 const faqs = [
   {
@@ -23,7 +24,7 @@ const faqs = [
   {
     question: "When do I know the competition topic?",
     answer:
-      "Competition topics will be announced after registration closes, which will be on April 3, 2025.",
+      "Competition topics will be announced after registration closes, which will be on April 3, 2026.",
   },
 ];
 
@@ -38,28 +39,23 @@ const FAQ = () => {
         <div className="max-w-2xl mx-auto">
           <Accordion type="single" collapsible className="space-y-4">
             {faqs.map((faq, index) => (
-              <AccordionItem
-                key={index}
-                value={`item-${index}`}
-                className="bg-card border border-border rounded-xl px-6 shadow-sm"
-              >
-                <AccordionTrigger className="text-foreground font-medium hover:no-underline py-5">
-                  {faq.question}
-                </AccordionTrigger>
-                <AccordionContent className="text-muted-foreground pb-5">
-                  {faq.answer}
-                </AccordionContent>
-              </AccordionItem>
+              <BlurFade key={index} delay={BLUR_FADE_DELAY * index} inView>
+                <AccordionItem
+                  value={`item-${index}`}
+                  className="bg-card border border-border rounded-xl px-6 shadow-sm"
+                >
+                  <AccordionTrigger className="text-foreground font-medium hover:no-underline py-5">
+                    {faq.question}
+                  </AccordionTrigger>
+                  <AccordionContent className="text-muted-foreground pb-5">
+                    {faq.answer}
+                  </AccordionContent>
+                </AccordionItem>
+              </BlurFade>
             ))}
           </Accordion>
         </div>
 
-        <div className="text-center mt-10">
-          <Button variant="outline" className="border-primary text-primary hover:bg-primary hover:text-primary-foreground">
-            More FAQ
-            <ArrowRight className="ml-2 h-4 w-4" />
-          </Button>
-        </div>
       </div>
     </section>
   );

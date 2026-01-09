@@ -1,16 +1,20 @@
-import { Trophy, Medal, Award, Star } from "lucide-react";
-import { Card, CardContent } from "@/components/ui/card";
+import { Trophy, Medal, Award, Star, Check, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { ArrowRight } from "lucide-react";
+import BlurFade from "@/components/ui/blur-fade";
+
+const BLUR_FADE_DELAY = 0.04;
 
 const prizes = [
   {
     icon: Trophy,
-    position: "1st",
-    color: "text-yellow-500",
-    bgColor: "bg-yellow-500/10",
+    position: "1ST PLACE",
+    amount: "RM 16,000",
+    color: "text-amber-500 dark:text-yellow-400",
+    amountColor: "text-amber-600 dark:text-yellow-400",
+    glow: "shadow-yellow-500/20",
+    gradient: "from-yellow-500/10 to-transparent",
     benefits: [
-      "RM16,000 Sunway Bursary",
+      "Sunway Bursary",
       "Visit to Google's Office",
       "6 months Pixlr Premium",
       "Cert of Commendation",
@@ -18,11 +22,14 @@ const prizes = [
   },
   {
     icon: Medal,
-    position: "2nd",
-    color: "text-gray-400",
-    bgColor: "bg-gray-400/10",
+    position: "2ND PLACE",
+    amount: "RM 12,000",
+    color: "text-slate-600 dark:text-slate-300",
+    amountColor: "text-slate-700 dark:text-slate-300",
+    glow: "shadow-slate-400/20",
+    gradient: "from-slate-400/10 to-transparent",
     benefits: [
-      "RM12,000 Sunway Bursary",
+      "Sunway Bursary",
       "Visit to Google's Office",
       "6 months Pixlr Premium",
       "Cert of Commendation",
@@ -30,11 +37,14 @@ const prizes = [
   },
   {
     icon: Award,
-    position: "3rd",
-    color: "text-amber-600",
-    bgColor: "bg-amber-600/10",
+    position: "3RD PLACE",
+    amount: "RM 8,000",
+    color: "text-amber-700 dark:text-amber-600",
+    amountColor: "text-amber-800 dark:text-amber-600",
+    glow: "shadow-amber-900/20",
+    gradient: "from-amber-700/10 to-transparent",
     benefits: [
-      "RM8,000 Sunway Bursary",
+      "Sunway Bursary",
       "Visit to Google's Office",
       "6 months Pixlr Premium",
       "Cert of Commendation",
@@ -42,66 +52,72 @@ const prizes = [
   },
   {
     icon: Star,
-    position: "4th - 10th",
-    color: "text-coral",
-    bgColor: "bg-coral/10",
-    benefits: ["RM5,000 Sunway Bursary", "Cert of Commendation"],
+    position: "CONSOLATION",
+    amount: "RM 5,000",
+    color: "text-primary",
+    amountColor: "text-primary",
+    glow: "shadow-primary/20",
+    gradient: "from-primary/10 to-transparent",
+    benefits: ["Sunway Bursary", "Cert of Commendation"],
   },
 ];
 
 const Prizes = () => {
   return (
-    <section id="prizes" className="bg-background py-20">
-      <div className="container mx-auto px-4 md:px-6">
-        <h2 className="text-3xl md:text-4xl font-bold text-center text-foreground mb-12">
-          Prizes
-        </h2>
+    <section id="prizes" className="py-24 lg:py-32 relative">
+      {/* Background Glow */}
+      <div className="absolute top-1/2 right-0 w-[500px] h-[500px] bg-secondary/10 rounded-full blur-[120px] pointer-events-none" />
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
+      <div className="container mx-auto px-4 md:px-6 relative z-10">
+        <div className="text-center mb-16 space-y-4">
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold font-display tracking-tight text-foreground">
+            Prizes & awards
+          </h2>
+          <p className="text-lg text-muted-foreground max-w-2xl mx-auto font-light">
+            Big prizes for standout teams.
+          </p>
+        </div>
+
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto">
           {prizes.map((prize, index) => (
-            <Card
-              key={prize.position}
-              className="bg-card border border-border shadow-md hover:shadow-lg transition-all duration-300"
-              style={{ animationDelay: `${index * 100}ms` }}
-            >
-              <CardContent className="p-6 text-center">
-                <div
-                  className={`w-16 h-16 mx-auto mb-4 rounded-full ${prize.bgColor} flex items-center justify-center`}
-                >
-                  <prize.icon className={`w-8 h-8 ${prize.color}`} />
+            <BlurFade key={prize.position} delay={BLUR_FADE_DELAY * index} inView>
+              <div
+                className="group relative glass-card rounded-2xl overflow-hidden hover:-translate-y-1 transition-all duration-300 h-full"
+              >
+                {/* Top Gradient */}
+                <div className={`absolute top-0 left-0 right-0 h-1 bg-gradient-to-r ${prize.gradient} opacity-50`} />
+
+                <div className={`absolute inset-0 bg-gradient-to-b ${prize.gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-500`} />
+
+                <div className="p-8 text-center h-full flex flex-col relative z-10">
+                  <div className={`w-16 h-16 mx-auto mb-6 rounded-full bg-secondary/10 dark:bg-black/50 border border-black/5 dark:border-white/10 flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300 ${prize.color}`}>
+                    <prize.icon className="w-8 h-8" />
+                  </div>
+
+                  <h3 className="text-lg font-bold font-display text-muted-foreground mb-2 tracking-widest">
+                    {prize.position}
+                  </h3>
+                  <div className={`text-3xl md:text-4xl font-bold font-display mb-8 ${prize.amountColor || prize.color} drop-shadow-sm`}>
+                    {prize.amount}
+                  </div>
+
+                  <div className="mt-auto space-y-3 text-left pl-2 border-l border-black/10 dark:border-white/10">
+                    {prize.benefits.map((benefit) => (
+                      <div
+                        key={benefit}
+                        className="text-sm text-muted-foreground flex items-start gap-3 group-hover:text-foreground transition-colors"
+                      >
+                        <Check className={`w-4 h-4 mt-0.5 shrink-0 ${prize.color}`} />
+                        <span>{benefit}</span>
+                      </div>
+                    ))}
+                  </div>
                 </div>
-                <h3 className="text-2xl font-bold text-foreground mb-4">
-                  {prize.position}
-                </h3>
-                <p className="text-sm text-muted-foreground mb-4">
-                  Each team member will receive
-                </p>
-                <ul className="space-y-2 text-left">
-                  {prize.benefits.map((benefit) => (
-                    <li
-                      key={benefit}
-                      className="text-sm text-foreground flex items-start gap-2"
-                    >
-                      <span className="text-coral mt-1">•</span>
-                      {benefit}
-                    </li>
-                  ))}
-                </ul>
-              </CardContent>
-            </Card>
+              </div>
+            </BlurFade>
           ))}
         </div>
 
-        <p className="text-center text-muted-foreground mt-8 text-sm">
-          All participants will receive an e-Certificate of Participation.
-        </p>
-
-        <div className="text-center mt-8">
-          <Button size="lg" className="bg-primary hover:bg-navy-dark text-primary-foreground px-8">
-            Register Now
-            <ArrowRight className="ml-2 h-5 w-5" />
-          </Button>
-        </div>
       </div>
     </section>
   );
