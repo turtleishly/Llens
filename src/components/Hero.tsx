@@ -1,6 +1,7 @@
 import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import heroGraphic from "@/assets/hero-graphic.png";
+import sunwayLogo from "@/assets/sunway-logo.png";
 
 const Hero = () => {
   return (
@@ -52,11 +53,19 @@ const Hero = () => {
             <p className="text-sm font-medium text-muted-foreground uppercase tracking-wider mb-4">
               Organised By
             </p>
-            <div className="flex items-center justify-center gap-3">
-              <div className="w-12 h-12 rounded-full bg-coral flex items-center justify-center">
-                <span className="text-primary-foreground font-bold">R</span>
+            <div className="flex items-center justify-center gap-6">
+              <div className="flex items-center gap-3">
+                <div className="w-12 h-12 rounded-full bg-coral flex items-center justify-center">
+                  <span className="text-primary-foreground font-bold">R</span>
+                </div>
+                <span className="text-xl font-semibold text-foreground">Rakan Tutor</span>
               </div>
-              <span className="text-xl font-semibold text-foreground">Rakan Tutor</span>
+              <span className="text-muted-foreground">&</span>
+              <img 
+                src={sunwayLogo} 
+                alt="Sunway University" 
+                className="h-12 object-contain"
+              />
             </div>
           </div>
           <div>
