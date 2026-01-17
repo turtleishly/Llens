@@ -17,7 +17,7 @@ const HomeV2 = () => {
                 <HeroV2 />
 
                 <BlurFade inView>
-                    <OrganisersV2 className="" />
+                    <OrganisersV2 />
                 </BlurFade>
 
                 <BlurFade inView>
