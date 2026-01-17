@@ -1,4 +1,6 @@
-import { CheckCircle, UserPlus, GraduationCap, Send, ArrowRight } from "lucide-react";
+import { CheckCircle, UserPlus, GraduationCap, Send } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
 import BlurFade from "@/components/ui/blur-fade";
 import { motion } from "framer-motion";
 
@@ -53,16 +55,15 @@ const RegistrationV2 = () => {
                                 Protocol instructions for units participating in the 2026 Engagement.
                             </p>
 
-                            <div className="space-y-6">
-                                <div className="p-8 bg-zinc-950 border border-zinc-900 border-l-cyan-500 border-l-4 group hover:border-cyan-500/50 transition-all flex items-center gap-6">
-                                    <div className="w-20 h-20 bg-white p-2 shrink-0 group-hover:scale-105 transition-transform">
-                                        <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://linktr.ee/nationalAIcompetition" alt="Register QR" className="w-full h-full" />
-                                    </div>
-                                    <div>
-                                        <p className="text-[10px] font-black text-cyan-500 mb-1 tracking-[0.2em]">DIRECT_LINK</p>
-                                        <p className="text-cyan-100 font-mono text-xs truncate max-w-[120px]">naic.link/join</p>
-                                    </div>
-                                </div>
+                            <div className="relative group">
+                                <div className="absolute -inset-1 bg-gradient-to-r from-cyan-400 to-blue-600 rounded-lg blur opacity-40 group-hover:opacity-100 transition duration-500 group-hover:duration-200 animate-pulse"></div>
+                                <Button
+                                    asChild
+                                    className="relative h-12 px-8 rounded-lg bg-black border border-cyan-500/50 text-cyan-400 font-bold text-lg uppercase tracking-[0.1em] hover:bg-cyan-950 transition-all hover:scale-105 active:scale-95"
+                                    style={{ fontFamily: "'Syne', sans-serif" }}
+                                >
+                                    <Link to="/register">REGISTER NOW</Link>
+                                </Button>
                             </div>
                         </BlurFade>
                     </div>
