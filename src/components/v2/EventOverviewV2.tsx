@@ -68,7 +68,7 @@ OVERVIEW<br /><span className="text-cyan-500">OVERVIEW</span>
                             </div>
                         </div>
 
-                        <p className="text-xl md:text-2xl text-zinc-400 leading-relaxed font-light max-w-xl">A nationwide AI challenge for student teams to design, build, and present practical solutions. Expect hands-on problem solving, expert feedback, and workshops that help you develop your co.</p>
+                        <p className="text-xl leading-relaxed font-light max-w-xl md:text-base text-slate-100">A nationwide AI challenge for student teams to design, build, and present practical solutions. Expect hands-on problem solving, expert feedback, and workshops that help you develop your co.</p>
 
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 pt-6">
                             {stats.map((stat, index) => <div key={stat.label} className="space-y-3 p-8 bg-zinc-950 border border-zinc-900 border-l-cyan-500/30 border-l-4 group hover:border-cyan-500/50 transition-colors relative overflow-hidden">
