@@ -55,16 +55,13 @@ const RegistrationV2 = () => {
                                 Protocol instructions for units participating in the 2026 Engagement.
                             </p>
 
-                            <div className="relative group">
-                                <div className="absolute -inset-1 bg-gradient-to-r from-cyan-400 to-blue-600 rounded-lg blur opacity-40 group-hover:opacity-100 transition duration-500 group-hover:duration-200 animate-pulse"></div>
-                                <Button
-                                    asChild
-                                    className="relative h-12 px-8 rounded-lg bg-black border border-cyan-500/50 text-cyan-400 font-bold text-lg uppercase tracking-[0.1em] hover:bg-cyan-950 transition-all hover:scale-105 active:scale-95"
-                                    style={{ fontFamily: "'Syne', sans-serif" }}
-                                >
-                                    <Link to="/register">REGISTER NOW</Link>
-                                </Button>
-                            </div>
+                            <Button
+                                asChild
+                                className="h-12 px-8 rounded-full bg-cyan-500 text-black font-bold text-base uppercase tracking-wide hover:bg-cyan-400 transition-all"
+                                style={{ fontFamily: "'Syne', sans-serif" }}
+                            >
+                                <Link to="/register">REGISTER NOW</Link>
+                            </Button>
                         </BlurFade>
                     </div>
 
