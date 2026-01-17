@@ -58,8 +58,8 @@ const EventOverviewV2 = () => {
                 <div className="flex flex-col-reverse md:flex-row items-center gap-16 lg:gap-24">
                     <div className="w-full md:w-1/2 space-y-10">
                         <div className="space-y-6">
-                            <h2 className="text-5xl md:text-8xl font-black text-white uppercase tracking-tighter leading-none" style={{ fontFamily: "'Orbitron', sans-serif" }}>
-                                DATA: <br /><span className="text-cyan-500 neon-text-cyan">OVERVIEW</span>
+                            <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-white uppercase tracking-tighter leading-none" style={{ fontFamily: "'Orbitron', sans-serif" }}>
+                                DATA: <br /><span className="text-cyan-500">OVERVIEW</span>
                             </h2>
                             <div className="flex gap-2">
                                 <div className="w-24 h-2 bg-cyan-500/50" />

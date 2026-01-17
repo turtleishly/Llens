@@ -60,8 +60,8 @@ const PrizesV2 = () => {
             <div className="container mx-auto px-6 relative z-10">
                 <div className="text-center mb-24">
                     <BlurFade delay={0.1}>
-                        <h2 className="text-5xl md:text-7xl font-black text-white tracking-tighter uppercase mb-4" style={{ fontFamily: "'Orbitron', sans-serif" }}>
-                            ASSET: <span className="text-cyan-500 neon-text-cyan">PRIZES</span>
+                        <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-white tracking-tighter uppercase mb-4" style={{ fontFamily: "'Orbitron', sans-serif" }}>
+                            ASSET: <span className="text-cyan-500">PRIZES</span>
                         </h2>
                         <div className="flex justify-center gap-2">
                             <div className="w-12 h-1 bg-cyan-500/30" />

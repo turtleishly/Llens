@@ -54,27 +54,23 @@ const HeroV2 = () => {
             </div>
 
             <div className="container relative z-10 max-w-5xl mx-auto flex flex-col items-center text-center">
-                {/* AI Logo with Neon Pulse */}
+                {/* AI Logo */}
                 <BlurFade delay={0.1}>
-                    <div className="relative inline-block mb-8">
+                    <div className="relative inline-block mb-6">
                         <motion.img
                             src={heroAiV2}
                             alt="AI Logo"
-                            className="w-full max-w-[160px] md:max-w-[200px] h-auto drop-shadow-[0_0_25px_rgba(6,182,212,0.4)]"
+                            className="w-full max-w-[160px] md:max-w-[200px] h-auto"
                             initial={{ scale: 0.9, opacity: 0 }}
                             animate={{ scale: 1, opacity: 1 }}
                             transition={{ duration: 1, ease: "easeOut" }}
                         />
-                        <div
-                            className="absolute inset-0 -z-10 animate-pulse"
-                            style={{ background: 'radial-gradient(circle at center, rgba(6, 182, 212, 0.2) 0%, transparent 75%)' }}
-                        />
                     </div>
                 </BlurFade>
 
-                {/* Main Title: Using Orbitron for a premium cyberpunk technical look */}
+                {/* Main Title */}
                 <div className="mb-6">
-                    <h1 className="text-3xl lg:text-5xl font-black tracking-tight text-white uppercase leading-tight" style={{ fontFamily: "'Orbitron', sans-serif" }}>
+                    <h1 className="text-4xl md:text-5xl lg:text-7xl font-black tracking-tight text-white uppercase leading-tight" style={{ fontFamily: "'Orbitron', sans-serif" }}>
                         <div className="flex flex-col items-center gap-y-0.5">
                             <div className="flex flex-wrap justify-center gap-x-[0.3em]">
                                 <BlurFade delay={BLUR_FADE_DELAY * 0} blur="10px">
@@ -92,9 +88,7 @@ const HeroV2 = () => {
                             </BlurFade>
                         </div>
                         <BlurFade delay={BLUR_FADE_DELAY * 4} blur="10px">
-                            <span
-                                className="text-cyan-400/80 font-black inline-block text-4xl lg:text-6xl mt-4 neon-text-cyan cyber-glitch-hover cursor-default tracking-tight"
-                            >
+                            <span className="text-cyan-400/80 font-black inline-block text-5xl md:text-6xl lg:text-8xl mt-1 cursor-default tracking-tight">
                                 2026
                             </span>
                         </BlurFade>

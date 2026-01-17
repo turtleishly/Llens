@@ -46,8 +46,8 @@ const RegistrationV2 = () => {
                 <div className="flex flex-col lg:flex-row gap-16 items-start">
                     <div className="lg:w-1/3 text-left space-y-12 lg:sticky lg:top-32">
                         <BlurFade delay={0.1}>
-                            <h2 className="text-5xl md:text-7xl font-black text-white italic tracking-tighter uppercase mb-6 leading-[0.8]">
-                                UPLINK: <br /><span className="text-cyan-500 neon-text-cyan">PROCESS</span>
+                            <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-white tracking-tighter uppercase mb-6 leading-[0.9]" style={{ fontFamily: "'Orbitron', sans-serif" }}>
+                                UPLINK: <br /><span className="text-cyan-500">PROCESS</span>
                             </h2>
                             <p className="text-zinc-400 text-lg leading-relaxed font-light mb-10">
                                 Protocol instructions for units participating in the 2026 Engagement.

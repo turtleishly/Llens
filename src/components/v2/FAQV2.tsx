@@ -35,8 +35,8 @@ const FAQV2 = () => {
                 <div className="flex flex-col lg:flex-row gap-16">
                     <div className="lg:w-1/3">
                         <BlurFade delay={0.1}>
-                            <h2 className="text-5xl md:text-7xl font-black text-white italic tracking-tighter uppercase mb-6 leading-[0.8]">
-                                QUERY: <br /><span className="text-cyan-500 neon-text-cyan text-6xl md:text-8xl">STATUS?</span>
+                            <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-white tracking-tighter uppercase mb-6 leading-[0.9]" style={{ fontFamily: "'Orbitron', sans-serif" }}>
+                                QUERY: <br /><span className="text-cyan-500">STATUS?</span>
                             </h2>
                             <p className="text-lg text-zinc-400 font-light mb-8 max-w-sm">
                                 System documentation and protocol details for NAIC 2026 participants.
