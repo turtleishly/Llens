@@ -10,16 +10,14 @@ import CTAV2 from "@/components/v2/CTAV2";
 import FAQV2 from "@/components/v2/FAQV2";
 import Footer from "@/components/Footer";
 import BlurFade from "@/components/ui/blur-fade";
-
 const HomeV2 = () => {
-    return (
-        <div className="min-h-screen bg-black transition-colors duration-300 overflow-x-hidden">
+  return <div className="min-h-screen bg-black transition-colors duration-300 overflow-x-hidden">
             <Header />
             <main className="relative">
                 <HeroV2 />
 
                 <BlurFade inView>
-                    <OrganisersV2 />
+                    <OrganisersV2 className="" />
                 </BlurFade>
 
                 <BlurFade inView>
@@ -49,8 +47,6 @@ const HomeV2 = () => {
                 </BlurFade>
             </main>
             <Footer />
-        </div>
-    );
+        </div>;
 };
-
 export default HomeV2;
