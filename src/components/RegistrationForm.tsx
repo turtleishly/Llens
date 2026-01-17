@@ -286,33 +286,28 @@ const RegistrationForm = () => {
   };
 
   const onSubmit = async (values: RegistrationValues) => {
-    const endpoint = import.meta.env.VITE_REGISTRATION_SHEETS_URL;
-
-    if (!endpoint) {
-      toast("Missing Google Sheets endpoint", {
-        description: "Set VITE_REGISTRATION_SHEETS_URL in your environment before submitting.",
-      });
-      return;
-    }
+    const WEBHOOK_URL = "https://api.nodex.bubblelab.ai/webhook/user_35ff2cECOyubmqLQKPQojnUNTKG/txyBFHYYFSgf";
 
     try {
       setIsSubmitting(true);
-      const response = await fetch(endpoint, {
+      const response = await fetch(WEBHOOK_URL, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(values),
       });
 
-      if (!response.ok) {
-        throw new Error("Submission failed.");
+      const result = await response.json();
+
+      if (!response.ok || !result.success) {
+        throw new Error(result.error || "Submission failed.");
       }
 
       setShowSuccessAnimation(true);
       clearSavedData();
 
       setTimeout(() => {
-        toast("Registration captured", {
-          description: "Thanks! We received your team details.",
+        toast("Registration confirmed!", {
+          description: "Check your email for a confirmation message.",
         });
         form.reset({
           ...defaultValues,
