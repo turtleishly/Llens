@@ -43,8 +43,8 @@ const BLUR_FADE_DELAY = 0.04;
 
 const Tracks = () => {
   return (
-    <section id="tracks" className="relative py-32 bg-background">
-      <div className="container mx-auto px-6">
+    <section id="tracks" className="relative py-32 bg-background px-4 md:px-8">
+      <div className="container mx-auto">
         <div className="flex flex-col md:flex-row justify-between items-end mb-20 gap-8">
           <div className="space-y-4 text-left">
             <h2 className="text-5xl md:text-6xl font-bold tracking-tight text-foreground">

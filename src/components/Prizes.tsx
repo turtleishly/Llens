@@ -15,8 +15,6 @@ const prizes = [
     gradient: "from-yellow-500/10 to-transparent",
     benefits: [
       "Sunway Bursary",
-      "Visit to Google's Office",
-      "6 months Pixlr Premium",
       "Cert of Commendation",
     ],
   },
@@ -30,8 +28,6 @@ const prizes = [
     gradient: "from-slate-400/10 to-transparent",
     benefits: [
       "Sunway Bursary",
-      "Visit to Google's Office",
-      "6 months Pixlr Premium",
       "Cert of Commendation",
     ],
   },
@@ -45,8 +41,6 @@ const prizes = [
     gradient: "from-amber-700/10 to-transparent",
     benefits: [
       "Sunway Bursary",
-      "Visit to Google's Office",
-      "6 months Pixlr Premium",
       "Cert of Commendation",
     ],
   },
@@ -64,11 +58,11 @@ const prizes = [
 
 const Prizes = () => {
   return (
-    <section id="prizes" className="py-24 lg:py-32 relative">
+    <section id="prizes" className="py-24 lg:py-32 relative px-4 md:px-8">
       {/* Background Glow */}
       <div className="absolute top-1/2 right-0 w-[500px] h-[500px] bg-secondary/10 rounded-full blur-[120px] pointer-events-none" />
 
-      <div className="container mx-auto px-4 md:px-6 relative z-10">
+      <div className="container mx-auto relative z-10">
         <div className="text-center mb-16 space-y-4">
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold font-display tracking-tight text-foreground">
             Prizes & awards

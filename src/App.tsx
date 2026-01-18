@@ -5,6 +5,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { useEffect } from "react";
 import HomeV2 from "./pages/HomeV2";
+import HomeV3 from "./pages/HomeV3";
 import Index from "./pages/Index";
 import Register from "./pages/Register";
 import Privacy from "./pages/Privacy";
@@ -60,6 +61,7 @@ const App = () => {
           <Routes>
             <Route path="/" element={<Index />} />
             <Route path="/v2" element={<HomeV2 />} />
+            <Route path="/v3" element={<HomeV3 />} />
             <Route path="/register" element={<Register />} />
             <Route path="/privacy" element={<Privacy />} />
             <Route path="/terms" element={<Terms />} />

@@ -1,5 +1,4 @@
 import { useEffect, useRef, useState } from "react";
-import heroGraphic from "@/assets/hero-graphic.png";
 
 const stats = [
   { value: 2300, suffix: "+", label: "participants in 2025" },
@@ -51,8 +50,8 @@ const CountUp = ({ value, suffix }: { value: number; suffix?: string }) => {
 
 const EventOverview = () => {
   return (
-    <section className="relative py-20 bg-background">
-      <div className="container mx-auto px-6">
+    <section className="relative py-20 bg-background px-4 md:px-8">
+      <div className="container mx-auto">
         <div className="flex flex-col-reverse md:flex-row items-center gap-12">
           <div className="w-full md:w-1/2 space-y-6 text-center md:text-left">
             <h2 className="text-5xl md:text-6xl font-bold tracking-tight text-foreground">
@@ -75,9 +74,9 @@ const EventOverview = () => {
           </div>
           <div className="w-full md:w-1/2 flex justify-center md:justify-end">
             <img
-              src={heroGraphic}
+              src="/naic2025photo.jpg"
               alt="Competition overview graphic"
-              className="w-full max-w-md h-auto"
+              className="w-full max-w-md h-auto rounded-3xl shadow-2xl"
             />
           </div>
         </div>

@@ -13,12 +13,12 @@ const Footer = () => {
 
   return (
     <footer className={cn(
-      "py-20 border-t transition-colors duration-300 relative overflow-hidden",
+      "py-20 border-t transition-colors duration-300 relative overflow-hidden px-4 md:px-8",
       isV2 ? "bg-black border-cyan-500/20" : "bg-background border-border mt-20"
     )}>
       {isV2 && <div className="absolute inset-0 cyber-grid opacity-10 pointer-events-none" />}
 
-      <div className="container mx-auto px-6 relative z-10">
+      <div className="container mx-auto relative z-10">
         <div className="flex flex-col md:flex-row items-start justify-between gap-12">
           {/* Logo and Tagline */}
           <div className="space-y-6 max-w-sm">

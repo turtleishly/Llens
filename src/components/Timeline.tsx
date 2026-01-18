@@ -28,8 +28,8 @@ const timelineEvents = [
 
 const Timeline = () => {
   return (
-    <section id="timeline" className="py-24 relative transition-colors duration-300">
-      <div className="container mx-auto px-4 md:px-6">
+    <section id="timeline" className="py-24 relative transition-colors duration-300 px-4 md:px-8">
+      <div className="container mx-auto">
         <h2 className="text-4xl md:text-5xl font-bold font-display text-center text-foreground mb-16">
           Timeline
         </h2>
