@@ -22,9 +22,13 @@ const faqs = [
     answer: "Yes, the AI masterclass is free.",
   },
   {
+    question: "How many tracks are there?",
+    answer: "Five tracks: Computing, Engineering, Innovation, Art, and Architecture.",
+  },
+  {
     question: "When do I know the competition topic?",
     answer:
-      "Competition topics will be announced after registration closes, which will be on April 2, 2026.",
+      "Competition topics will be announced after registration closes, which will be on April 3, 2026.",
   },
 ];
 

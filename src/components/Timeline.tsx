@@ -10,22 +10,22 @@ const timelineEvents = [
     description: "Final call for teams to register. Ensure your team of 4 is ready and your teacher advisor is onboarded."
   },
   {
-    date: "April - May 2026",
-    event: "AI Masterclass & Building",
-    description: "Receive the competition topics, participate in free AI masterclasses, and work on your project submission."
+    date: "March 31 - April 2, 2026",
+    event: "AI Masterclasses",
+    description: "Participate in free online AI masterclasses to prepare your team for the competition."
   },
   {
-    date: "May 24, 2026",
-    event: "First Round Submission",
-    description: "Submit your team's project for the online preliminary round for judging."
+    date: "May 4, 2026",
+    event: "Proposal Submission",
+    description: "Submit your team's project proposal for the online preliminary round for judging."
   },
   {
-    date: "June 2026",
+    date: "May 15, 2026",
     event: "Announcement of Finalists",
     description: "The top 60 teams will be announced and invited to the grand finals at Sunway University."
   },
   {
-    date: "July 19, 2026",
+    date: "13 June 2026",
     event: "Grand Finals at Sunway University",
     description: "Compete in the in-person final round. Transportation provided by Sunway University for shortlisted participants."
   },

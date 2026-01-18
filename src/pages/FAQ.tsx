@@ -30,19 +30,19 @@ const faqData = [
         items: [
             {
                 question: "How does the competition work?",
-                answer: "The National AI Competition consists of two rounds: an online preliminary round and an in-person final. Here's how it works:\n1. Registration: Register your team by April 2.\n2. Competition Topics & AI Masterclass: Receive the competition topics and participate in a free AI masterclass to prepare.\n3. Build & Submit: Work on your project as a team and submit it for the first round by May 24.\nFinalists will be announced in June and will compete in the final round at Sunway on July 19. Refer to the timeline for detailed dates and steps."
+                answer: "The National AI Competition consists of two rounds: an online preliminary round and an in-person final. Here's how it works:\n1. Registration: Register your team by April 2.\n2. Competition Topics & AI Masterclass: Receive the competition topics and participate in a free AI masterclass from March 31 - April 2.\n3. Build & Submit: Work on your project as a team and submit your proposal by May 4.\nFinalists will be announced on May 15 and will compete in the final round at Sunway on June 13. Refer to the timeline for detailed dates and steps."
             },
             {
                 question: "How many rounds will there be?",
-                answer: "There will be a total of 2 rounds. The first round will be conducted fully online. Shortlisted participants will be invited to the final round, with transport covered by Sunway."
+                answer: "There will be a total of 2 rounds. The first round will be conducted fully online. Shortlisted participants will be invited to the final round at Sunway University."
             },
             {
                 question: "How many tracks are there?",
-                answer: "There are three tracks:\n- Technical Track: For students passionate about AI development and creating impactful solutions.\n- Art Track: For students passionate about art and exploring new creative possibilities with AI.\n- Innovation Track: For problem-solvers passionate about impactful, scalable AI-driven social change.\nRefer to the Track page to learn more."
+                answer: "There are five tracks:\n- Computing: Architect the next generation of algorithms.\n- Engineering: Optimize complex systems and industrial applications.\n- Innovation: Design AI solutions for social impact.\n- Generated Art: Explore human creativity and machine-generated aesthetics.\n- Architecture: Reimagine sustainable urban spaces.\nRefer to the Track page to learn more."
             },
             {
                 question: "Where and when will the final be held?",
-                answer: "Tentatively, it will be held on July 19, 2026 at Sunway University. Transportation will be provided by Sunway University."
+                answer: "The grand finals will be held on June 13, 2026 at Sunway University, Bandar Sunway. Transportation will be provided by Sunway University for shortlisted participants."
             },
             {
                 question: "Can I join remotely for the final?",
@@ -54,7 +54,7 @@ const faqData = [
             },
             {
                 question: "How do we shortlist teams for the final?",
-                answer: "Finalists will be selected based on the judging criteria specific to their chosen track. A brief overview of the criteria can be found under the track page on our website. Detailed judging guidelines will be included in the competition topics announcement, which will be sent to all registered teams on April 2."
+                answer: "Finalists will be selected based on the judging criteria specific to their chosen track. A brief overview of the criteria can be found under the track page on our website. The announcement of finalists will be on May 15, 2026."
             }
         ]
     },
@@ -115,7 +115,7 @@ const faqData = [
             },
             {
                 question: "Do I need coding experience for the competition?",
-                answer: "It depends on the track you choose:\n- Generative Art Track and Innovator Track: Coding experience is not required.\n- Technical Track: Python coding experience is highly encouraged. If you don't have experience, we recommend taking a free online course like the Deep Learning AI Python Course (free) to build your skills. Additionally, we will provide workshops covering AI algorithms to support your preparation."
+                answer: "It depends on the track you choose:\n- Computing and Engineering Tracks: Coding or technical experience is highly encouraged.\n- Innovation, Generated Art, and Architecture Tracks: Coding experience is not required. We focus on design, creativity, and problem-solving."
             }
         ]
     },
@@ -169,7 +169,7 @@ const faqData = [
             },
             {
                 question: "What do winners get?",
-                answer: "The details are still being finalized. Stay tuned for updates!"
+                answer: "Winners will receive trophies, cash prizes, and Sunway Bursaries (tuition fee waivers) for eligible programmes at Sunway University or Sunway College KL. Detailed bursary conditions can be found in our Terms & Conditions."
             }
         ]
     },
@@ -182,7 +182,7 @@ const faqData = [
             },
             {
                 question: "What if I have further inquiries?",
-                answer: "If you have any further questions, please email naic@rakantutor.org or WhatsApp us at +60 19-917 9356 and we will do our best to help!"
+                answer: "If you have any further questions, please email naic@rakantutor.org or WhatsApp us at +60 19-917 9356. For specific questions regarding bursaries or terms, you may also contact clement@sunway.edu.my or mingjackt@sunway.edu."
             }
         ]
     }

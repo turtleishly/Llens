@@ -17,6 +17,7 @@ export default function Terms() {
         { id: "participation", title: "Participation" },
         { id: "top-60", title: "Top 60 Winners" },
         { id: "originality", title: "Originality & Rights" },
+        { id: "liability", title: "Liability & Conduct" },
         { id: "bursary", title: "Bursary Conditions" },
         { id: "contact", title: "Contact" },
     ];
@@ -107,7 +108,8 @@ export default function Terms() {
                                                 • This condition is set to ensure that all participants maintain active student status throughout the competition period.
                                             </p>
                                             <p className="p-4 bg-cyan-500/10 border-l-4 border-cyan-500 text-sm font-medium text-cyan-600 dark:text-cyan-400 rounded-r-xl">
-                                                If any one (1) team member falls under Category B, the entire team will be registered under Category B.
+                                                • For participants under the age of 18, participation is subject to the consent of a parent or legal guardian. By submitting an entry, the participant represents that such consent has been obtained.<br /><br />
+                                                • If any one (1) team member falls under Category B, the entire team will be registered under Category B.
                                             </p>
                                         </div>
                                     </section>
@@ -157,7 +159,7 @@ export default function Terms() {
                                             </li>
                                             <li className="flex gap-4">
                                                 <div className="h-2 w-2 rounded-full bg-cyan-500 mt-2.5 shrink-0" />
-                                                <p>All submissions must be original works created by the participating teams. By participating, teams grant Sunway College, Sunway University and Rakan Tutor the right to use participants' names, photos, and submitted materials for promotional, educational, and marketing purposes. The Organisers reserves the right to publish and display submissions (with credit) for non-commercial educational purposes.</p>
+                                                <p>All submissions must be original works created by the participating teams. By participating, teams grant Sunway College, Sunway University and Rakan Tutor the right to use participants' names, photos, and submitted materials for promotional, educational, and marketing purposes. <strong>Attendance at the prize-giving ceremony at Sunway University constitutes consent to be photographed or filmed for official promotional use.</strong></p>
                                             </li>
                                             <li className="flex gap-4">
                                                 <div className="h-2 w-2 rounded-full bg-cyan-500 mt-2.5 shrink-0" />
@@ -176,6 +178,34 @@ export default function Terms() {
                                                 <p>In special situations, and subject to the Organisers' absolute discretion, the Competition winner may nominate a representative to collect the prize on his/her behalf. The representative will be required to present written authorisation from the winner and identification which includes a photograph for both the winner and the representative.</p>
                                             </li>
                                         </ul>
+                                    </section>
+                                </BlurFade>
+
+                                {/* Liability & Conduct */}
+                                <BlurFade inView delay={0.1}>
+                                    <section id="liability" className="space-y-8">
+                                        <h2 className="text-3xl font-bold font-display tracking-tight text-foreground">Liability & Code of Conduct</h2>
+
+                                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                            <div className="p-6 rounded-2xl bg-secondary/30 border border-border/50 space-y-4">
+                                                <h3 className="font-bold text-foreground">Limitation of Liability</h3>
+                                                <p className="text-sm text-muted-foreground font-light leading-relaxed">
+                                                    To the maximum extent permitted by law, the Organisers shall not be liable for any direct, indirect, or consequential loss, damage, or injury arising from participation in the Competition or attendance at event venues. The Organisers are not responsible for technical failures, lost submissions, or service interruptions.
+                                                </p>
+                                            </div>
+                                            <div className="p-6 rounded-2xl bg-secondary/30 border border-border/50 space-y-4">
+                                                <h3 className="font-bold text-foreground">Ethical Conduct</h3>
+                                                <p className="text-sm text-muted-foreground font-light leading-relaxed">
+                                                    Participants must behave professionally. The Organisers reserve the right to disqualify any team for plagiarism, unethical use of AI (e.g., generating deepfakes or offensive content), harassment, or any form of cheating.
+                                                </p>
+                                            </div>
+                                        </div>
+
+                                        <div className="p-8 rounded-[2rem] glass border-red-500/10">
+                                            <p className="text-base font-light text-muted-foreground">
+                                                <span className="font-semibold text-foreground">Indemnity:</span> Participants agree to indemnify and hold harmless Sunway University, Sunway College, and Rakan Tutor against any and all claims, costs, or liabilities arising from the participant's breach of these terms or any infringement of third-party intellectual property rights.
+                                            </p>
+                                        </div>
                                     </section>
                                 </BlurFade>
 

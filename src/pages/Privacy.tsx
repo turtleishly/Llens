@@ -13,13 +13,12 @@ export default function Privacy() {
 
     const tableOfContents = [
         { id: "tl-dr", title: "TL;DR" },
-        { id: "intro", title: "Introduction" },
+        { id: "minors", title: "Minors' Privacy" },
         { id: "what-we-collect", title: "What We Collect" },
         { id: "how-we-use", title: "How We Use Your Data" },
+        { id: "media", title: "Media & Photography" },
         { id: "disclosure", title: "Data Disclosure" },
         { id: "security", title: "Data Security" },
-        { id: "retention", title: "Data Retention" },
-        { id: "your-rights", title: "Your Rights" },
         { id: "contact", title: "Contact" },
     ];
 
@@ -86,8 +85,22 @@ export default function Privacy() {
                                     <section id="tl-dr" className="space-y-6">
                                         <h2 className="text-3xl font-bold font-display tracking-tight text-foreground">TL;DR</h2>
                                         <p className="text-muted-foreground leading-relaxed font-light text-xl">
-                                            We collect necessary information to run NAIC 2026. This includes registration details, team info, and student status. We never sell your data and only share it with partners involved in organizing or judging the competition.
+                                            We collect necessary information to run NAIC 2026. This includes registration details, team info, and student status. We never sell your data and only share it with partners involved in organizing or judging the competition. For participants under 18, we require parental/guardian consent.
                                         </p>
+                                    </section>
+                                </BlurFade>
+
+                                <BlurFade inView delay={0.1}>
+                                    <section id="minors" className="space-y-6 font-light text-muted-foreground leading-relaxed text-lg">
+                                        <h2 className="text-3xl font-bold font-display tracking-tight text-foreground">Minors' Privacy</h2>
+                                        <p>
+                                            Given that NAIC 2026 involves students as young as 13 (Category A), we take additional precautions to protect their privacy.
+                                        </p>
+                                        <ul className="list-disc pl-6 space-y-3">
+                                            <li>We do not knowingly collect personal information from individuals under 18 without verifiable parental or guardian consent.</li>
+                                            <li>We only collect the minimum amount of personal data necessary for competition administration and prize distribution.</li>
+                                            <li>Parents or guardians have the right to review the personal data collected from their child and request its deletion.</li>
+                                        </ul>
                                     </section>
                                 </BlurFade>
 
@@ -151,6 +164,20 @@ export default function Privacy() {
                                 </BlurFade>
 
                                 <BlurFade inView delay={0.1}>
+                                    <section id="media" className="space-y-6 font-light text-muted-foreground leading-relaxed text-lg">
+                                        <h2 className="text-3xl font-bold font-display tracking-tight text-foreground">Media & Photography</h2>
+                                        <p>
+                                            Photography and videography will be conducted during the prize-giving ceremony at Sunway University.
+                                        </p>
+                                        <ul className="list-disc pl-6 space-y-3">
+                                            <li>Images and recordings of participants may be used for promotional, archival, and educational purposes by the Organisers.</li>
+                                            <li>Visual media is stored securely and is only accessible by authorized marketing and administrative personnel.</li>
+                                            <li>If you wish to opt-out of having your photograph published, please notify the on-site event staff during registration at the venue.</li>
+                                        </ul>
+                                    </section>
+                                </BlurFade>
+
+                                <BlurFade inView delay={0.1}>
                                     <section id="disclosure" className="space-y-6 font-light text-muted-foreground leading-relaxed text-lg">
                                         <h2 className="text-3xl font-bold font-display tracking-tight text-foreground">Data Disclosure</h2>
                                         <p>We do not sell your personal data. We disclose data only to:</p>
@@ -167,24 +194,6 @@ export default function Privacy() {
                                         <h2 className="text-3xl font-bold font-display tracking-tight text-foreground">Data Security</h2>
                                         <p>
                                             We use industry-standard security measures to protect your data. This includes encryption in transit and at rest for our primary databases.
-                                        </p>
-                                    </section>
-                                </BlurFade>
-
-                                <BlurFade inView delay={0.1}>
-                                    <section id="retention" className="space-y-6 font-light text-muted-foreground leading-relaxed text-lg">
-                                        <h2 className="text-3xl font-bold font-display tracking-tight text-foreground">Data Retention</h2>
-                                        <p>
-                                            We retain your personal data for the duration of the competition and up to 12 months following the event for administrative, audit, and alumni purposes.
-                                        </p>
-                                    </section>
-                                </BlurFade>
-
-                                <BlurFade inView delay={0.1}>
-                                    <section id="your-rights" className="space-y-6 font-light text-muted-foreground leading-relaxed text-lg">
-                                        <h2 className="text-3xl font-bold font-display tracking-tight text-foreground">Your Rights</h2>
-                                        <p>
-                                            Under the PDPA 2010, you have the right to access and correct your personal data. To exercise these rights, please contact us at the email provided below. For more details on your rights and how your data is handled across the Sunway ecosystem, please refer to the <a href="https://sunway.edu.my/personal-data-protection-notice-for-sunway-education-group" target="_blank" rel="noopener noreferrer" className="text-cyan-500 underline underline-offset-4 hover:text-cyan-600 transition-colors">official Sunway Education Group PDPA Notice</a>.
                                         </p>
                                     </section>
                                 </BlurFade>

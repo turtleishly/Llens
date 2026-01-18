@@ -58,7 +58,7 @@ const CTAV2 = () => {
                 <BlurFade inView delay={0.4}>
                     <div className="flex flex-col items-center gap-2">
                         <p className="text-cyan-500/40 font-black uppercase tracking-[0.5em] text-[10px] font-mono">
-                            DEADLINE: 16_MARCH_2026 // TIME: 23:59_SGT
+                            DEADLINE: 02_APRIL_2026 // TIME: 23:59_MYT
                         </p>
                         <div className="w-48 h-[1px] bg-gradient-to-r from-transparent via-cyan-500/20 to-transparent" />
                     </div>
