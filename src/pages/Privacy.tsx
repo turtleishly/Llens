@@ -5,7 +5,7 @@ import DitheredBackground from "@/components/DitheredBackground";
 import { useEffect } from "react";
 
 export default function Privacy() {
-    const updated = "January 17, 2026";
+    const updated = "January 19, 2026";
 
     useEffect(() => {
         window.scrollTo(0, 0);
@@ -98,7 +98,7 @@ export default function Privacy() {
                                             This Privacy Policy explains how Rakan Tutor and Sunway University (collectively, "the Organisers", "we", "us", or "our") handle personal data when you register for and participate in the National AI Competition (NAIC) 2026.
                                         </p>
                                         <p>
-                                            By registering for NAIC 2026, you agree to the collection and use of information in accordance with this policy. We adhere to the Personal Data Protection Act (PDPA) 2010 of Malaysia.
+                                            By registering for NAIC 2026, you agree to the collection and use of information in accordance with this policy. We adhere to the <a href="https://sunway.edu.my/personal-data-protection-notice-for-sunway-education-group" target="_blank" rel="noopener noreferrer" className="text-cyan-500 underline underline-offset-4 hover:text-cyan-600 transition-colors">Personal Data Protection Act (PDPA) 2010</a> of Malaysia.
                                         </p>
                                     </section>
                                 </BlurFade>
@@ -184,7 +184,7 @@ export default function Privacy() {
                                     <section id="your-rights" className="space-y-6 font-light text-muted-foreground leading-relaxed text-lg">
                                         <h2 className="text-3xl font-bold font-display tracking-tight text-foreground">Your Rights</h2>
                                         <p>
-                                            Under the PDPA 2010, you have the right to access and correct your personal data. To exercise these rights, please contact us at the email provided below.
+                                            Under the PDPA 2010, you have the right to access and correct your personal data. To exercise these rights, please contact us at the email provided below. For more details on your rights and how your data is handled across the Sunway ecosystem, please refer to the <a href="https://sunway.edu.my/personal-data-protection-notice-for-sunway-education-group" target="_blank" rel="noopener noreferrer" className="text-cyan-500 underline underline-offset-4 hover:text-cyan-600 transition-colors">official Sunway Education Group PDPA Notice</a>.
                                         </p>
                                     </section>
                                 </BlurFade>

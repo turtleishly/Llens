@@ -5,24 +5,29 @@ const BLUR_FADE_DELAY = 0.04;
 
 const timelineEvents = [
   {
-    date: "31 Mar - 2 Apr 2026",
-    event: "Masterclass (by category)",
-    description: "Attend specialized workshops tailored to each competition track. Learn essential skills and tools from industry experts."
+    date: "April 2, 2026",
+    event: "Registration Deadline",
+    description: "Final call for teams to register. Ensure your team of 4 is ready and your teacher advisor is onboarded."
   },
   {
-    date: "4 May 2026 (Monday)",
-    event: "Proposal Submission Deadline",
-    description: "Submit your team's project proposal outlining your approach, methodology, and expected outcomes."
+    date: "April - May 2026",
+    event: "AI Masterclass & Building",
+    description: "Receive the competition topics, participate in free AI masterclasses, and work on your project submission."
   },
   {
-    date: "15 May 2026, 4:00 PM (Friday)",
+    date: "May 24, 2026",
+    event: "First Round Submission",
+    description: "Submit your team's project for the online preliminary round for judging."
+  },
+  {
+    date: "June 2026",
     event: "Announcement of Finalists",
-    description: "Top teams from each category will be selected to advance to the Grand Finals at Sunway University."
+    description: "The top 60 teams will be announced and invited to the grand finals at Sunway University."
   },
   {
-    date: "13 Jun 2026, 8:30 AM - 2:00 PM",
+    date: "July 19, 2026",
     event: "Grand Finals at Sunway University",
-    description: "Present your final project to judges and compete for prizes. Network with mentors, sponsors, and fellow innovators."
+    description: "Compete in the in-person final round. Transportation provided by Sunway University for shortlisted participants."
   },
 ];
 

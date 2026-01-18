@@ -19,10 +19,10 @@ const Header = () => {
   }, []);
 
   const navLinks = [
-    { label: "Tracks", href: isV2 ? "/v2#tracks" : "/#tracks" },
+    { label: "Tracks", href: "/tracks" },
     { label: "Prizes", href: isV2 ? "/v2#prizes" : "/#prizes" },
     { label: "Timeline", href: isV2 ? "/v2#timeline" : "/#timeline" },
-    { label: "FAQ", href: isV2 ? "/v2#faq" : "/#faq" },
+    { label: "FAQ", href: "/faq" },
     { label: "Register", href: "/register" },
   ];
 

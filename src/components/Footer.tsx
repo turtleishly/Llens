@@ -44,7 +44,11 @@ const Footer = () => {
               isV2 ? "text-cyan-500/40" : "text-muted-foreground/40"
             )}>Support</p>
             <nav className="flex flex-col gap-3">
-              <Link to={isV2 ? "/v2#faq" : "/#faq"} className={cn(
+              <Link to="/tracks" className={cn(
+                "text-lg transition-colors font-light",
+                isV2 ? "text-zinc-500 hover:text-cyan-400" : "text-foreground/70 hover:text-foreground"
+              )}>Tracks</Link>
+              <Link to="/faq" className={cn(
                 "text-lg transition-colors font-light",
                 isV2 ? "text-zinc-500 hover:text-cyan-400" : "text-foreground/70 hover:text-foreground"
               )}>FAQ</Link>

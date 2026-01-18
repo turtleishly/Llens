@@ -24,7 +24,7 @@ const faqs = [
   {
     question: "When do I know the competition topic?",
     answer:
-      "Competition topics will be announced after registration closes, which will be on April 3, 2026.",
+      "Competition topics will be announced after registration closes, which will be on April 2, 2026.",
   },
 ];
 
@@ -56,6 +56,24 @@ const FAQ = () => {
           </Accordion>
         </div>
 
+        <div className="mt-12 text-center">
+          <BlurFade delay={BLUR_FADE_DELAY * faqs.length} inView>
+            <a
+              href="/faq"
+              className="inline-flex items-center text-primary font-medium hover:underline gap-2"
+            >
+              View all FAQs
+              <svg
+                className="w-4 h-4"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="9 5l7 7-7 7" />
+              </svg>
+            </a>
+          </BlurFade>
+        </div>
       </div>
     </section>
   );

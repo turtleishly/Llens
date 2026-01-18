@@ -18,7 +18,7 @@ import { useFormAutoSave } from "@/hooks/useFormAutoSave";
 import { ArrowLeft, ArrowRight, CheckCircle2, X } from "lucide-react";
 import { useNavigate, Link } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
-const trackOptions = ["AI Engineering", "AI Generated Arts", "AI Innovation", "AI Technical", "AI Architecture"] as const;
+const trackOptions = ["Computing", "Engineering", "Innovation", "Generated Art", "Architecture"] as const;
 const categoryOptions = ["Category A (Year 10/Year 11/Form 4/Form 5 [SPM]/Senior Middle 1/Senior Middle 2)", "Category B (Form 6 [STPM]/Senior Middle 3 [UEC]/Pre University/ Diploma)"] as const;
 const heardAboutOptions = ["School Counsellor/Teacher", "Social Media (Instagram/Facebook/LinkedIn)", "Newspaper/E-Newspaper", "Friends/Family", "Other"] as const;
 const qualificationOptions = ["Year 11", "Year 10", "Form 5", "Form 4", "Senior Middle 2", "Senior Middle 1"] as const;
@@ -109,7 +109,7 @@ const RegistrationForm = () => {
   const defaultValues = useMemo<RegistrationValues>(() => ({
     heardAbout: "School Counsellor/Teacher",
     teamName: "",
-    track: "AI Engineering",
+    track: "Innovation",
     category: "Category A (Year 10/Year 11/Form 4/Form 5 [SPM]/Senior Middle 1/Senior Middle 2)",
     member1FullName: "",
     member1ContactNumber: "",
