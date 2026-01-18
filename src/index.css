@@ -112,6 +112,11 @@
     font-family: 'Outfit', sans-serif;
     @apply tracking-tight font-medium;
   }
+
+  /* Fix for calendar icon in dark mode */
+  .dark input::-webkit-calendar-picker-indicator {
+    filter: invert(1);
+  }
 }
 
 @layer utilities {

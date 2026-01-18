@@ -47,7 +47,7 @@ const Timeline = () => {
                     className="flex items-start gap-4 md:gap-8 group"
                   >
                     <div className="relative z-10 w-12 h-12 shrink-0 rounded-full bg-background border border-border flex items-center justify-center shadow-sm group-hover:scale-105 transition-transform duration-300">
-                      <Calendar className="w-5 h-5 text-muted-foreground" />
+                      <Calendar className="w-5 h-5 text-primary" />
                     </div>
                     <div className="flex-1 glass-card rounded-2xl p-6 hover:border-border/50 transition-colors">
                       <p className="text-sm font-bold tracking-[0.2em] text-muted-foreground mb-1 uppercase">

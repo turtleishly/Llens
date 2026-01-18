@@ -74,7 +74,7 @@ const CompetitionFlowV2 = () => {
                                             >
                                                 {/* Date Label */}
                                                 <div className={`flex items-center gap-2 mb-4 ${index % 2 === 0 ? 'justify-start' : 'md:justify-end'}`}>
-                                                    <Calendar className="w-4 h-4 text-cyan-500/50" />
+                                                    <Calendar className="w-4 h-4 text-cyan-400" />
                                                     <span className="text-[10px] font-mono font-black text-cyan-500 uppercase tracking-[0.2em]">
                                                         {item.date}
                                                     </span>
