@@ -46,7 +46,7 @@ const prizes = [
   },
   {
     icon: Star,
-    position: "CONSOLATION",
+    position: "4TH - 10TH PLACE",
     amount: "RM 5,000",
     color: "text-primary",
     amountColor: "text-primary",

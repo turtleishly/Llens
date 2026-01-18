@@ -5,9 +5,14 @@ const BLUR_FADE_DELAY = 0.04;
 
 const timelineEvents = [
   {
-    date: "April 2, 2026",
+    date: "March 16, 2026",
     event: "Registration Deadline",
     description: "Final call for teams to register. Ensure your team of 4 is ready and your teacher advisor is onboarded."
+  },
+  {
+    date: "March 19, 2026",
+    event: "Competition Materials Sharing",
+    description: "Confirmation emails, competition materials (including themes), and masterclass access will be shared with all registered teams."
   },
   {
     date: "March 31 - April 2, 2026",

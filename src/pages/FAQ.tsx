@@ -30,7 +30,7 @@ const faqData = [
         items: [
             {
                 question: "How does the competition work?",
-                answer: "The National AI Competition consists of two rounds: an online preliminary round and an in-person final. Here's how it works:\n1. Registration: Register your team by April 2.\n2. Competition Topics & AI Masterclass: Receive the competition topics and participate in a free AI masterclass from March 31 - April 2.\n3. Build & Submit: Work on your project as a team and submit your proposal by May 4.\nFinalists will be announced on May 15 and will compete in the final round at Sunway on June 13. Refer to the timeline for detailed dates and steps."
+                answer: "The National AI Competition consists of two rounds: an online preliminary round and an in-person final. Here's how it works:\n1. Registration: Register your team by March 16.\n2. Competition Topics & AI Masterclass: Receive the competition topics and participate in a free AI masterclass from March 31 - April 2.\n3. Build & Submit: Work on your project as a team and submit your proposal by May 4.\nFinalists will be announced on May 15 and will compete in the final round at Sunway on June 13. Refer to the timeline for detailed dates and steps."
             },
             {
                 question: "How many rounds will there be?",
@@ -50,7 +50,7 @@ const faqData = [
             },
             {
                 question: "How many teams will be selected for the final?",
-                answer: "A total of 60 teams will be shortlisted for the final round at Sunway University."
+                answer: "A total of 60 teams will be shortlisted for the final round at Sunway University. This consist of the Top 10 teams from each of the five tracks."
             },
             {
                 question: "How do we shortlist teams for the final?",
@@ -67,7 +67,7 @@ const faqData = [
             },
             {
                 question: "How do I join?",
-                answer: "1. Check your eligibility.\n2. Fill up the registration form.\nRegistration closes on April 2, 2026 23:59 MYT."
+                answer: "1. Check your eligibility.\n2. Fill up the registration form.\nRegistration closes on March 16, 2026 23:59 MYT."
             },
             {
                 question: "Do I have to pay to register to join the competition?",
@@ -107,7 +107,7 @@ const faqData = [
             },
             {
                 question: "I think I registered, but I'm not sure.",
-                answer: "If you think you registered but are not sure, check for a confirmation email. Your team leader and teacher advisor will be added to a WhatsApp group within 5 days after the registration deadline (April 2, 2026). If these updates have not been received, please email us at naic@rakantutor.org for assistance."
+                answer: "If you think you registered but are not sure, check for a confirmation email. All registered teams will receive a confirmation email together with competition materials, themes, and masterclass access details on March 19, 2026. If these updates have not been received by then, please email us at naic@rakantutor.org for assistance."
             },
             {
                 question: "Is a teacher advisor required?",

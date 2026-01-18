@@ -20,7 +20,7 @@ const steps = [
     icon: UserPlus,
     title: "Register Your Team",
     items: [
-      "Log on to linktr.ee/nationalAIcompetition and fill up your team's details",
+      "Log on to naic.rakantutor.org and fill up your team's details",
       'You can also register using the "Register Now" button below',
       "Registered teams will be given a Competition Booklet with more details",
     ],

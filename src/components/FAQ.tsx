@@ -28,7 +28,7 @@ const faqs = [
   {
     question: "When do I know the competition topic?",
     answer:
-      "Competition topics will be announced after registration closes, which will be on April 3, 2026.",
+      "Competition topics and materials will be shared with all registered teams on March 19, 2026.",
   },
 ];
 

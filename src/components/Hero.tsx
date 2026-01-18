@@ -61,6 +61,9 @@ const Hero = () => {
             <BlurFade delay={BLUR_FADE_DELAY * (titleWords.length + 2)}>
               <p className="text-xl md:text-2xl text-muted-foreground/80 max-w-2xl mx-auto leading-relaxed font-light">
                 Join Malaysia's largest AI competition for youths. <br className="hidden md:block" />
+                <span className="text-sm font-medium text-muted-foreground/60 block mt-4 uppercase tracking-[0.2em]">
+                  Approved by Kementerian Pendidikan Malaysia
+                </span>
               </p>
             </BlurFade>
           </div>
