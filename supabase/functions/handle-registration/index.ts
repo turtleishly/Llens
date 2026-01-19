@@ -167,90 +167,113 @@ async function sendConfirmationEmail(data: RegistrationData) {
         Authorization: `Bearer ${resendApiKey}`,
       },
       body: JSON.stringify({
-        from: "NAIC 2026 <naic@rakantutor.org>", // Update with your verified domain
+        from: "National AI Competition <naic@rakantutor.org>",
         to: memberEmails,
         cc: [data.advisor_email],
-        subject: `Registration Received - Team ${data.team_name}`,
+        subject: `Confirmation: Team ${data.team_name} - National AI Competition`,
         html: `
           <!DOCTYPE html>
           <html>
             <head>
               <meta charset="utf-8">
               <meta name="viewport" content="width=device-width, initial-scale=1.0">
-              <title>NAIC 2026 Registration Confirmation</title>
+              <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+              <title>Registration Confirmed - NAIC 2026</title>
             </head>
-            <body style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; line-height: 1.6; color: #333; max-width: 600px; margin: 0 auto; padding: 20px;">
-              <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 40px 20px; text-align: center; border-radius: 10px 10px 0 0;">
-                <h1 style="color: white; margin: 0; font-size: 28px;">🎉 Registration Confirmed!</h1>
-              </div>
-              
-              <div style="background: #ffffff; padding: 40px 30px; border: 1px solid #e0e0e0; border-top: none; border-radius: 0 0 10px 10px;">
-                <p style="font-size: 16px; margin-bottom: 20px;">Dear <strong>${data.member1_full_name}</strong> and team,</p>
-                
-                <p style="font-size: 16px; margin-bottom: 20px;">
-                  Congratulations! Your team <strong>"${data.team_name}"</strong> has been successfully registered for the <strong>National AI Competition 2026</strong>.
-                </p>
+            <body style="font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #2E2D2B; background-color: #FDFCF6; margin: 0; padding: 0;">
+              <table width="100%" border="0" cellspacing="0" cellpadding="0" style="background-color: #FDFCF6;">
+                <tr>
+                  <td align="center" style="padding: 40px 20px;">
+                    <table width="100%" border="0" cellspacing="0" cellpadding="0" style="max-width: 600px; background-color: #ffffff; border-radius: 24px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.05); border: 1px solid #E5E7EB;">
+                      <!-- Header Gradient -->
+                      <tr>
+                        <td style="background: linear-gradient(135deg, #2E2D2B 0%, #1A1A1A 100%); padding: 60px 40px; text-align: center;">
+                          <h1 style="font-family: 'Outfit', sans-serif; color: #FDFCF6; margin: 0; font-size: 32px; font-weight: 700; letter-spacing: -0.02em;">National AI Competition</h1>
+                          <p style="color: rgba(253, 252, 246, 0.7); margin: 10px 0 0 0; font-size: 16px; font-family: 'Inter', sans-serif;">Official Registration Confirmation</p>
+                        </td>
+                      </tr>
+                      
+                      <!-- Main Content -->
+                      <tr>
+                        <td style="padding: 50px 40px;">
+                          <p style="font-size: 18px; margin-bottom: 24px;">Hi <strong>Team ${data.team_name}</strong>,</p>
+                          
+                          <p style="font-size: 16px; margin-bottom: 30px; color: #4B5563;">
+                            Thank you for registering for the competition! We're happy to confirm that we've received your team's submission. All four members will be participating under:
+                          </p>
 
-                <div style="background: #f8f9fa; padding: 20px; border-radius: 8px; margin: 30px 0;">
-                  <h2 style="margin-top: 0; color: #667eea; font-size: 20px;">Registration Details</h2>
-                  <table style="width: 100%; border-collapse: collapse;">
-                    <tr>
-                      <td style="padding: 8px 0; font-weight: 600;">Team Name:</td>
-                      <td style="padding: 8px 0;">${data.team_name}</td>
-                    </tr>
-                    <tr>
-                      <td style="padding: 8px 0; font-weight: 600;">Track:</td>
-                      <td style="padding: 8px 0;">${data.track}</td>
-                    </tr>
-                    <tr>
-                      <td style="padding: 8px 0; font-weight: 600;">Category:</td>
-                      <td style="padding: 8px 0;">${data.category}</td>
-                    </tr>
-                    <tr>
-                      <td style="padding: 8px 0; font-weight: 600;">Registration Date:</td>
-                      <td style="padding: 8px 0;">${new Date(data.created_at).toLocaleDateString()}</td>
-                    </tr>
-                  </table>
-                </div>
+                          <!-- Track & Category Info -->
+                          <div style="background-color: #F9FAFB; border-radius: 16px; padding: 24px; margin-bottom: 30px; border: 1px solid #F3F4F6;">
+                            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                              <tr>
+                                <td style="padding-bottom: 12px; font-weight: 600; color: #2E2D2B; width: 100px;">Track:</td>
+                                <td style="padding-bottom: 12px; color: #4B5563;">${data.track}</td>
+                              </tr>
+                              <tr>
+                                <td style="font-weight: 600; color: #2E2D2B;">Category:</td>
+                                <td style="color: #4B5563;">${data.category}</td>
+                              </tr>
+                            </table>
+                          </div>
 
-                <h3 style="color: #667eea; font-size: 18px; margin-top: 30px;">Team Members</h3>
-                <ul style="list-style: none; padding: 0;">
-                  <li style="padding: 5px 0;">1. ${data.member1_full_name} (${data.member1_email})</li>
-                  <li style="padding: 5px 0;">2. ${data.member2_full_name} (${data.member2_email})</li>
-                  <li style="padding: 5px 0;">3. ${data.member3_full_name} (${data.member3_email})</li>
-                  <li style="padding: 5px 0;">4. ${data.member4_full_name} (${data.member4_email})</li>
-                </ul>
+                          <h3 style="font-family: 'Outfit', sans-serif; font-size: 18px; font-weight: 600; color: #2E2D2B; margin-bottom: 16px;">Team Members:</h3>
+                          <ul style="list-style: none; padding: 0; margin: 0 0 30px 0;">
+                            <li style="padding: 8px 12px; background-color: #FDFCF6; border-radius: 8px; margin-bottom: 8px; border: 1px solid #F3F4F6; color: #4B5563;">1. ${data.member1_full_name}</li>
+                            <li style="padding: 8px 12px; background-color: #FDFCF6; border-radius: 8px; margin-bottom: 8px; border: 1px solid #F3F4F6; color: #4B5563;">2. ${data.member2_full_name}</li>
+                            <li style="padding: 8px 12px; background-color: #FDFCF6; border-radius: 8px; margin-bottom: 8px; border: 1px solid #F3F4F6; color: #4B5563;">3. ${data.member3_full_name}</li>
+                            <li style="padding: 8px 12px; background-color: #FDFCF6; border-radius: 8px; margin-bottom: 8px; border: 1px solid #F3F4F6; color: #4B5563;">4. ${data.member4_full_name}</li>
+                          </ul>
 
-                <h3 style="color: #667eea; font-size: 18px; margin-top: 30px;">Advisor</h3>
-                <p style="margin: 10px 0;">${data.advisor_full_name} (${data.advisor_relationship})</p>
+                          <p style="font-size: 15px; margin-bottom: 24px; color: #4B5563;">
+                            Masterclass links will be sent out on the <strong>19 March 2026 (Thursday)</strong>, so keep an eye on your inbox. In the meantime, for more information please log on to <a href="https://linktr.ee/nationalAIcompetition" style="color: #2E2D2B; text-decoration: underline; font-weight: 500;">linktr.ee/nationalAIcompetition</a>.
+                          </p>
 
-                <div style="background: #fff3cd; border-left: 4px solid #ffc107; padding: 15px; margin: 30px 0; border-radius: 4px;">
-                  <h3 style="margin-top: 0; color: #856404; font-size: 16px;">📌 Next Steps</h3>
-                  <ol style="margin: 10px 0; padding-left: 20px; color: #856404;">
-                    <li>Check your email regularly for competition updates</li>
-                    <li>Join our official communication channels (details coming soon)</li>
-                    <li>Start preparing for the competition!</li>
-                  </ol>
-                </div>
+                          <!-- WhatsApp CTA -->
+                          <div style="text-align: center; margin: 40px 0;">
+                            <a href="https://bit.ly/naic26WA" style="background-color: #2E2D2B; color: #FDFCF6; padding: 18px 32px; border-radius: 100px; text-decoration: none; font-weight: 600; display: inline-block; font-size: 16px; box-shadow: 0 4px 14px rgba(0,0,0,0.1);">Join WhatsApp Community</a>
+                            <p style="font-size: 14px; color: #6B7280; margin-top: 12px;">Keep up to date on the latest announcements</p>
+                          </div>
 
-                <p style="font-size: 16px; margin-top: 30px;">
-                  If you have any questions, please don't hesitate to contact us at 
-                  <a href="mailto:support@naic2026.com" style="color: #667eea; text-decoration: none;">support@naic2026.com</a>
-                </p>
+                          <p style="font-size: 15px; color: #4B5563; margin-top: 40px; border-top: 1px solid #F3F4F6; pt: 30px;">
+                            On behalf of Sunway University and Rakan Tutor, we truly appreciate your interest and enthusiasm.
+                          </p>
 
-                <p style="font-size: 16px; margin-top: 20px;">
-                  Best of luck!<br>
-                  <strong>The NAIC 2026 Team</strong>
-                </p>
-              </div>
+                          <div style="background-color: #FFFBEB; border-radius: 16px; padding: 24px; margin-top: 30px; border: 1px solid #FEF3C7;">
+                            <h4 style="margin: 0 0 12px 0; color: #92400E; font-size: 16px; font-weight: 600;">Need any help?</h4>
+                            <p style="margin: 0; color: #B45309; font-size: 14px;">Feel free to reach out to:</p>
+                            <ul style="margin: 8px 0 0 0; padding-left: 20px; color: #B45309; font-size: 14px;">
+                              <li>Clemen Irwin: <a href="tel:0199179356" style="color: inherit; text-decoration: none; font-weight: 600;">019-917-9356</a></li>
+                              <li>Jack: <a href="tel:0192004268" style="color: inherit; text-decoration: none; font-weight: 600;">019-200-4268</a></li>
+                            </ul>
+                          </div>
 
-              <div style="text-align: center; padding: 20px; color: #666; font-size: 12px;">
-                <p>© 2026 National AI Competition. All rights reserved.</p>
-                <p>
-                  <a href="https://naic2026.com/terms" style="color: #667eea; text-decoration: none; margin: 0 10px;">Terms</a> | 
-                  <a href="https://naic2026.com/privacy" style="color: #667eea; text-decoration: none; margin: 0 10px;">Privacy</a>
-                </p>
-              </div>
+                          <p style="font-size: 16px; margin-top: 40px; color: #2E2D2B;">
+                            Looking forward to seeing your team in action!
+                          </p>
+
+                          <p style="font-size: 16px; margin-top: 24px; color: #2E2D2B; font-weight: 600;">
+                            Best regards,<br>
+                            <span style="color: #4B5563; font-weight: 400;">The National AI Competition Committee</span>
+                          </p>
+                        </td>
+                      </tr>
+
+                      <!-- Footer -->
+                      <tr>
+                        <td style="padding: 30px 40px; background-color: #F9FAFB; border-top: 1px solid #F3F4F6; text-align: center;">
+                          <p style="font-size: 12px; color: #9CA3AF; margin: 0;">
+                            &copy; 2026 National AI Competition. Organized by Sunway University & Rakan Tutor.
+                          </p>
+                          <p style="font-size: 12px; color: #9CA3AF; margin: 10px 0 0 0;">
+                            <a href="https://naic.rakantutor.org/terms" style="color: #2E2D2B; text-decoration: none;">Terms & Conditions</a> &nbsp;&bull;&nbsp; 
+                            <a href="https://naic.rakantutor.org/privacy" style="color: #2E2D2B; text-decoration: none;">Privacy Policy</a>
+                          </p>
+                        </td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+              </table>
             </body>
           </html>
         `,
