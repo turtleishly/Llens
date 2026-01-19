@@ -113,19 +113,12 @@ const Prizes = () => {
         </div>
 
         <BlurFade delay={BLUR_FADE_DELAY * 4} inView>
-          <div className="max-w-4xl mx-auto space-y-8">
-            <div className="p-8 rounded-3xl bg-secondary/10 border border-border/50 text-center space-y-4">
-              <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-bold tracking-wider uppercase mb-2">
-                <Star className="w-4 h-4" /> Participation Reward
-              </div>
-              <h4 className="text-2xl font-bold font-display">Certificate of Participation</h4>
-              <p className="text-muted-foreground">
-                All participants will be given a certificate of participation when successfully submitting your proposal before the deadline.
-              </p>
-            </div>
-
-            <p className="text-center text-muted-foreground font-medium italic">
-              ... and more prizes to be announced soon!
+          <div className="mt-20 flex flex-col items-center gap-4 text-center">
+            <p className="text-muted-foreground text-sm font-light italic">
+              * All participants will receive a certificate of participation upon successful project submission.
+            </p>
+            <p className="text-muted-foreground/50 font-medium tracking-widest text-[10px] uppercase">
+              More prizes to be announced soon
             </p>
           </div>
         </BlurFade>

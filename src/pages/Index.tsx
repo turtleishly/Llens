@@ -8,6 +8,7 @@ import CTA from "@/components/CTA";
 import FAQ from "@/components/FAQ";
 import Footer from "@/components/Footer";
 import BlurFade from "@/components/ui/blur-fade";
+import AsSeenOn from "@/components/AsSeenOn";
 import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
@@ -19,7 +20,7 @@ const NewHero = () => {
   const navigate = useNavigate();
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center py-20 px-4 md:px-8 bg-background overflow-hidden">
+    <section className="relative min-h-[90vh] flex items-center justify-center py-20 px-4 md:px-8 bg-background overflow-hidden">
       <div className="container relative z-10 max-w-7xl mx-auto">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           {/* Left Content */}
@@ -113,7 +114,7 @@ const NewHero = () => {
                   With Approval From
                 </p>
                 <div className="flex justify-center items-center">
-                  <div className="text-xl lg:text-2xl font-semibold text-foreground">
+                  <div className="text-xl lg:text-2xl font-semibold text-foreground text-center">
                     Kementerian Pendidikan <br /> Malaysia
                   </div>
                 </div>
@@ -132,6 +133,9 @@ const Index = () => {
       <Header />
       <main>
         <NewHero />
+        <BlurFade inView>
+          <AsSeenOn />
+        </BlurFade>
         <BlurFade inView>
           <EventOverview />
         </BlurFade>

@@ -534,7 +534,15 @@ function TeamInfoStep({
     <FormField control={form.control} name="track" render={({
       field
     }) => <FormItem className="space-y-4">
-        <FormLabel className="text-2xl font-semibold">Choose your Track</FormLabel>
+        <div className="flex flex-col gap-1">
+          <FormLabel className="text-2xl font-semibold">Choose your Track</FormLabel>
+          <FormDescription>
+            <Link to="/tracks" target="_blank" className="text-cyan-500 hover:underline inline-flex items-center gap-1">
+              Learn more about the tracks
+              <ArrowRight className="w-4 h-4" />
+            </Link>
+          </FormDescription>
+        </div>
         <FormControl>
           <RadioGroup onValueChange={field.onChange} value={field.value} className="space-y-3">
             {trackOptions.map((option: string) => <div key={option} className="flex items-center space-x-3">
