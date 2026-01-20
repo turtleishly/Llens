@@ -304,18 +304,8 @@ const RegistrationForm = () => {
       clearSavedData();
 
       setTimeout(() => {
-        toast("Registration confirmed!", {
-          description: "Check your email for a confirmation message."
-        });
-        form.reset({
-          ...defaultValues,
-          track: values.track,
-          category: values.category,
-          heardAbout: values.heardAbout
-        });
-        goTo(0);
-        setShowSuccessAnimation(false);
-      }, 2000);
+        navigate("/");
+      }, 3000);
     } catch (error) {
       console.error("Submission error:", error);
       toast("Unable to submit registration", {
