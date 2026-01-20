@@ -92,11 +92,17 @@ const registrationSchema = z.object({
     required_error: "Select a relationship."
   }),
   advisorRelationshipOther: z.string().optional(),
+  advisorRelationshipDetails: z.string().min(1, "Please provide additional details about your relationship."),
   advisorContactNumber: z.string().min(1, "Advisor contact number is required.").regex(/^[0-9]+$/, "Use digits only."),
   advisorEmail: z.string().email("Enter a valid advisor email."),
   termsAccepted: z.literal(true, {
     errorMap: () => ({
       message: "You must agree to the Terms and Conditions."
+    })
+  }),
+  parentalConsentConfirmed: z.literal(true, {
+    errorMap: () => ({
+      message: "You must confirm parental/guardian consent."
     })
   })
 }).refine((data) => {
@@ -153,9 +159,11 @@ const RegistrationForm = () => {
     advisorFullName: "",
     advisorRelationship: "Teacher Advisor",
     advisorRelationshipOther: "",
+    advisorRelationshipDetails: "",
     advisorContactNumber: "",
     advisorEmail: "",
-    termsAccepted: true
+    termsAccepted: false,
+    parentalConsentConfirmed: false
   }), []);
   const form = useForm<RegistrationValues>({
     resolver: zodResolver(registrationSchema),
@@ -207,7 +215,7 @@ const RegistrationForm = () => {
         ];
         break;
       case 3:
-        fieldsToValidate = ["advisorFullName", "advisorRelationship", "advisorRelationshipOther", "advisorContactNumber", "advisorEmail"];
+        fieldsToValidate = ["advisorFullName", "advisorRelationship", "advisorRelationshipOther", "advisorRelationshipDetails", "advisorContactNumber", "advisorEmail", "parentalConsentConfirmed"];
         break;
       case 4:
         fieldsToValidate = ["termsAccepted"];
@@ -278,6 +286,7 @@ const RegistrationForm = () => {
         advisor_full_name: values.advisorFullName,
         advisor_relationship: values.advisorRelationship,
         advisor_relationship_other: values.advisorRelationshipOther || null,
+        advisor_relationship_details: values.advisorRelationshipDetails,
         advisor_contact_number: values.advisorContactNumber,
         advisor_email: values.advisorEmail,
       };
@@ -794,6 +803,16 @@ function AdvisorStep({
         </FormItem>} />
     )}
 
+    <FormField control={form.control} name="advisorRelationshipDetails" render={({
+      field
+    }) => <FormItem className="space-y-4">
+        <FormLabel className="text-xl font-medium">Additional Details About Your Relationship</FormLabel>
+        <FormControl>
+          <Input placeholder="e.g., I am the parent of [student], I am a teacher at [school]..." {...field} className="text-lg border-0 border-b-2 border-border rounded-none focus-visible:ring-0 focus-visible:border-foreground px-0" />
+        </FormControl>
+        <FormMessage />
+      </FormItem>} />
+
     <FormField control={form.control} name="advisorContactNumber" render={({
       field
     }) => <FormItem className="space-y-4">
@@ -813,6 +832,28 @@ function AdvisorStep({
         </FormControl>
         <FormMessage />
       </FormItem>} />
+
+    <div className="space-y-6 pt-8 border-t">
+      <div className="space-y-2">
+        <h4 className="font-medium">Parental/Guardian Consent</h4>
+        <p className="text-sm text-muted-foreground">
+          All team members must have obtained consent from their parent/guardian to participate.
+        </p>
+      </div>
+      <FormField control={form.control} name="parentalConsentConfirmed" render={({
+        field
+      }) => <FormItem className="flex items-start gap-3">
+          <FormControl>
+            <Checkbox checked={field.value} onCheckedChange={field.onChange} className="mt-1 h-5 w-5" />
+          </FormControl>
+          <div className="space-y-1">
+            <FormLabel className="text-base font-normal cursor-pointer">
+              As {form.watch("teamName") || "the team leader"}, I confirm that each of our team members has obtained consent from their parent/guardian to participate in National AI Competition 2026.
+            </FormLabel>
+            <FormMessage />
+          </div>
+        </FormItem>} />
+    </div>
   </div>;
 }
 function ReviewStep({
@@ -876,7 +917,7 @@ function ReviewStep({
         field
       }) => <FormItem className="flex items-start gap-3">
           <FormControl>
-            <Checkbox checked={field.value} onCheckedChange={field.onChange} className="mt-1" />
+            <Checkbox checked={field.value} onCheckedChange={field.onChange} className="mt-1 h-5 w-5" />
           </FormControl>
           <div className="space-y-1">
             <FormLabel className="text-base font-normal cursor-pointer">

@@ -54,14 +54,22 @@ const NewHero = () => {
 
             {/* CTA Button */}
             <BlurFade delay={0.4}>
-              <Button
-                onClick={() => navigate("/register")}
-                size="lg"
-                className="bg-cyan-500 hover:bg-cyan-600 text-white px-8 py-6 text-lg rounded-full group transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105"
-              >
-                Register Now
-                <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
-              </Button>
+              <div className="space-y-3">
+                <Button
+                  onClick={() => navigate("/register")}
+                  size="lg"
+                  className="bg-cyan-500 hover:bg-cyan-600 text-white px-8 py-6 text-lg rounded-full group transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105"
+                >
+                  Register Now
+                  <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
+                </Button>
+                <p className="text-sm text-muted-foreground">
+                  By registering, you agree to our{" "}
+                  <a href="/terms" className="underline hover:text-foreground transition-colors">
+                    terms and conditions
+                  </a>
+                </p>
+              </div>
             </BlurFade>
           </div>
 

@@ -44,6 +44,8 @@ interface RegistrationData {
   member4_graduation_date: string;
   advisor_full_name: string;
   advisor_relationship: string;
+  advisor_relationship_other: string | null;
+  advisor_relationship_details: string;
   advisor_contact_number: string;
   advisor_email: string;
 }
@@ -123,12 +125,14 @@ async function syncToGoogleSheets(data: RegistrationData) {
       data.advisor_email,
       data.advisor_contact_number,
       data.advisor_relationship,
+      data.advisor_relationship_other,
+      data.advisor_relationship_details,
     ];
 
     // Append to sheet
     await sheets.spreadsheets.values.append({
       spreadsheetId: sheetId,
-      range: "Registrations!A:AK", // Adjust range as needed
+      range: "Registrations!A:AM", // Adjust range as needed
       valueInputOption: "RAW",
       requestBody: {
         values: [rowData],
@@ -168,9 +172,9 @@ async function sendConfirmationEmail(data: RegistrationData) {
       },
       body: JSON.stringify({
         from: "National AI Competition <naic@rakantutor.org>",
-        to: memberEmails,
-        cc: [data.advisor_email],
-        subject: `Confirmation: Team ${data.team_name} - National AI Competition`,
+        to: [data.advisor_email],
+        cc: memberEmails,
+        subject: `Registration Received: Team ${data.team_name} - National AI Competition`,
         html: `
           <!DOCTYPE html>
           <html>
@@ -178,7 +182,7 @@ async function sendConfirmationEmail(data: RegistrationData) {
               <meta charset="utf-8">
               <meta name="viewport" content="width=device-width, initial-scale=1.0">
               <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
-              <title>Registration Confirmed - NAIC 2026</title>
+              <title>Registration Received - NAIC 2026</title>
             </head>
             <body style="font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; line-height: 1.6; color: #2E2D2B; background-color: #FDFCF6; margin: 0; padding: 0;">
               <table width="100%" border="0" cellspacing="0" cellpadding="0" style="background-color: #FDFCF6;">
@@ -189,7 +193,7 @@ async function sendConfirmationEmail(data: RegistrationData) {
                       <tr>
                         <td style="background: linear-gradient(135deg, #2E2D2B 0%, #1A1A1A 100%); padding: 60px 40px; text-align: center;">
                           <h1 style="font-family: 'Outfit', sans-serif; color: #FDFCF6; margin: 0; font-size: 32px; font-weight: 700; letter-spacing: -0.02em;">National AI Competition</h1>
-                          <p style="color: rgba(253, 252, 246, 0.7); margin: 10px 0 0 0; font-size: 16px; font-family: 'Inter', sans-serif;">Official Registration Confirmation</p>
+                          <p style="color: rgba(253, 252, 246, 0.7); margin: 10px 0 0 0; font-size: 16px; font-family: 'Inter', sans-serif;">Registration Received</p>
                         </td>
                       </tr>
                       
