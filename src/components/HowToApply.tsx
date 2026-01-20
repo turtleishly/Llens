@@ -30,7 +30,7 @@ const steps = [
     title: "Participate in the Online Masterclass",
     items: [
       "Participants are encouraged to attend the online Masterclass to better prepare for the competition:",
-      "• 31 March - 2 April 2026 (by category)",
+      "31 March - 2 April 2026 (by category)",
       "Online Masterclasses are Free of Charge (normal price: RM250/class)",
     ],
   },
