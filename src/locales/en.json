@@ -61,6 +61,31 @@
             "winners": "winning teams per track per category"
         }
     },
+    "howToApply": {
+        "title": "How to Apply",
+        "subtitle": "Get started in three simple steps.",
+        "registerNow": "Register Now",
+        "steps": {
+            "registerTeam": {
+                "title": "Register Team",
+                "item1": "Form a team of 4 (Category A: Secondary | Category B: Pre-U/Uni)",
+                "item2": "Register here",
+                "item3": "Deadline: 16 March 2026"
+            },
+            "learnBuild": {
+                "title": "Learn & Build",
+                "item1": "Attend Online Masterclass (31 Mar – 2 Apr)",
+                "item2": "Compulsory masterclass for all registered teams",
+                "item3": "Refine your project with expert advice"
+            },
+            "submitPitch": {
+                "title": "Submit & Pitch",
+                "item1": "Submit project proposal by 4 May 2026",
+                "item2": "Grand Finals at Sunway University on 13 June",
+                "item3": "Pitch your AI solution to the judges"
+            }
+        }
+    },
     "tracksDetail": {
         "hero": {
             "subtitle": "National AI Competition 2026",
@@ -194,7 +219,7 @@
         "viewAll": "View all FAQs",
         "q1": {
             "question": "Is there a registration fee?",
-            "answer": "No, registration for the competition is completely free."
+            "answer": "No, there are no fees."
         },
         "q2": {
             "question": "Are students from private and international schools eligible?",
@@ -278,7 +303,7 @@
                     },
                     {
                         "question": "Do I have to pay to register to join the competition?",
-                        "answer": "No, registration for the competition is completely free."
+                        "answer": "No, there are no fees."
                     },
                     {
                         "question": "I don't know about AI. Can I join?",
@@ -438,12 +463,12 @@
         "event5": {
             "date": "May 15, 2026",
             "name": "Announcement of Finalists",
-            "desc": "The top 60 teams will be announced and invited to the grand finals at Sunway University."
+            "desc": "The top 60 teams will be announced."
         },
         "event6": {
-            "date": "13 June 2026",
+            "date": "June 13, 2026",
             "name": "Grand Finals at Sunway University",
-            "desc": "Shortlisted participants will advance to the final round at Sunway University."
+            "desc": "Shortlisted participants will advance to the grand final at Sunway University."
         }
     },
     "contact": {

@@ -45,6 +45,7 @@ const registrationSchema = z.object({
   heardAbout: z.enum(heardAboutOptions, {
     required_error: "Select one option."
   }),
+  heardAboutOther: z.string().optional(),
   teamName: z.string().min(1, "Team name is required."),
   track: z.enum(trackOptions, {
     required_error: "Select a track."
@@ -114,6 +115,14 @@ const registrationSchema = z.object({
 }, {
   message: "Please specify the relationship.",
   path: ["advisorRelationshipOther"]
+}).refine((data) => {
+  if (data.heardAbout === "Other" && !data.heardAboutOther?.trim()) {
+    return false;
+  }
+  return true;
+}, {
+  message: "Please specify how you heard about the event.",
+  path: ["heardAboutOther"]
 });
 type RegistrationValues = z.infer<typeof registrationSchema>;
 const STEPS = ["Start", "Team Info", "Team Members", "Advisor", "Review"];
@@ -126,6 +135,7 @@ const RegistrationForm = () => {
   const isMac = typeof navigator !== 'undefined' && navigator.platform.toUpperCase().indexOf('MAC') >= 0;
   const defaultValues = useMemo<RegistrationValues>(() => ({
     heardAbout: "School Counsellor/Teacher",
+    heardAboutOther: "",
     teamName: "",
     track: "Innovation",
     category: "Category A (Year 10/Year 11/Form 4/Form 5 [SPM]/Senior Middle 1/Senior Middle 2)",
@@ -205,7 +215,7 @@ const RegistrationForm = () => {
         fieldsToValidate = []; // Welcome step
         break;
       case 1:
-        fieldsToValidate = ["heardAbout", "teamName", "track", "category"];
+        fieldsToValidate = ["heardAbout", "heardAboutOther", "teamName", "track", "category"];
         break;
       case 2:
         fieldsToValidate = [
@@ -253,6 +263,7 @@ const RegistrationForm = () => {
       // Map form values to database schema (camelCase to snake_case)
       const submissionData = {
         heard_about: values.heardAbout,
+        heard_about_other: values.heardAboutOther || null,
         team_name: values.teamName,
         track: values.track,
         category: values.category,
@@ -420,7 +431,7 @@ const RegistrationForm = () => {
               } else {
                 const errors = form.formState.errors;
                 // Go to first step with errors
-                if (errors.heardAbout || errors.teamName || errors.track || errors.category) {
+                if (errors.heardAbout || errors.heardAboutOther || errors.teamName || errors.track || errors.category) {
                   goTo(1);
                 } else if (Object.keys(errors).some(key => key.startsWith('member'))) {
                   goTo(2);
@@ -577,6 +588,18 @@ function TeamInfoStep({
         </FormControl>
         <FormMessage />
       </FormItem>} />
+
+    {form.watch("heardAbout") === "Other" && (
+      <FormField control={form.control} name="heardAboutOther" render={({
+        field
+      }) => <FormItem className="space-y-4">
+          <FormLabel className="text-xl font-medium">Please specify</FormLabel>
+          <FormControl>
+            <Input placeholder="e.g., University newsletter, Event website..." {...field} className="text-lg border-0 border-b-2 border-border rounded-none focus-visible:ring-0 focus-visible:border-cyan-500 px-0" />
+          </FormControl>
+          <FormMessage />
+        </FormItem>} />
+    )}
 
     <FormField control={form.control} name="teamName" render={({
       field

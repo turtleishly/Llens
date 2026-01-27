@@ -20,9 +20,12 @@ export type Database = {
           advisor_email: string
           advisor_full_name: string
           advisor_relationship: string
+          advisor_relationship_details: string
+          advisor_relationship_other: string | null
           category: string
           created_at: string
           heard_about: string
+          heard_about_other: string | null
           id: string
           member1_contact_number: string
           member1_email: string
@@ -60,9 +63,12 @@ export type Database = {
           advisor_email: string
           advisor_full_name: string
           advisor_relationship: string
+          advisor_relationship_details: string
+          advisor_relationship_other?: string | null
           category: string
           created_at?: string
           heard_about: string
+          heard_about_other?: string | null
           id?: string
           member1_contact_number: string
           member1_email: string
@@ -100,9 +106,12 @@ export type Database = {
           advisor_email?: string
           advisor_full_name?: string
           advisor_relationship?: string
+          advisor_relationship_details?: string
+          advisor_relationship_other?: string | null
           category?: string
           created_at?: string
           heard_about?: string
+          heard_about_other?: string | null
           id?: string
           member1_contact_number?: string
           member1_email?: string

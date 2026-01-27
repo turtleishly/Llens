@@ -2,51 +2,53 @@ import { ArrowRight, UserPlus, GraduationCap, Send } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 import BlurFade from "@/components/ui/blur-fade";
 
 const BLUR_FADE_DELAY = 0.04;
 
-const steps = [
-  {
-    icon: UserPlus,
-    title: "Register Team",
-    items: [
-      "Form a team of 4 (Category A: Secondary | Category B: Pre-U/Uni)",
-      "Sign up at naic.rakantutor.org",
-      "Deadline: 16 March 2026",
-    ],
-  },
-  {
-    icon: GraduationCap,
-    title: "Learn & Build",
-    items: [
-      "Attend Online Masterclass (31 Mar – 2 Apr)",
-      "Complimentary training for all registered teams",
-      "Refine your project with expert advice",
-    ],
-  },
-  {
-    icon: Send,
-    title: "Submit & Pitch",
-    items: [
-      "Submit project proposal by 4 May 2026",
-      "Grand Finals at Sunway University on 13 June",
-      "Pitch your AI solution to the judges",
-    ],
-  },
-];
-
 const HowToApply = () => {
+  const { t } = useTranslation();
+
+  const steps = [
+    {
+      icon: UserPlus,
+      title: t("howToApply.steps.registerTeam.title"),
+      items: [
+        t("howToApply.steps.registerTeam.item1"),
+        { text: t("howToApply.steps.registerTeam.item2"), link: "/register" },
+        t("howToApply.steps.registerTeam.item3"),
+      ],
+    },
+    {
+      icon: GraduationCap,
+      title: t("howToApply.steps.learnBuild.title"),
+      items: [
+        t("howToApply.steps.learnBuild.item1"),
+        t("howToApply.steps.learnBuild.item2"),
+        t("howToApply.steps.learnBuild.item3"),
+      ],
+    },
+    {
+      icon: Send,
+      title: t("howToApply.steps.submitPitch.title"),
+      items: [
+        t("howToApply.steps.submitPitch.item1"),
+        t("howToApply.steps.submitPitch.item2"),
+        t("howToApply.steps.submitPitch.item3"),
+      ],
+    },
+  ];
   return (
     <section id="apply" className="bg-secondary/50 py-20 lg:py-32 px-4 md:px-8">
       <div className="container mx-auto">
         <div className="text-center mb-16 space-y-4">
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-foreground text-glow">
-            How to Apply
+            {t("howToApply.title")}
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Get started in three simple steps.
+            {t("howToApply.subtitle")}
           </p>
         </div>
 
@@ -72,7 +74,18 @@ const HowToApply = () => {
                             className="text-muted-foreground leading-relaxed flex items-start gap-3"
                           >
                             <span className="w-1.5 h-1.5 rounded-full bg-primary/40 mt-2 shrink-0" />
-                            <span className="text-sm md:text-base">{item}</span>
+                            <span className="text-sm md:text-base">
+                              {typeof item === "string" ? (
+                                item
+                              ) : (
+                                <Link
+                                  to={item.link}
+                                  className="text-primary hover:underline font-medium"
+                                >
+                                  {item.text}
+                                </Link>
+                              )}
+                            </span>
                           </li>
                         ))}
                       </ul>
@@ -91,7 +104,7 @@ const HowToApply = () => {
             className="h-14 px-10 rounded-full text-lg font-semibold bg-cyan-500 text-white hover:bg-cyan-600 hover:scale-105 transition-all duration-300 shadow-xl"
           >
             <Link to="/register">
-              Register Now
+              {t("howToApply.registerNow")}
               <ArrowRight className="ml-2 h-5 w-5" />
             </Link>
           </Button>
