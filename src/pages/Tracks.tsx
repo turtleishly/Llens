@@ -137,6 +137,14 @@ const TracksPage = () => {
                             <p className="text-muted-foreground text-lg md:text-xl max-w-2xl mx-auto text-center">
                                 {t("tracksDetail.hero.desc")}
                             </p>
+                            <div className="mt-8">
+                                <Button asChild size="lg" className="rounded-full">
+                                    <Link to="/register">
+                                        Register Now
+                                        <ArrowRight className="ml-2 h-5 w-5" />
+                                    </Link>
+                                </Button>
+                            </div>
                         </div>
                     </BlurFade>
 

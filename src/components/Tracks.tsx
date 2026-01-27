@@ -51,13 +51,21 @@ const Tracks = () => {
     <section id="tracks" className="relative py-32 bg-background px-4 md:px-8">
       <div className="container mx-auto">
         <div className="flex flex-col md:flex-row justify-between items-end mb-20 gap-8">
-          <div className="space-y-4 text-left">
-            <h2 className="text-5xl md:text-6xl font-bold tracking-tight text-foreground">
-              {t("tracks.title")}
-            </h2>
-            <p className="text-xl text-muted-foreground max-w-xl leading-relaxed font-light">
-              {t("tracks.subtitle")}
-            </p>
+          <div className="space-y-6 text-left">
+            <div className="space-y-4">
+              <h2 className="text-5xl md:text-6xl font-bold tracking-tight text-foreground">
+                {t("tracks.title")}
+              </h2>
+              <p className="text-xl text-muted-foreground max-w-xl leading-relaxed font-light">
+                {t("tracks.subtitle")}
+              </p>
+            </div>
+            <Button asChild size="lg" className="rounded-full">
+              <Link to="/register">
+                Register Now
+                <ArrowRight className="ml-2 h-5 w-5" />
+              </Link>
+            </Button>
           </div>
           <Button asChild variant="outline" className="rounded-full px-8 py-6 group">
             <Link to="/tracks">

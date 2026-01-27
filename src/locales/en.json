@@ -29,7 +29,7 @@
     },
     "tracks": {
         "title": "2026 Competition Tracks",
-        "subtitle": "Explore our five distinct paths. Each designed to challenge different skills and passions.",
+        "subtitle": "Explore our five distinct paths. Each designed to challenge different skills and passions. Specific competition topics will be announced to registered teams on March 19, 2026.",
         "cta": "View All Track Details",
         "innovation": {
             "title": "Innovation",
@@ -44,7 +44,7 @@
             "description": "Design AI-powered engineering solutions that make cities more efficient, sustainable, and people-friendly."
         },
         "genai": {
-            "title": "GenAI",
+            "title": "GenAI Art",
             "description": "Create a compelling 60 second video leveraging AI images to tell a local story in a meaningful way."
         },
         "architecture": {
@@ -110,23 +110,23 @@
         },
         "innovation": {
             "title": "Innovation",
-            "overview": "Build an AI-native startup that solves real problems in education. You are the expert on your own learning experience—your goal is to create a product that gets real traction and users during the competition.",
-            "theme": "AI-Native EdTech Startups",
-            "whoIsThisFor": "Aspiring founders and builders who want to create high-utility tools. We focus on 'vibe coding' and achieving real-world momentum.",
-            "deliverables": "A functional live product, a traction report (users/engagement), and a startup pitch deck.",
-            "example1": "Personal Learning Co-pilot that assists with your school notes",
-            "example2": "AI-powered Admin Bot that slashes teacher workload",
+            "overview": "Apply generative AI and create apps that offer unique solutions to key problems focusing on one of 3 selected UN SDG areas.",
+            "theme": "UN Sustainable Development Goals",
+            "whoIsThisFor": "Students passionate about using AI to solve real-world problems aligned with UN Sustainable Development Goals.",
+            "deliverables": "A functional app or solution, a project proposal, and a presentation pitch.",
+            "example1": "AI-powered app addressing climate action",
+            "example2": "Generative AI solution for quality education access",
             "judging1": {
-                "title": "Utility & Utility-Fit",
-                "desc": "How genuinely useful and relatable the solution is to students or teachers."
+                "title": "Problem & Solution Fit",
+                "desc": "How well the solution addresses a real problem within the selected SDG area."
             },
             "judging2": {
-                "title": "Product Quality",
-                "desc": "The 'wow' factor and innovative implementation of AI-native features."
+                "title": "Innovation & AI Integration",
+                "desc": "Creative and effective use of generative AI in the solution."
             },
             "judging3": {
-                "title": "Traction & Momentum",
-                "desc": "Evidence of real-world usage and potential for viral growth."
+                "title": "Impact Potential",
+                "desc": "The potential of the solution to create meaningful change."
             }
         },
         "computing": {
@@ -172,9 +172,9 @@
             }
         },
         "genai": {
-            "title": "GenAI",
-            "overview": "Blend cultural heritage with cutting-edge technology. Use AI-generated stills and custom voice-overs to create engaging video narratives promote Malaysia.",
-            "theme": "Visit Malaysia 2026 - Digital Storytelling",
+            "title": "GenAI Art",
+            "overview": "Create a compelling 60 second video leveraging AI images to tell a local story in a meaningful way.",
+            "theme": "Local Storytelling with AI",
             "whoIsThisFor": "Creative storytellers and AI enthusiasts looking to master short-form video content and AI-assisted visualization.",
             "deliverables": "A 45-60 second TikTok-style video, a prompt log for AI visuals, and a creative story statement.",
             "example1": "Cinematic Journey through Malaysia's Hidden Food Gems",
