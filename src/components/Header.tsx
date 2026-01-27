@@ -1,13 +1,12 @@
 import { useState, useEffect } from "react";
-import { Menu, X, Globe } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import { motion } from "framer-motion";
 import { useTranslation } from "react-i18next";
 
 const Header = () => {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
@@ -19,10 +18,6 @@ const Header = () => {
 
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
-
-  const toggleLanguage = () => {
-    i18n.changeLanguage(i18n.language === "en" ? "ms" : "en");
-  };
 
   const navLinks = [
     { label: t("nav.tracks"), href: "/tracks" },
@@ -76,8 +71,8 @@ const Header = () => {
 
           {/* Right: Actions Container */}
           <div className="flex-1 flex justify-end gap-6 items-center">
-            {/* Language Switcher */}
-            <Button
+            {/* Language Switcher - Hidden */}
+            {/* <Button
               variant="ghost"
               size="sm"
               onClick={toggleLanguage}
@@ -88,7 +83,7 @@ const Header = () => {
             >
               <Globe className="h-4 w-4" />
               {i18n.language.startsWith("en") ? "EN" : "BM"}
-            </Button>
+            </Button> */}
 
             <div className="hidden md:block">
               <Button
@@ -106,7 +101,8 @@ const Header = () => {
 
             {/* Mobile Menu Button - now integrated into the right container */}
             <div className="flex items-center gap-4 md:hidden">
-              <Button
+              {/* Language Switcher - Hidden */}
+              {/* <Button
                 variant="ghost"
                 size="sm"
                 onClick={toggleLanguage}
@@ -116,7 +112,7 @@ const Header = () => {
                 )}
               >
                 {i18n.language.startsWith("en") ? "EN" : "BM"}
-              </Button>
+              </Button> */}
               <Button
                 variant="ghost"
                 size="icon"
