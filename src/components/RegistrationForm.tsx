@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import { z } from "zod";
-import { useForm } from "react-hook-form";
+import { useForm, useWatch } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { motion, AnimatePresence } from "framer-motion";
 import { toast } from "@/components/ui/sonner";
@@ -22,7 +22,22 @@ import Confetti from "react-confetti";
 const trackOptions = ["Innovation", "Engineering", "GenAI Art", "Computing", "Architecture"] as const;
 const categoryOptions = ["Category A (Year 10/Year 11/Form 4/Form 5 [SPM]/Senior Middle 1/Senior Middle 2)", "Category B (Form 6 [STPM]/Senior Middle 3 [UEC]/Pre University/ Diploma)"] as const;
 const heardAboutOptions = ["School Counsellor/Teacher", "Social Media (Instagram/Facebook/LinkedIn)", "Newspaper/E-Newspaper", "Friends/Family", "Other"] as const;
-const qualificationOptions = ["Pre-University", "Diploma", "Form 6 / STPM", "Form 5", "Form 4", "Year 11", "Year 10", "Senior Middle 3/ UEC", "Senior Middle 2", "Senior Middle 1"] as const;
+
+// Category-specific qualification options
+const categoryAQualifications = ["Year 10", "Year 11", "Form 4", "Form 5", "Senior Middle 1", "Senior Middle 2"] as const;
+const categoryBQualifications = ["Form 6 / STPM", "Senior Middle 3/ UEC", "Pre-University", "Diploma"] as const;
+
+// Helper function to get qualifications based on category
+const getQualificationOptions = (category: string) => {
+  if (category.startsWith("Category A")) {
+    return categoryAQualifications;
+  } else if (category.startsWith("Category B")) {
+    return categoryBQualifications;
+  }
+  // Default: return all options if no category selected yet
+  return [...categoryAQualifications, ...categoryBQualifications];
+};
+
 const advisorRelationshipOptions = ["Teacher Advisor", "Parent Advisor", "Other"] as const;
 const teamMembers = [{
   key: "member1",
@@ -41,6 +56,9 @@ const teamMembers = [{
   label: "Team Member 4",
   startNumber: 26
 }] as const;
+// All possible qualification options combined for schema validation
+const allQualificationOptions = [...categoryAQualifications, ...categoryBQualifications] as const;
+
 const registrationSchema = z.object({
   heardAbout: z.enum(heardAboutOptions, {
     required_error: "Select one option."
@@ -58,7 +76,7 @@ const registrationSchema = z.object({
   member1IcNumber: z.string().min(1, "IC/Passport number is required.").max(13, "Enter at most 13 characters."),
   member1Email: z.string().email("Enter a valid email."),
   member1School: z.string().min(1, "School or institution is required."),
-  member1Qualification: z.enum(qualificationOptions, {
+  member1Qualification: z.enum(allQualificationOptions, {
     required_error: "Select a qualification."
   }),
   member1GraduationDate: z.string().min(1, "Graduation date is required."),
@@ -67,7 +85,7 @@ const registrationSchema = z.object({
   member2IcNumber: z.string().min(1, "IC/Passport number is required.").max(13, "Enter at most 13 characters."),
   member2Email: z.string().email("Enter a valid email."),
   member2School: z.string().min(1, "School or institution is required."),
-  member2Qualification: z.enum(qualificationOptions, {
+  member2Qualification: z.enum(allQualificationOptions, {
     required_error: "Select a qualification."
   }),
   member2GraduationDate: z.string().min(1, "Graduation date is required."),
@@ -76,7 +94,7 @@ const registrationSchema = z.object({
   member3IcNumber: z.string().min(1, "IC/Passport number is required.").max(13, "Enter at most 13 characters."),
   member3Email: z.string().email("Enter a valid email."),
   member3School: z.string().min(1, "School or institution is required."),
-  member3Qualification: z.enum(qualificationOptions, {
+  member3Qualification: z.enum(allQualificationOptions, {
     required_error: "Select a qualification."
   }),
   member3GraduationDate: z.string().min(1, "Graduation date is required."),
@@ -85,7 +103,7 @@ const registrationSchema = z.object({
   member4IcNumber: z.string().min(1, "IC/Passport number is required.").max(13, "Enter at most 13 characters."),
   member4Email: z.string().email("Enter a valid email."),
   member4School: z.string().min(1, "School or institution is required."),
-  member4Qualification: z.enum(qualificationOptions, {
+  member4Qualification: z.enum(allQualificationOptions, {
     required_error: "Select a qualification."
   }),
   member4GraduationDate: z.string().min(1, "Graduation date is required."),
@@ -144,28 +162,28 @@ const RegistrationForm = () => {
     member1IcNumber: "",
     member1Email: "",
     member1School: "",
-    member1Qualification: "Year 11",
+    member1Qualification: "" as any,
     member1GraduationDate: "",
     member2FullName: "",
     member2ContactNumber: "",
     member2IcNumber: "",
     member2Email: "",
     member2School: "",
-    member2Qualification: "Year 11",
+    member2Qualification: "" as any,
     member2GraduationDate: "",
     member3FullName: "",
     member3ContactNumber: "",
     member3IcNumber: "",
     member3Email: "",
     member3School: "",
-    member3Qualification: "Year 11",
+    member3Qualification: "" as any,
     member3GraduationDate: "",
     member4FullName: "",
     member4ContactNumber: "",
     member4IcNumber: "",
     member4Email: "",
     member4School: "",
-    member4Qualification: "Year 11",
+    member4Qualification: "" as any,
     member4GraduationDate: "",
     advisorFullName: "",
     advisorRelationship: "Teacher Advisor",
@@ -198,9 +216,19 @@ const RegistrationForm = () => {
   useEffect(() => {
     const savedData = loadSavedData();
     if (savedData && Object.keys(savedData).length > 0) {
+      // Get the saved category to validate qualifications
+      const savedCategory = savedData.category as string || "";
+      const validQualifications = getQualificationOptions(savedCategory);
+
       Object.keys(savedData).forEach(key => {
         const value = savedData[key as keyof RegistrationValues];
         if (value !== undefined && value !== null && value !== "") {
+          // Skip qualifications that don't match the saved category
+          if (key.endsWith("Qualification")) {
+            if (!validQualifications.includes(value as any)) {
+              return; // Don't restore invalid qualification
+            }
+          }
           form.setValue(key as keyof RegistrationValues, value, {
             shouldValidate: false
           });
@@ -208,6 +236,28 @@ const RegistrationForm = () => {
       });
     }
   }, [loadSavedData]);
+
+  // Clear member qualifications when category changes (but not on initial mount)
+  useEffect(() => {
+    let previousCategory = form.getValues("category");
+    let isInitialMount = true;
+
+    const subscription = form.watch((value, { name }) => {
+      if (name === "category" && !isInitialMount) {
+        const newCategory = value.category;
+        // Only clear if category actually changed
+        if (previousCategory !== newCategory) {
+          form.setValue("member1Qualification", "" as any);
+          form.setValue("member2Qualification", "" as any);
+          form.setValue("member3Qualification", "" as any);
+          form.setValue("member4Qualification", "" as any);
+          previousCategory = newCategory;
+        }
+      }
+      isInitialMount = false;
+    });
+    return () => subscription.unsubscribe();
+  }, [form]);
   const validateStep = async () => {
     let fieldsToValidate: (keyof RegistrationValues)[] = [];
     switch (currentStep) {
@@ -350,6 +400,13 @@ const RegistrationForm = () => {
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, [currentStep, isLastStep, handleNext]);
+
+  // Watch category at component level for proper reactivity
+  const selectedCategory = useWatch({
+    control: form.control,
+    name: "category",
+  });
+
   const renderStepContent = () => {
     switch (currentStep) {
       case 0:
@@ -357,7 +414,7 @@ const RegistrationForm = () => {
       case 1:
         return <TeamInfoStep form={form} trackOptions={trackOptions} categoryOptions={categoryOptions} heardAboutOptions={heardAboutOptions} toSafeId={toSafeId} />;
       case 2:
-        return <TeamMembersStep form={form} members={teamMembers} qualificationOptions={qualificationOptions} toSafeId={toSafeId} />;
+        return <TeamMembersStep form={form} members={teamMembers} selectedCategory={selectedCategory} toSafeId={toSafeId} />;
       case 3:
         return <AdvisorStep form={form} advisorRelationshipOptions={advisorRelationshipOptions} toSafeId={toSafeId} />;
       case 4:
@@ -661,9 +718,11 @@ function TeamInfoStep({
 function TeamMembersStep({
   form,
   members,
-  qualificationOptions,
+  selectedCategory,
   toSafeId
 }: any) {
+  const qualificationOptions = getQualificationOptions(selectedCategory);
+
   const isMemberComplete = (memberKey: string) => {
     const values = form.getValues();
     return values[`${memberKey}FullName`] && values[`${memberKey}ContactNumber`] && values[`${memberKey}IcNumber`] && values[`${memberKey}Email`] && values[`${memberKey}School`] && values[`${memberKey}Qualification`] && values[`${memberKey}GraduationDate`];
