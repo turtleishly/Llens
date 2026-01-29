@@ -45,7 +45,7 @@
         },
         "genai": {
             "title": "Gen Art",
-            "description": "Create a compelling 60 second video leveraging AI images to tell a local story in a meaningful way."
+            "description": "Create a compelling 1-3 minute video leveraging AI images to tell a local story in a meaningful way."
         },
         "architecture": {
             "title": "Architecture",
@@ -173,10 +173,10 @@
         },
         "genai": {
             "title": "Gen Art",
-            "overview": "Create a compelling 60 second video leveraging AI images to tell a local story in a meaningful way. Specific story themes and submission guidelines will be announced on March 19, 2026.",
+            "overview": "Create a compelling 1-3 minute video leveraging AI images to tell a local story in a meaningful way. Specific story themes and submission guidelines will be announced on March 19, 2026.",
             "theme": "Local Storytelling with AI",
             "whoIsThisFor": "Creative storytellers and AI enthusiasts looking to master short-form video content and AI-assisted visualization.",
-            "deliverables": "A 45-60 second TikTok-style video, a prompt log for AI visuals, and a creative story statement.",
+            "deliverables": "A 1-3 minute TikTok-style video, a prompt log for AI visuals, and a creative story statement.",
             "example1": "Cinematic Journey through Malaysia's Hidden Food Gems",
             "example2": "Legendary Tales of Malaysian Folklore Reimagined with AI",
             "judging1": {
@@ -270,7 +270,7 @@
                     },
                     {
                         "question": "How many tracks are there?",
-                        "answer": "There are five tracks:\n- Innovation: Apply generative AI and create apps that offer unique solutions to key problems focusing on one of 3 selected UN SDG areas.\n- Engineering: Design AI-powered solutions to improve community efficiency and sustainability.\n- Gen Art: Create a compelling 60 second video leveraging AI images to tell a local story in a meaningful way.\n- Computing: Develop an AI model for medical diagnostics.\n- Architecture: Design innovative learning environments that shape the future of education.\nRefer to the Track page to learn more"
+                        "answer": "There are five tracks:\n- Innovation: Apply generative AI and create apps that offer unique solutions to key problems focusing on one of 3 selected UN SDG areas.\n- Engineering: Design AI-powered solutions to improve community efficiency and sustainability.\n- Gen Art: Create a compelling 1-3 minute video leveraging AI images to tell a local story in a meaningful way.\n- Computing: Develop an AI model for medical diagnostics.\n- Architecture: Design innovative learning environments that shape the future of education.\nRefer to the Track page to learn more"
                     },
                     {
                         "question": "Where and when will the final be held?",

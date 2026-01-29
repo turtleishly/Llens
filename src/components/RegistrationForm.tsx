@@ -24,8 +24,8 @@ const categoryOptions = ["Category A (Year 10/Year 11/Form 4/Form 5 [SPM]/Senior
 const heardAboutOptions = ["School Counsellor/Teacher", "Social Media (Instagram/Facebook/LinkedIn)", "Newspaper/E-Newspaper", "Friends/Family", "Other"] as const;
 
 // Category-specific qualification options
-const categoryAQualifications = ["Year 9 (IB / Australian)", "Year 10 (British)", "Year 10 (IB / Australian)", "Year 11 (British)", "Form 4", "Form 5", "Senior Middle 1", "Senior Middle 2", "Others"] as const;
-const categoryBQualifications = ["Year 9 (IB / Australian)", "Year 10 (British)", "Year 10 (IB / Australian)", "Year 11 (British)", "Form 4", "Form 5", "Senior Middle 1", "Senior Middle 2", "Form 6 / STPM", "Senior Middle 3 / UEC", "Pre-University (A-levels, AUSMAT, IB or equivalent)", "Diploma", "Others"] as const;
+const categoryAQualifications = ["Year 10", "Year 11", "Form 4", "Form 5", "Senior Middle 1", "Senior Middle 2", "Others (equivalent)"] as const;
+const categoryBQualifications = ["Pre-University", "Diploma", "Form 6 / STPM", "Form 5", "Form 4", "Year 11", "Year 10", "Senior Middle 3/ UEC", "Senior Middle 2", "Senior Middle 1", "Others (equivalent)"] as const;
 
 // Helper function to get qualifications based on category
 const getQualificationOptions = (category: string) => {
