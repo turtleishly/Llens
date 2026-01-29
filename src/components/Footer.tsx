@@ -94,24 +94,14 @@ const Footer = () => {
             </nav>
           </div>
 
-          {/* Learn More */}
-          <div className="space-y-4">
-            <p className={cn(
-              "text-xs font-semibold uppercase tracking-[0.3em]",
-              isV2 ? "text-cyan-500/40" : "text-muted-foreground/40"
-            )}>Learn More</p>
-            <nav className="flex flex-col gap-3">
-              {isRakanTutorPage ? (
-                <Link
-                  to="/"
-                  className={cn(
-                    "text-lg transition-colors font-light",
-                    isV2 ? "text-zinc-500 hover:text-cyan-400" : "text-foreground/70 hover:text-foreground"
-                  )}
-                >
-                  Rakan Tutor
-                </Link>
-              ) : (
+          {/* Learn More - Only show on NAIC pages */}
+          {!isRakanTutorPage && (
+            <div className="space-y-4">
+              <p className={cn(
+                "text-xs font-semibold uppercase tracking-[0.3em]",
+                isV2 ? "text-cyan-500/40" : "text-muted-foreground/40"
+              )}>Learn More</p>
+              <nav className="flex flex-col gap-3">
                 <a
                   href="https://rakantutor.org"
                   target="_blank"
@@ -123,20 +113,20 @@ const Footer = () => {
                 >
                   Rakan Tutor
                 </a>
-              )}
-              <a
-                href="https://sunwayuniversity.edu.my/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className={cn(
-                  "text-lg transition-colors font-light",
-                  isV2 ? "text-zinc-500 hover:text-cyan-400" : "text-foreground/70 hover:text-foreground"
-                )}
-              >
-                Sunway
-              </a>
-            </nav>
-          </div>
+                <a
+                  href="https://sunwayuniversity.edu.my/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={cn(
+                    "text-lg transition-colors font-light",
+                    isV2 ? "text-zinc-500 hover:text-cyan-400" : "text-foreground/70 hover:text-foreground"
+                  )}
+                >
+                  Sunway
+                </a>
+              </nav>
+            </div>
+          )}
         </div>
 
         <div className={cn(
@@ -148,7 +138,10 @@ const Footer = () => {
               "text-base font-light",
               isV2 ? "text-zinc-600" : "text-muted-foreground/60"
             )}>
-              © 2026 Rakan Tutor & Sunway University.
+              {isRakanTutorPage
+                ? "© 2026 Rakan Tutor."
+                : "© 2026 Rakan Tutor & Sunway University."
+              }
             </p>
             {isRakanTutorPage && (
               <div className="flex items-center gap-4">

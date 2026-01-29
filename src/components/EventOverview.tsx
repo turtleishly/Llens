@@ -49,7 +49,7 @@ const EventOverview = () => {
   const stats = [
     { value: 2300, suffix: "+", label: t("overview.stats.participants") },
     { value: 25, suffix: "+", label: t("overview.stats.mentors") },
-    { value: 6, label: t("overview.stats.winners") },
+    { value: 60, label: t("overview.stats.winners") },
   ];
 
   return (
