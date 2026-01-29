@@ -192,7 +192,7 @@ export default function Contact() {
                                                 <h3 className="font-semibold text-lg text-left">{t("contact.info.email")}</h3>
                                                 <div className="mt-2 space-y-1 text-left">
                                                     <a href="mailto:mingjackt@sunway.edu.my" className="block text-primary hover:underline font-light break-all text-sm md:text-base text-left">mingjackt@sunway.edu.my</a>
-                                                    <a href="mailto:clement@sunway.edu.my" className="block text-primary hover:underline font-light break-all text-sm md:text-base text-left">clement@sunway.edu.my</a>
+                                                    <a href="mailto:clemen@sunway.edu.my" className="block text-primary hover:underline font-light break-all text-sm md:text-base text-left">clemen@sunway.edu.my</a>
                                                 </div>
                                             </div>
                                         </div>

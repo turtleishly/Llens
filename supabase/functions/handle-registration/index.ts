@@ -190,7 +190,7 @@ async function sendConfirmationEmail(data: RegistrationData) {
       },
       body: JSON.stringify({
         from: "National AI Competition <noreply@rakantutor.org>",
-        reply_to: ["mingjackt@sunway.edu.my", "clement@sunway.edu.my"],
+        reply_to: ["mingjackt@sunway.edu.my", "clemen@sunway.edu.my"],
         to: [data.advisor_email],
         cc: memberEmails,
         subject: `Registration Received: Team ${data.team_name} - National AI Competition`,
@@ -263,7 +263,7 @@ async function sendConfirmationEmail(data: RegistrationData) {
 
                           <div style="background-color: #FFFBEB; border-radius: 16px; padding: 24px; margin-top: 30px; border: 1px solid #FEF3C7;">
                             <h4 style="margin: 0 0 12px 0; color: #92400E; font-size: 16px; font-weight: 600;">Need any help?</h4>
-                            <p style="margin: 0; color: #B45309; font-size: 14px;">If you have any further questions, please email <a href="mailto:mingjackt@sunway.edu.my" style="color: inherit; text-decoration: none; font-weight: 600;">mingjackt@sunway.edu.my (Jack)</a> / <a href="mailto:clement@sunway.edu.my" style="color: inherit; text-decoration: none; font-weight: 600;">clement@sunway.edu.my (Clement)</a> or WhatsApp Jack at <a href="https://wa.me/60192004268" style="color: inherit; text-decoration: none; font-weight: 600;">(019-200 4268)</a>.</p>
+                            <p style="margin: 0; color: #B45309; font-size: 14px;">If you have any further questions, please email <a href="mailto:mingjackt@sunway.edu.my" style="color: inherit; text-decoration: none; font-weight: 600;">mingjackt@sunway.edu.my (Jack)</a> / <a href="mailto:clemen@sunway.edu.my" style="color: inherit; text-decoration: none; font-weight: 600;">clemen@sunway.edu.my (Clemen)</a> or WhatsApp Jack at <a href="https://wa.me/60192004268" style="color: inherit; text-decoration: none; font-weight: 600;">(019-200 4268)</a>.</p>
                           </div>
 
                           <p style="font-size: 16px; margin-top: 40px; color: #2E2D2B;">

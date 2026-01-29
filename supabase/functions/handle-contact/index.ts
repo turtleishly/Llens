@@ -37,7 +37,7 @@ serve(async (req) => {
             },
             body: JSON.stringify({
                 from: "NAIC Website <noreply@rakantutor.org>",
-                to: ["mingjackt@sunway.edu.my", "clement@sunway.edu.my"],
+                to: ["mingjackt@sunway.edu.my", "clemen@sunway.edu.my"],
                 reply_to: contactData.email,
                 subject: `Contact Form: ${contactData.subject}`,
                 html: `

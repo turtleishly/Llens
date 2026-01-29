@@ -37,11 +37,11 @@
         },
         "computing": {
             "title": "Computing",
-            "description": "Develop an AI model that can reliably analyze retinal images under real-world conditions such as varying lighting, blur, camera differences, and class imbalance."
+            "description": "Develop an AI model that can reliably analyze medical images under real-world conditions to assist in diagnosis."
         },
         "engineering": {
             "title": "Engineering",
-            "description": "Design AI-powered engineering solutions that make cities more efficient, sustainable, and people-friendly."
+            "description": "Design AI-powered engineering solutions that improve efficiency and sustainability in our communities."
         },
         "genai": {
             "title": "Gen Art",
@@ -49,7 +49,7 @@
         },
         "architecture": {
             "title": "Architecture",
-            "description": "Re-Designing the Classroom: Spaces for Future Learning"
+            "description": "Design innovative learning environments that shape the future of education."
         }
     },
     "overview": {
@@ -131,11 +131,11 @@
         },
         "computing": {
             "title": "Computing",
-            "overview": "Prepare a high-quality pipeline and train an AI model that can make reliable predictions from thousands of retinal fundus images with a realistic setting where lighting, blurring, camera differences, and class imbalance are common. Dataset details and technical specifications will be announced on March 19, 2026.",
-            "theme": "Smart City Healthcare - Diabetic Retinopathy (DR) Screening",
+            "overview": "Prepare a high-quality pipeline and train an AI model that can make reliable predictions from medical images. The solution must handle realistic settings where data variability and real-world noise are common. Dataset details and technical specifications will be announced on March 19, 2026.",
+            "theme": "AI for Healthcare Screening",
             "whoIsThisFor": "Enthusiastic participants who want to get hands-on with real-world medical data and push the limits of AI technologies.",
             "deliverables": "Inference/Testing Script, Model Weights/Saved Model, and a Short Technical Write-Up.",
-            "example1": "Inference script that outputs required CSV and confusion matrix",
+            "example1": "Inference script that outputs diagnostic predictions",
             "example2": "Model weights with architecture details and preprocessing config",
             "judging1": {
                 "title": "Performance",
@@ -143,7 +143,7 @@
             },
             "judging2": {
                 "title": "Model Design",
-                "desc": "Architecture choice, handling imbalance, and generalization methods."
+                "desc": "Architecture choice, handling class imbalance, and generalization methods."
             },
             "judging3": {
                 "title": "Pipeline Quality",
@@ -152,12 +152,12 @@
         },
         "engineering": {
             "title": "Engineering",
-            "overview": "Design AI-powered engineering solutions that make cities more efficient, sustainable, and people-friendly. Use technology to solve real Malaysian urban challenges. Specific challenge details will be announced on March 19, 2026.",
-            "theme": "Smart City Initiatives",
-            "whoIsThisFor": "Problem-solvers interested in robotics, automation, and the hardware-software interface of AI for urban living.",
+            "overview": "Design AI-powered engineering solutions that enhance efficiency and sustainability in our communities. Use technology to solve real-world physical challenges. Specific challenge details will be announced on March 19, 2026.",
+            "theme": "Sustainable Engineering Solutions",
+            "whoIsThisFor": "Problem-solvers interested in robotics, automation, and the hardware-software interface of AI.",
             "deliverables": "Proposal report, system design workflow, and a proof-of-concept prototype (hardware or software simulation).",
-            "example1": "AI-predictive Traffic Management System",
-            "example2": "Smart Waste-sorting Sensors for Residential Areas",
+            "example1": "Intelligent Resource Management System",
+            "example2": "Smart Sensors for Environmental Monitoring",
             "judging1": {
                 "title": "Problem Understanding",
                 "desc": "Clarity of the defined problem and its relevance."
@@ -194,12 +194,12 @@
         },
         "architecture": {
             "title": "Architecture",
-            "overview": "Reimagine the classroom as a space for future learning, informed by pedagogy, flexibility, technology, and human comfort. Detailed design briefs and requirements will be announced on March 19, 2026.",
-            "theme": "Re-Designing the Classroom: Spaces for Future Learning",
+            "overview": "Reimagine spaces for learning that prioritize flexibility, technology, and human comfort. Detailed design briefs and requirements will be announced on March 19, 2026.",
+            "theme": "Spaces for Future Learning",
             "whoIsThisFor": "Visionaries interested in architecture, spatial design, and sustainable environments using AI tools.",
             "deliverables": "One A1 design board (PDF) including visuals, spatial diagrams (plan/section), and a design story.",
-            "example1": "Inclusivity-focused Classroom for Diverse Learning Styles",
-            "example2": "Biophilic Classroom Design for Student Well-being",
+            "example1": "Inclusive Design for Diverse Learning Styles",
+            "example2": "Biophilic Design for Student Well-being",
             "judging1": {
                 "title": "Design Process",
                 "desc": "AI prompts, sketches, and clarity of design thinking."
@@ -270,7 +270,7 @@
                     },
                     {
                         "question": "How many tracks are there?",
-                        "answer": "There are five tracks:\n- Innovation: Apply generative AI and create apps that offer unique solutions to key problems focusing on one of 3 selected UN SDG areas.\n- Engineering: Design AI-powered solutions for smart cities.\n- Gen Art: Create a compelling 60 second video leveraging AI images to tell a local story in a meaningful way.\n- Computing: Develop an AI model for medical screening.\n- Architecture: Re-Designing the Classroom: Spaces for Future Learning\nRefer to the Track page to learn more"
+                        "answer": "There are five tracks:\n- Innovation: Apply generative AI and create apps that offer unique solutions to key problems focusing on one of 3 selected UN SDG areas.\n- Engineering: Design AI-powered solutions to improve community efficiency and sustainability.\n- Gen Art: Create a compelling 60 second video leveraging AI images to tell a local story in a meaningful way.\n- Computing: Develop an AI model for medical diagnostics.\n- Architecture: Design innovative learning environments that shape the future of education.\nRefer to the Track page to learn more"
                     },
                     {
                         "question": "Where and when will the final be held?",
@@ -339,7 +339,7 @@
                     },
                     {
                         "question": "I think I registered, but I'm not sure.",
-                        "answer": "If you think you registered but are not sure, check for a confirmation email. All registered teams will receive a confirmation email together with competition materials, themes, and masterclass access details on March 19, 2026 upon successful registration. If these updates have not been received by then, please email us at mingjackt@sunway.edu.my (Jack) / clement@sunway.edu.my (Clement) for assistance."
+                        "answer": "If you think you registered but are not sure, check for a confirmation email. All registered teams will receive a confirmation email together with competition materials, themes, and masterclass access details on March 19, 2026 upon successful registration. If these updates have not been received by then, please email us at mingjackt@sunway.edu.my (Jack) / clemen@sunway.edu.my (Clemen) for assistance."
                     },
                     {
                         "question": "Is a teacher advisor required?",
@@ -414,7 +414,7 @@
                     },
                     {
                         "question": "What if I have further inquiries?",
-                        "answer": "If you have any further questions, please email mingjackt@sunway.edu.my (Jack) / clement@sunway.edu.my (Clement) or WhatsApp Jack at (019-200 4268)."
+                        "answer": "If you have any further questions, please email mingjackt@sunway.edu.my (Jack) / clemen@sunway.edu.my (Clemen) or WhatsApp Jack at (019-200 4268)."
                     }
                 ]
             }
