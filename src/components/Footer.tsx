@@ -52,7 +52,7 @@ const Footer = () => {
               {isRakanTutorPage ? (
                 <>
                   <Link to="/naic" className="text-lg transition-colors font-light text-foreground/70 hover:text-foreground">
-                    NAIC 2025
+                    NAIC 2026
                   </Link>
                   <Link to="/#mission" className="text-lg transition-colors font-light text-foreground/70 hover:text-foreground">
                     About Us

@@ -286,10 +286,10 @@ export default function Terms() {
                                                     <p className="text-sm text-muted-foreground font-medium uppercase tracking-wider text-left">{t("terms.sections.contact.emailLabel")}</p>
                                                     <div className="flex flex-col md:flex-row gap-4 md:gap-8 text-left">
                                                         <a
-                                                            href="mailto:clemen@sunway.edu.my"
+                                                            href="mailto:clement@sunway.edu.my"
                                                             className="text-2xl md:text-3xl font-bold text-cyan-500 hover:text-cyan-600 transition-colors underline underline-offset-[8px] decoration-1 text-left"
                                                         >
-                                                            clemen@sunway.edu.my
+                                                            clement@sunway.edu.my
                                                         </a>
                                                         <a
                                                             href="mailto:mingjackt@sunway.edu.my"

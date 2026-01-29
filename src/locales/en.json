@@ -37,7 +37,7 @@
         },
         "computing": {
             "title": "Computing",
-            "description": "Develop an AI model that can reliably analyze medical images under real-world conditions to assist in diagnosis."
+            "description": "Develop an AI model that can reliably analyse medical images under real-world conditions to assist in diagnosis."
         },
         "engineering": {
             "title": "Engineering",
@@ -56,7 +56,7 @@
         "title": "Overview",
         "description": "A nationwide AI challenge for student teams to design, build, and present practical solutions. Expect hands-on problem solving, expert feedback, and workshops that sharpen your approach.",
         "stats": {
-            "participants": "participants in 2025",
+            "participants": "participants in 2026",
             "mentors": "industry mentors",
             "winners": "winning teams per track per category"
         }
@@ -194,7 +194,7 @@
         },
         "architecture": {
             "title": "Architecture",
-            "overview": "Reimagine spaces for learning that prioritize flexibility, technology, and human comfort. Detailed design briefs and requirements will be announced on March 19, 2026.",
+            "overview": "Reimagine spaces for learning that prioritise flexibility, technology, and human comfort. Detailed design briefs and requirements will be announced on March 19, 2026.",
             "theme": "Spaces for Future Learning",
             "whoIsThisFor": "Visionaries interested in architecture, spatial design, and sustainable environments using AI tools.",
             "deliverables": "One A1 design board (PDF) including visuals, spatial diagrams (plan/section), and a design story.",
@@ -295,7 +295,7 @@
                 "items": [
                     {
                         "question": "Who can participate?",
-                        "answer": "Participants must be an active students from [Form 4 – Form 5, Year 10 – Year 11, Senior Middle 1 – Senior Middle 2] are eligible to join Category A; Participants from [STPM, UEC, Pre-University programmes and Diploma] are eligible to join Category B. Note: American Degree Program students are not eligible as they are considered university students."
+                        "answer": "Participants must be an active students from [Form 4 – Form 5, Year 10 – Year 11, Senior Middle 1 – Senior Middle 2] are eligible to join Category A; Participants from [STPM, UEC, Pre-University programmes and Diploma] are eligible to join Category B. Note: American Degree Programme students are not eligible as they are considered university students."
                     },
                     {
                         "question": "How do I join?",
@@ -319,11 +319,11 @@
                     },
                     {
                         "question": "Can I form a team with friends from other schools?",
-                        "answer": "Yes, you can form a team with friends from other schools. If any of the member falls under Category B: STPM, Pre-U, UEC, Diploma, the team will be competing under Category B. Note: American Degree Program students are not eligible."
+                        "answer": "Yes, you can form a team with friends from other schools. If any of the member falls under Category B: STPM, Pre-U, UEC, Diploma, the team will be competing under Category B. Note: American Degree Programme students are not eligible."
                     },
                     {
                         "question": "Can a team have students from different category?",
-                        "answer": "Yes, a team can have students from different school levels. However, If any of the member falls under Category B: STPM, Pre-U, UEC, Diploma, the team will be competing under Category B. Note: American Degree Program students are not eligible."
+                        "answer": "Yes, a team can have students from different school levels. However, If any of the member falls under Category B: STPM, Pre-U, UEC, Diploma, the team will be competing under Category B. Note: American Degree Programme students are not eligible."
                     },
                     {
                         "question": "Are students from private and international schools allowed?",
@@ -339,7 +339,7 @@
                     },
                     {
                         "question": "I think I registered, but I'm not sure.",
-                        "answer": "If you think you registered but are not sure, check for a confirmation email. All registered teams will receive a confirmation email together with competition materials, themes, and masterclass access details on March 19, 2026 upon successful registration. If these updates have not been received by then, please email us at mingjackt@sunway.edu.my (Jack) / clemen@sunway.edu.my (Clemen) for assistance."
+                        "answer": "If you think you registered but are not sure, check for a confirmation email. All registered teams will receive a confirmation email together with competition materials, themes, and masterclass access details on March 19, 2026 upon successful registration. If these updates have not been received by then, please email us at mingjackt@sunway.edu.my (Jack) / clement@sunway.edu.my (Clemen) for assistance."
                     },
                     {
                         "question": "Is a teacher advisor required?",
@@ -356,7 +356,7 @@
                 "items": [
                     {
                         "question": "How do I prepare for the competition?",
-                        "answer": "To prepare for the competition:\n1. Attend the AI Masterclass provided to gain insights and skills.\n2. Access additional complimentary resources shared by the organizers."
+                        "answer": "To prepare for the competition:\n1. Attend the AI Masterclass provided to gain insights and skills.\n2. Access additional complimentary resources shared by the organisers."
                     },
                     {
                         "question": "Is the AI Masterclass complimentary?",
@@ -414,7 +414,7 @@
                     },
                     {
                         "question": "What if I have further inquiries?",
-                        "answer": "If you have any further questions, please email mingjackt@sunway.edu.my (Jack) / clemen@sunway.edu.my (Clemen) or WhatsApp Jack at (019-200 4268)."
+                        "answer": "If you have any further questions, please email mingjackt@sunway.edu.my (Jack) / clement@sunway.edu.my (Clemen) or WhatsApp Jack at (019-200 4268)."
                     }
                 ]
             }
@@ -497,7 +497,7 @@
         },
         "info": {
             "title": "Contact Information",
-            "desc": "Reach out to our organizing committee directly for any specific inquiries regarding the National AI Competition.",
+            "desc": "Reach out to our organising committee directly for any specific inquiries regarding the National AI Competition.",
             "email": "Email Us",
             "whatsapp": "WhatsApp",
             "locationTitle": "Location",
@@ -532,7 +532,7 @@
                     "Pre-Universities students from MQA-accredited institutions",
                     "Diploma students from MQA-accredited institutions"
                 ],
-                "catBNote": "Note: American Degree Program students are not eligible as they are considered university students.",
+                "catBNote": "Note: American Degree Programme students are not eligible as they are considered university students.",
                 "dateCondition": "Only those whose graduation date falls after 13 June 2026 are eligible to participate in the Competition.",
                 "statusCondition": "This condition is set to ensure that all participants maintain active student status throughout the competition period.",
                 "consentCondition": "For participants under the age of 18, participation is subject to the consent of a parent or legal guardian. By submitting an entry, the participant represents that such consent has been obtained.",
@@ -565,8 +565,8 @@
             "originality": {
                 "title": "Originality & Rights",
                 "desc": "All submissions must be original works created by the participating teams. The use of generative AI is permitted as a tool for brainstorming, research, and technical assistance, but the core solution and presentation must represent the team's own creative and intellectual effort.",
-                "item1": "Submissions found to be plagiarized or using unauthorized intellectual property will be disqualified immediately.",
-                "item2": "By participating, teams grant the Organisers a non-exclusive, royalty-free, perpetual license to use, reproduce, and display the submitted materials for promotional and educational purposes."
+                "item1": "Submissions found to be plagiarised or using unauthorised intellectual property will be disqualified immediately.",
+                "item2": "By participating, teams grant the Organisers a non-exclusive, royalty-free, perpetual licence to use, reproduce, and display the submitted materials for promotional and educational purposes."
             },
             "liability": {
                 "title": "Liability & Code of Conduct",
@@ -618,7 +618,7 @@
         "sections": {
             "tldr": {
                 "title": "TL;DR",
-                "desc": "We collect necessary information to run NAIC 2026. This includes registration details, team info, and student status. We never sell your data and only share it with partners involved in organizing or judging the competition. For participants under 18, we require parental/guardian consent."
+                "desc": "We collect necessary information to run NAIC 2026. This includes registration details, team info, and student status. We never sell your data and only share it with partners involved in organising or judging the competition. For participants under 18, we require parental/guardian consent."
             },
             "minors": {
                 "title": "Minors' Privacy",
@@ -677,7 +677,7 @@
                 "desc": "Photography and videography will be conducted during the prize-giving ceremony at Sunway University.",
                 "items": [
                     "Images and recordings of participants may be used for promotional, archival, and educational purposes by the Organisers.",
-                    "Visual media is stored securely and is only accessible by authorized marketing and administrative personnel.",
+                    "Visual media is stored securely and is only accessible by authorised marketing and administrative personnel.",
                     "If you wish to opt-out of having your photograph published, please notify the on-site event staff during registration at the venue."
                 ]
             },
@@ -685,7 +685,7 @@
                 "title": "Data Disclosure",
                 "desc": "We do not sell your personal data. We disclose data only to:",
                 "items": [
-                    "Event Organisers: Authorized staff from Rakan Tutor and Sunway University.",
+                    "Event Organisers: Authorised staff from Rakan Tutor and Sunway University.",
                     "Judges & Mentors: Professional partners involved in the evaluation process.",
                     "Service Providers: Hosting and data management partners (e.g., Google Cloud/Sheets)."
                 ]

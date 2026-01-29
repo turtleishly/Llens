@@ -631,7 +631,7 @@ function WelcomeStep({
           .
         </p>
         <p className="text-sm text-muted-foreground">
-          If you have any further questions, please email <a href="mailto:mingjackt@sunway.edu.my" className="text-primary hover:underline font-medium">mingjackt@sunway.edu.my (Jack)</a> / <a href="mailto:clemen@sunway.edu.my" className="text-primary hover:underline font-medium">clemen@sunway.edu.my (Clemen)</a> or <a href="https://wa.me/60192004268" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline font-medium">WhatsApp Jack at (019-200 4268)</a>.
+          If you have any further questions, please email <a href="mailto:mingjackt@sunway.edu.my" className="text-primary hover:underline font-medium">mingjackt@sunway.edu.my (Jack)</a> / <a href="mailto:clement@sunway.edu.my" className="text-primary hover:underline font-medium">clement@sunway.edu.my (Clemen)</a> or <a href="https://wa.me/60192004268" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline font-medium">WhatsApp Jack at (019-200 4268)</a>.
         </p>
       </div>
     </motion.div>

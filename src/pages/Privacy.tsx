@@ -221,10 +221,10 @@ export default function Privacy() {
                                                             mingjackt@sunway.edu.my (Jack)
                                                         </a>
                                                         <a
-                                                            href="mailto:clemen@sunway.edu.my"
+                                                            href="mailto:clement@sunway.edu.my"
                                                             className="text-2xl md:text-3xl font-bold text-cyan-500 hover:text-cyan-600 transition-colors underline underline-offset-[8px] decoration-1 text-left"
                                                         >
-                                                            clemen@sunway.edu.my (Clemen)
+                                                            clement@sunway.edu.my (Clemen)
                                                         </a>
                                                     </div>
                                                 </div>

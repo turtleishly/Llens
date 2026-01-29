@@ -78,7 +78,7 @@ const NewHero = () => {
             <div className="relative w-full max-w-2xl mx-auto">
               <img
                 src={heroGraphic}
-                alt="National AI Competition 2025 - Students participating in workshops, presentations, and networking events"
+                alt="National AI Competition 2026 - Students participating in workshops, presentations, and networking events"
                 className="w-full h-auto"
               />
             </div>

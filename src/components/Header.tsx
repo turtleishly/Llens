@@ -33,7 +33,7 @@ const Header = () => {
     { label: "History", href: "/history" },
     { label: "Impact", href: "/impact" },
     { label: "News & Media", href: "/news" },
-    { label: "NAIC 2025", href: "/naic" },
+    { label: "NAIC 2026", href: "/naic" },
     { label: "Contact", href: "/contact" },
   ];
 
@@ -109,7 +109,7 @@ const Header = () => {
                     : "bg-cyan-500 text-white border-none hover:bg-cyan-600"
                 )}
               >
-                <Link to={isNaicPage ? "/naic/register" : "/naic"}>{isNaicPage ? t("nav.registerNow") : "NAIC 2025"}</Link>
+                <Link to={isNaicPage ? "/naic/register" : "/naic"}>{isNaicPage ? t("nav.registerNow") : "NAIC 2026"}</Link>
               </Button>
             </div>
 
@@ -172,7 +172,7 @@ const Header = () => {
               )}
             >
               <Link to={isNaicPage ? "/naic/register" : "/naic"} onClick={() => setIsMenuOpen(false)}>
-                {isNaicPage ? t("nav.registerNow") : "NAIC 2025"}
+                {isNaicPage ? t("nav.registerNow") : "NAIC 2026"}
               </Link>
             </Button>
           </nav>
