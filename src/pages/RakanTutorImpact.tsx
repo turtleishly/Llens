@@ -5,23 +5,24 @@ import Footer from "@/components/Footer";
 import BlurFade from "@/components/ui/blur-fade";
 import DitheredBackground from "@/components/DitheredBackground";
 import { Button } from "@/components/ui/button";
-import { Download } from "lucide-react";
+import { Download, Loader2 } from "lucide-react";
 import "react-pdf/dist/Page/AnnotationLayer.css";
 import "react-pdf/dist/Page/TextLayer.css";
 
-// Set up the worker for PDF.js - use CDN with correct version
-pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.min.mjs`;
+// Configure PDF.js worker
+pdfjs.GlobalWorkerOptions.workerSrc = `https://unpkg.com/pdfjs-dist@${pdfjs.version}/build/pdf.worker.min.mjs`;
 
 const RakanTutorImpact = () => {
-  const [numPages, setNumPages] = useState<number>(0);
-  const [loading, setLoading] = useState<boolean>(true);
-  const [pdfWidth, setPdfWidth] = useState<number>(800);
+  const [numPages, setNumPages] = useState<number | null>(null);
+  const [error, setError] = useState<string | null>(null);
+  const [pageWidth, setPageWidth] = useState<number>(900);
+
+  const PDF_PATH = "/2021_2024-Rakan-Tutor-Program-Impact-Report.pdf";
 
   useEffect(() => {
     const updateWidth = () => {
-      const containerWidth = Math.min(window.innerWidth - 64, 1200); // 64px for padding
-      const maxWidth = 800;
-      setPdfWidth(Math.min(containerWidth, maxWidth));
+      const width = Math.min(window.innerWidth - 80, 900);
+      setPageWidth(width);
     };
 
     updateWidth();
@@ -31,12 +32,18 @@ const RakanTutorImpact = () => {
 
   const onDocumentLoadSuccess = ({ numPages }: { numPages: number }) => {
     setNumPages(numPages);
-    setLoading(false);
+    setError(null);
+  };
+
+  const onDocumentLoadError = (error: Error) => {
+    console.error("PDF load error:", error);
+    setError("Failed to load PDF document");
+    setNumPages(null);
   };
 
   const handleDownload = () => {
     const link = document.createElement("a");
-    link.href = "/2021_2024-Rakan-Tutor-Program-Impact-Report.pdf";
+    link.href = PDF_PATH;
     link.download = "Rakan-Tutor-Impact-Report.pdf";
     document.body.appendChild(link);
     link.click();
@@ -79,44 +86,58 @@ const RakanTutorImpact = () => {
 
         {/* PDF Viewer Section */}
         <section className="py-20 px-4 md:px-8 bg-background">
-          <div className="container max-w-7xl mx-auto">
+          <div className="container max-w-5xl mx-auto">
             <BlurFade delay={0.4}>
-              <div className="flex justify-center">
-                <div className="bg-white rounded-lg shadow-lg inline-block">
+              <div className="flex flex-col items-center gap-4">
+                {error && (
+                  <div className="w-full max-w-2xl p-6 bg-destructive/10 border border-destructive rounded-lg text-center">
+                    <p className="text-destructive font-medium">{error}</p>
+                    <p className="text-sm text-muted-foreground mt-2">
+                      Please try downloading the PDF instead.
+                    </p>
+                  </div>
+                )}
+
+                <div className="w-full flex justify-center">
                   <Document
-                    file="/2021_2024-Rakan-Tutor-Program-Impact-Report.pdf"
+                    file={PDF_PATH}
                     onLoadSuccess={onDocumentLoadSuccess}
+                    onLoadError={onDocumentLoadError}
                     loading={
-                      <div className="flex items-center justify-center h-96" style={{ width: `${pdfWidth}px` }}>
-                        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary"></div>
+                      <div className="flex flex-col items-center justify-center py-20 gap-4">
+                        <Loader2 className="h-12 w-12 animate-spin text-primary" />
+                        <p className="text-muted-foreground">Loading PDF...</p>
                       </div>
                     }
-                    error={
-                      <div className="flex items-center justify-center h-96" style={{ width: `${pdfWidth}px` }}>
-                        <p className="text-destructive">Failed to load PDF. Please try again.</p>
-                      </div>
-                    }
+                    className="pdf-document"
                   >
-                    {!loading && Array.from(new Array(numPages), (_, index) => (
-                      <div key={`page_${index + 1}`} className="mb-4 last:mb-0">
-                        <Page
-                          pageNumber={index + 1}
-                          renderTextLayer={true}
-                          renderAnnotationLayer={true}
-                          width={pdfWidth}
-                        />
+                    {numPages && (
+                      <div className="space-y-4">
+                        {Array.from({ length: numPages }, (_, i) => i + 1).map((pageNumber) => (
+                          <div
+                            key={`page-${pageNumber}`}
+                            className="bg-white shadow-lg rounded-lg overflow-hidden"
+                          >
+                            <Page
+                              pageNumber={pageNumber}
+                              renderTextLayer={true}
+                              renderAnnotationLayer={true}
+                              className="pdf-page"
+                              width={pageWidth}
+                            />
+                          </div>
+                        ))}
                       </div>
-                    ))}
+                    )}
                   </Document>
                 </div>
-              </div>
 
-              {/* Page Count Info */}
-              {!loading && (
-                <div className="mt-8 text-center text-sm text-muted-foreground">
-                  Showing all {numPages} pages
-                </div>
-              )}
+                {numPages && (
+                  <div className="mt-6 text-center text-sm text-muted-foreground">
+                    Showing all {numPages} {numPages === 1 ? 'page' : 'pages'}
+                  </div>
+                )}
+              </div>
             </BlurFade>
           </div>
         </section>

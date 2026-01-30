@@ -147,8 +147,8 @@ export default function RakanTutorContact() {
                                                             </FormControl>
                                                             <SelectContent>
                                                                 <SelectItem value="volunteer">Volunteer as a workshop speaker</SelectItem>
-                                                                <SelectItem value="host">Host a free workshop in your school</SelectItem>
-                                                                <SelectItem value="partner">Partner with us to scale free AI education</SelectItem>
+                                                                <SelectItem value="host">Host an AI workshop in your school</SelectItem>
+                                                                <SelectItem value="partner">Partner with us to scale AI education</SelectItem>
                                                                 <SelectItem value="other">Other Enquiries</SelectItem>
                                                             </SelectContent>
                                                         </Select>

@@ -10,21 +10,21 @@ const RakanTutorHero = () => {
   const navigate = useNavigate();
 
   return (
-    <section className="relative min-h-[90vh] flex items-center justify-center py-20 px-4 md:px-8 bg-background overflow-hidden">
+    <section className="relative min-h-[calc(100svh-96px)] flex items-center justify-center py-12 lg:py-16 px-4 md:px-8 bg-background overflow-hidden">
       <div className="container relative z-10 max-w-7xl mx-auto">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+        <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
           {/* Left Content */}
-          <div className="space-y-8 lg:space-y-10">
+          <div className="space-y-6 lg:space-y-8">
             {/* Title */}
-            <div className="space-y-4 lg:space-y-6">
+            <div className="space-y-4 lg:space-y-5">
               <BlurFade delay={0.1}>
-                <h1 className="text-5xl lg:text-7xl font-bold text-foreground leading-tight">
+                <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-foreground leading-tight">
                   Unlocking Youth Potential Through AI Education
                 </h1>
               </BlurFade>
               <BlurFade delay={0.2}>
-                <p className="text-lg lg:text-2xl text-muted-foreground max-w-md">
-                  We provide hybrid AI programs that combine hands-on workshops and an accessible digital learning platform, all completely free of charge to ASEAN youths.
+                <p className="text-base sm:text-lg lg:text-xl text-muted-foreground max-w-md">
+                  We provide hybrid AI programs that combine hands-on workshops and an accessible digital learning platform for ASEAN youth.
                 </p>
               </BlurFade>
             </div>
@@ -34,7 +34,7 @@ const RakanTutorHero = () => {
               <div className="flex flex-col sm:flex-row gap-4">
                 <Button
                   size="lg"
-                  className="text-base lg:text-lg px-6 lg:px-8 py-5 lg:py-6 h-auto rounded-xl"
+                  className="text-sm sm:text-base lg:text-lg px-5 sm:px-6 lg:px-7 py-4 sm:py-5 lg:py-5 h-auto rounded-xl"
                   onClick={() => navigate("/contact")}
                 >
                   Join us now
@@ -50,7 +50,7 @@ const RakanTutorHero = () => {
               <img
                 src={rakanTutorHero}
                 alt="Rakan Tutor Community"
-                className="w-full max-w-sm lg:max-w-lg h-auto object-contain drop-shadow-2xl"
+                className="w-full max-w-xs sm:max-w-sm lg:max-w-md h-auto object-contain drop-shadow-2xl"
               />
             </div>
           </BlurFade>
@@ -80,7 +80,7 @@ const OurValue = () => {
             <div className="space-y-6">
               <h3 className="text-2xl md:text-3xl font-bold">Our Mission</h3>
               <p className="text-lg text-muted-foreground">
-                To provide free, high-quality educational programs that equip secondary school students with the skills and confidence to thrive in the AI-powered future and achieve their fullest potential.
+                To provide high-quality educational programs that equip secondary school students with the skills and confidence to thrive in the AI-powered future and achieve their fullest potential.
               </p>
             </div>
           </BlurFade>
@@ -146,10 +146,10 @@ const HybridApproach = () => {
       <div className="container max-w-7xl mx-auto">
         <div className="text-center mb-16 space-y-4">
           <BlurFade delay={0.1}>
-            <h2 className="text-3xl md:text-5xl font-bold">Our Hybrid Approach</h2>
+            <h2 className="text-3xl md:text-5xl font-bold">Our Initiatives</h2>
           </BlurFade>
           <BlurFade delay={0.2}>
-            <p className="text-xl text-muted-foreground">Summary of our program</p>
+            <p className="text-xl text-muted-foreground">Summary of our programs</p>
           </BlurFade>
         </div>
 
@@ -176,7 +176,7 @@ const HybridApproach = () => {
             <div className="bg-card rounded-xl p-8 border border-border space-y-4 h-full">
               <h3 className="text-2xl md:text-3xl font-bold">Community Partnerships</h3>
               <p className="text-lg text-muted-foreground">
-                We collaborate with like-minded organizations across ASEAN by offering free train-the-trainer programs and translated workshop materials. This enables local nonprofits to bring our AI workshops and digital learning platform directly into the communities they serve.
+                We collaborate with like-minded organizations across ASEAN by offering train-the-trainer programs and translated workshop materials. This enables local nonprofits to bring our AI workshops and digital learning platform directly into the communities they serve.
               </p>
             </div>
           </BlurFade>

@@ -239,4 +239,25 @@
   .text-glow {
     text-shadow: 0 0 20px rgba(var(--primary), 0.2);
   }
+
+  /* PDF Viewer Styles */
+  .pdf-document {
+    @apply w-full;
+  }
+
+  .pdf-page canvas {
+    @apply mx-auto max-w-full h-auto;
+  }
+
+  .react-pdf__Page {
+    @apply flex justify-center;
+  }
+
+  .react-pdf__Page__textContent {
+    @apply select-text;
+  }
+
+  .react-pdf__Page__annotations {
+    @apply pointer-events-auto;
+  }
 }

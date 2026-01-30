@@ -284,8 +284,8 @@ async function sendConfirmationEmail(data: RegistrationData) {
                             &copy; 2026 National AI Competition. Organized by Sunway University & Rakan Tutor.
                           </p>
                           <p style="font-size: 12px; color: #9CA3AF; margin: 10px 0 0 0;">
-                            <a href="https://naic.rakantutor.org/terms" style="color: #2E2D2B; text-decoration: none;">Terms & Conditions</a> &nbsp;&bull;&nbsp; 
-                            <a href="https://naic.rakantutor.org/privacy" style="color: #2E2D2B; text-decoration: none;">Privacy Policy</a>
+                            <a href="https://rakantutor.org/naic/terms" style="color: #2E2D2B; text-decoration: none;">Terms & Conditions</a> &nbsp;&bull;&nbsp;
+                            <a href="https://rakantutor.org/naic/privacy" style="color: #2E2D2B; text-decoration: none;">Privacy Policy</a>
                           </p>
                         </td>
                       </tr>

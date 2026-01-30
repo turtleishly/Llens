@@ -69,7 +69,7 @@ const FoundingStory = () => {
                 </div>
                 <h3 className="text-xl font-semibold">Our First Initiative</h3>
                 <p className="text-muted-foreground">
-                  Our first initiative was a completely free 1:1 online tutoring program, pairing university students and young professionals from around the world with students preparing for their SPM exams. These students, nominated by teachers, were bright and motivated – but faced difficult environments that hindered their academic progress.
+                  Our first initiative was a fully sponsored 1:1 online tutoring program, pairing university students and young professionals from around the world with students preparing for their SPM exams. These students, nominated by teachers, were bright and motivated – but faced difficult environments that hindered their academic progress.
                 </p>
               </div>
             </BlurFade>

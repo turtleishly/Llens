@@ -1,7 +1,7 @@
-- **January 19, 2026:** Updated hosting domain to **naic.rakantutor.org** and simplified registration paths.
+- **January 19, 2026:** Updated hosting domain to **rakantutor.org** and simplified registration paths.
 - **January 19, 2026:** Added KPM approval, specified 10 winners per track, and updated timeline/prize details.
 
-# THE NATIONAL AI COMPETITION (naic.rakantutor.org)
+# THE NATIONAL AI COMPETITION (rakantutor.org)
 *(Approved by Kementerian Pendidikan Malaysia)*
 
 **The Largest AI Competition for Youths in Malaysia**
@@ -12,7 +12,7 @@
 - **Top 4-6 (Consolation):** Cash and Bursaries
 - **Winning Structure:** 6 winning teams per track (A total of 60 teams will advance to the Grand Finale)
 - **Registration Deadline:** 16 MARCH 2026
-- **Hosting URL:** [naic.rakantutor.org](https://naic.rakantutor.org)
+- **Hosting URL:** [rakantutor.org](https://rakantutor.org)
 - **Registration Path:** `/register`
 
 ## Competition Tracks

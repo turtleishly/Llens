@@ -79,8 +79,8 @@ serve(async (req) => {
 
             const purposeLabels: Record<string, string> = {
                 volunteer: "Volunteer as a workshop speaker",
-                host: "Host a free workshop in your school",
-                partner: "Partner with us to scale free AI education",
+                host: "Host an AI workshop in your school",
+                partner: "Partner with us to scale AI education",
                 other: "Other Enquiries",
             };
 

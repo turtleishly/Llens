@@ -17,8 +17,12 @@ import RakanTutorAbout from "./pages/RakanTutorAbout";
 import RakanTutorHistory from "./pages/RakanTutorHistory";
 import RakanTutorImpact from "./pages/RakanTutorImpact";
 import RakanTutorNews from "./pages/RakanTutorNews";
+import RakanTutorTerms from "./pages/RakanTutorTerms";
+import RakanTutorPrivacy from "./pages/RakanTutorPrivacy";
 import NotFound from "./pages/NotFound";
 import ScrollToHash from "./components/ScrollToHash";
+import Seo from "./components/Seo";
+import { isNaicRoute } from "./config/routes";
 
 const queryClient = new QueryClient();
 
@@ -26,8 +30,8 @@ const FaviconUpdater = () => {
   const location = useLocation();
 
   useEffect(() => {
-    const isNaicRoute = location.pathname.startsWith('/naic');
-    const faviconPath = isNaicRoute ? '/naic_logo_mark.png' : '/rakantutor_icon_only_square.png';
+    const path = location.pathname;
+    const faviconPath = isNaicRoute(path) ? '/naic_logo_mark.png' : '/rakantutor_icon_only_square.png';
 
     let link = document.querySelector("link[rel~='icon']") as HTMLLinkElement;
     if (!link) {
@@ -86,6 +90,7 @@ const App = () => {
         <BrowserRouter future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
           <FaviconUpdater />
           <ScrollToHash />
+          <Seo />
           <Routes>
             <Route path="/" element={<RakanTutor />} />
             <Route path="/about" element={<RakanTutorAbout />} />
@@ -93,13 +98,15 @@ const App = () => {
             <Route path="/impact" element={<RakanTutorImpact />} />
             <Route path="/news" element={<RakanTutorNews />} />
             <Route path="/contact" element={<RakanTutorContact />} />
+            <Route path="/terms" element={<RakanTutorTerms />} />
+            <Route path="/privacy" element={<RakanTutorPrivacy />} />
             <Route path="/naic" element={<Index />} />
             <Route path="/naic/register" element={<Register />} />
             <Route path="/naic/faq" element={<FAQ />} />
             <Route path="/naic/tracks" element={<Tracks />} />
             <Route path="/naic/contact" element={<Contacts />} />
-            <Route path="/privacy" element={<Privacy />} />
-            <Route path="/terms" element={<Terms />} />
+            <Route path="/naic/privacy" element={<Privacy />} />
+            <Route path="/naic/terms" element={<Terms />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>

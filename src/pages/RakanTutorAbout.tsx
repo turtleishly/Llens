@@ -19,7 +19,7 @@ const AboutHero = () => {
         </BlurFade>
         <BlurFade delay={0.2}>
           <p className="text-xl lg:text-2xl text-muted-foreground">
-            Empowering youth through free AI education
+            Empowering youth through AI education
           </p>
         </BlurFade>
       </div>
@@ -122,7 +122,7 @@ const OurValue = () => {
               </div>
               <h3 className="text-2xl md:text-3xl font-bold">Our Mission</h3>
               <p className="text-lg text-muted-foreground">
-                To provide free, high-quality educational programs that equip secondary school students with the skills and confidence to thrive in the AI-powered future and achieve their fullest potential.
+                To provide high-quality educational programs that equip secondary school students with the skills and confidence to thrive in the AI-powered future and achieve their fullest potential.
               </p>
             </div>
           </BlurFade>
