@@ -5,6 +5,8 @@ import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
 import rakanTutorHero from "/rakan_tutor_hero.png";
+import naicPhoto from "/naic2025photo.jpg";
+import naicLogo from "/naic_ai_logo_transparent.png";
 
 const RakanTutorHero = () => {
   const navigate = useNavigate();
@@ -153,6 +155,43 @@ const HybridApproach = () => {
           </BlurFade>
         </div>
 
+        {/* Flagship Event - NAIC */}
+        <BlurFade delay={0.25}>
+          <div className="mb-12 bg-gradient-to-br from-cyan-500/10 via-background to-blue-500/10 rounded-2xl p-8 md:p-12 border-2 border-cyan-500/20 shadow-xl">
+            <div className="grid md:grid-cols-2 gap-8 items-center">
+              <div className="space-y-6">
+                <div className="flex items-center gap-4">
+                  <img src={naicLogo} alt="NAIC Logo" className="h-16 w-16 object-contain" />
+                  <div>
+                    <div className="inline-block px-3 py-1 bg-cyan-500/20 text-cyan-700 dark:text-cyan-300 rounded-full text-sm font-semibold mb-2">
+                      Flagship Event
+                    </div>
+                    <h3 className="text-3xl md:text-4xl font-bold">National AI Competition</h3>
+                  </div>
+                </div>
+                <p className="text-lg text-muted-foreground">
+                  Malaysia's premier national AI competition bringing together secondary school students from across the country to solve real-world challenges using artificial intelligence. Students compete in tracks including AI for Education, AI for Healthcare, and AI for Sustainability, presenting their solutions to industry experts and competing for scholarships and prizes.
+                </p>
+                <Button
+                  size="lg"
+                  className="bg-cyan-500 hover:bg-cyan-600 text-white px-6 py-5 h-auto rounded-xl"
+                  onClick={() => navigate("/")}
+                >
+                  Learn More About NAIC
+                  <ArrowRight className="ml-2 h-5 w-5" />
+                </Button>
+              </div>
+              <div className="relative">
+                <img
+                  src={naicPhoto}
+                  alt="National AI Competition 2025 - Students presenting their AI projects"
+                  className="w-full h-auto rounded-xl shadow-2xl border border-border"
+                />
+              </div>
+            </div>
+          </div>
+        </BlurFade>
+
         <div className="grid md:grid-cols-3 gap-8">
           <BlurFade delay={0.3}>
             <div className="bg-card rounded-xl p-8 border border-border space-y-4 h-full">
@@ -219,9 +258,9 @@ const RakanTutor = () => {
       <Header />
       <main>
         <RakanTutorHero />
+        <HybridApproach />
         <OurValue />
         <ProblemStatement />
-        <HybridApproach />
         <CallToAction />
       </main>
       <Footer />
