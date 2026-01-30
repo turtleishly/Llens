@@ -2,7 +2,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import { useEffect } from "react";
 import Index from "./pages/Index";
 import Register from "./pages/Register";
@@ -21,6 +21,26 @@ import NotFound from "./pages/NotFound";
 import ScrollToHash from "./components/ScrollToHash";
 
 const queryClient = new QueryClient();
+
+const FaviconUpdater = () => {
+  const location = useLocation();
+
+  useEffect(() => {
+    const isNaicRoute = location.pathname.startsWith('/naic');
+    const faviconPath = isNaicRoute ? '/naic_logo_mark.png' : '/rakantutor_icon_only.png';
+
+    let link = document.querySelector("link[rel~='icon']") as HTMLLinkElement;
+    if (!link) {
+      link = document.createElement('link');
+      link.rel = 'icon';
+      document.head.appendChild(link);
+    }
+    link.type = 'image/png';
+    link.href = faviconPath;
+  }, [location.pathname]);
+
+  return null;
+};
 
 const App = () => {
   useEffect(() => {
@@ -64,6 +84,7 @@ const App = () => {
         <Toaster />
         <Sonner />
         <BrowserRouter future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
+          <FaviconUpdater />
           <ScrollToHash />
           <Routes>
             <Route path="/" element={<RakanTutor />} />

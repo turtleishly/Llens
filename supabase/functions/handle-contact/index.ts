@@ -127,7 +127,7 @@ serve(async (req) => {
                 throw new Error(`Failed to save to database: ${dbInsertResult.error.message}`);
             }
 
-            emailRecipients = ["mingjackt@sunway.edu.my", "clement@sunway.edu.my", "team@rakantutor.org", "ashvin.praveen@rakantutor.org"];
+            emailRecipients = ["mingjackt@sunway.edu.my", "clement@sunway.edu.my", "kaveen@rakantutor.org", "ashvin.praveen@rakantutor.org"];
             emailSubject = `NAIC Contact Form: ${contactData.subject}`;
             emailHtml = `
                 <!DOCTYPE html>
