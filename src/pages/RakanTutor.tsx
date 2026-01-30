@@ -35,7 +35,7 @@ const RakanTutorHero = () => {
                 <Button
                   size="lg"
                   className="text-base lg:text-lg px-6 lg:px-8 py-5 lg:py-6 h-auto rounded-xl"
-                  onClick={() => navigate("/rakantutor/contact")}
+                  onClick={() => navigate("/contact")}
                 >
                   Join us now
                   <ArrowRight className="ml-2 h-5 w-5" />
@@ -60,22 +60,7 @@ const RakanTutorHero = () => {
   );
 };
 
-const Programs = () => {
-  return (
-    <section className="py-20 px-4 md:px-8 bg-muted/30">
-      <div className="container max-w-7xl mx-auto">
-        <div className="text-center mb-16 space-y-4">
-          <BlurFade delay={0.1}>
-            <h2 className="text-3xl md:text-5xl font-bold">Future AI Leaders Academy</h2>
-          </BlurFade>
-          <BlurFade delay={0.2}>
-            <h3 className="text-2xl md:text-3xl font-semibold text-primary">RakanAI</h3>
-          </BlurFade>
-        </div>
-      </div>
-    </section>
-  );
-};
+
 
 const OurValue = () => {
   return (
@@ -168,9 +153,9 @@ const HybridApproach = () => {
           </BlurFade>
         </div>
 
-        <div className="space-y-12">
+        <div className="grid md:grid-cols-3 gap-8">
           <BlurFade delay={0.3}>
-            <div className="bg-card rounded-xl p-8 border border-border space-y-4">
+            <div className="bg-card rounded-xl p-8 border border-border space-y-4 h-full">
               <h3 className="text-2xl md:text-3xl font-bold">Future AI Leaders Academy</h3>
               <p className="text-lg text-muted-foreground">
                 We run 2-hour in-school workshops that introduce students to the world of AI in an inspiring and accessible way. Each session features a tech industry professional who shares their career journey, explains real-world AI applications, and leads a hands-on demo to spark curiosity and build foundational understanding.
@@ -179,7 +164,7 @@ const HybridApproach = () => {
           </BlurFade>
 
           <BlurFade delay={0.4}>
-            <div className="bg-card rounded-xl p-8 border border-border space-y-4">
+            <div className="bg-card rounded-xl p-8 border border-border space-y-4 h-full">
               <h3 className="text-2xl md:text-3xl font-bold">RakanAI</h3>
               <p className="text-lg text-muted-foreground">
                 Our gamified digital platform features bite-sized, self-paced nano-modules designed to build essential AI literacy. Learners explore topics like AI Art Generation, AI Ethics while earning digital badges and rewards along the way. The platform also fosters peer learning and discussions in a safe community.
@@ -188,7 +173,7 @@ const HybridApproach = () => {
           </BlurFade>
 
           <BlurFade delay={0.5}>
-            <div className="bg-card rounded-xl p-8 border border-border space-y-4">
+            <div className="bg-card rounded-xl p-8 border border-border space-y-4 h-full">
               <h3 className="text-2xl md:text-3xl font-bold">Community Partnerships</h3>
               <p className="text-lg text-muted-foreground">
                 We collaborate with like-minded organizations across ASEAN by offering free train-the-trainer programs and translated workshop materials. This enables local nonprofits to bring our AI workshops and digital learning platform directly into the communities they serve.
@@ -216,7 +201,7 @@ const CallToAction = () => {
             <Button
               size="lg"
               className="text-base lg:text-lg px-8 py-6 h-auto rounded-xl"
-              onClick={() => navigate("/rakantutor/contact")}
+              onClick={() => navigate("/contact")}
             >
               Join us now
               <ArrowRight className="ml-2 h-5 w-5" />
@@ -234,7 +219,6 @@ const RakanTutor = () => {
       <Header />
       <main>
         <RakanTutorHero />
-        <Programs />
         <OurValue />
         <ProblemStatement />
         <HybridApproach />

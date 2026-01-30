@@ -8,8 +8,8 @@ import { Download } from "lucide-react";
 import "react-pdf/dist/Page/AnnotationLayer.css";
 import "react-pdf/dist/Page/TextLayer.css";
 
-// Set up the worker for PDF.js
-pdfjs.GlobalWorkerOptions.workerSrc = `//unpkg.com/pdfjs-dist@${pdfjs.version}/build/pdf.worker.min.mjs`;
+// Set up the worker for PDF.js - use CDN with correct version
+pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.min.mjs`;
 
 const RakanTutorImpact = () => {
   const [numPages, setNumPages] = useState<number>(0);
@@ -92,7 +92,7 @@ const RakanTutorImpact = () => {
                       </div>
                     }
                   >
-                    {!loading && Array.from(new Array(numPages), (el, index) => (
+                    {!loading && Array.from(new Array(numPages), (_, index) => (
                       <div key={`page_${index + 1}`} className="mb-4 last:mb-0">
                         <Page
                           pageNumber={index + 1}
