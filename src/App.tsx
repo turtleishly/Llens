@@ -27,7 +27,7 @@ const FaviconUpdater = () => {
 
   useEffect(() => {
     const isNaicRoute = location.pathname.startsWith('/naic');
-    const faviconPath = isNaicRoute ? '/naic_logo_mark.png' : '/rakantutor_icon_only.png';
+    const faviconPath = isNaicRoute ? '/naic_logo_mark.png' : '/rakantutor_icon_only_square.png';
 
     let link = document.querySelector("link[rel~='icon']") as HTMLLinkElement;
     if (!link) {
