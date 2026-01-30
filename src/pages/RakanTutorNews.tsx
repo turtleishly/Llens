@@ -1,6 +1,7 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import BlurFade from "@/components/ui/blur-fade";
+import DitheredBackground from "@/components/DitheredBackground";
 import { ExternalLink } from "lucide-react";
 
 interface NewsArticle {
@@ -125,8 +126,12 @@ const RakanTutorNews = () => {
       <Header />
       <main>
         {/* Hero Section */}
-        <section className="relative min-h-[50vh] flex items-center justify-center py-20 px-4 md:px-8 bg-gradient-to-br from-primary/10 via-background to-background">
-          <div className="container max-w-5xl mx-auto text-center">
+        <section className="relative min-h-[50vh] flex items-center justify-center py-20 px-4 md:px-8 overflow-hidden">
+          <div className="absolute inset-0 bg-[linear-gradient(135deg,hsl(var(--hero-bg-from))_0%,hsl(var(--hero-bg-via))_45%,hsl(var(--hero-bg-to))_100%)]">
+            <DitheredBackground className="z-0" />
+          </div>
+
+          <div className="container relative z-10 max-w-5xl mx-auto text-center">
             <BlurFade delay={0.1}>
               <h1 className="text-5xl lg:text-7xl font-bold text-foreground leading-tight mb-6">
                 News & Media
