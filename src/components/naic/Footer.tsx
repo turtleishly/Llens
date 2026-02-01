@@ -56,11 +56,11 @@ const FooterNAIC = () => {
                 "text-lg transition-colors font-light",
                 isV2 ? "text-zinc-500 hover:text-cyan-400" : "text-foreground/70 hover:text-foreground"
               )}>{t("footer.contactUs")}</Link>
-              <Link to="/privacy" className={cn(
+              <Link to="/naic/privacy" className={cn(
                 "text-lg transition-colors font-light",
                 isV2 ? "text-zinc-500 hover:text-cyan-400" : "text-foreground/70 hover:text-foreground"
               )}>{t("footer.privacy")}</Link>
-              <Link to="/terms" className={cn(
+              <Link to="/naic/terms" className={cn(
                 "text-lg transition-colors font-light",
                 isV2 ? "text-zinc-500 hover:text-cyan-400" : "text-foreground/70 hover:text-foreground"
               )}>{t("footer.terms")}</Link>

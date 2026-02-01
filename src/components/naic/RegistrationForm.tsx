@@ -381,7 +381,7 @@ const RegistrationForm = () => {
       clearSavedData();
 
       setTimeout(() => {
-        navigate("/");
+        navigate("/naic");
       }, 3000);
     } catch (error) {
       console.error("Submission error:", error);
@@ -441,7 +441,7 @@ const RegistrationForm = () => {
   };
   return <section id="registration" className="fixed inset-0 bg-background overflow-hidden">
     {/* Exit Button */}
-    <button onClick={() => navigate("/")} className="fixed top-4 right-4 z-50 p-2 rounded-full hover:bg-secondary/80 transition-colors" aria-label="Exit registration">
+    <button onClick={() => navigate("/naic")} className="fixed top-4 right-4 z-50 p-2 rounded-full hover:bg-secondary/80 transition-colors" aria-label="Exit registration">
       <X className="w-5 h-5" />
     </button>
 
@@ -621,11 +621,11 @@ function WelcomeStep({
         </p>
         <p className="text-sm text-foreground">
           By proceeding, you agree to our{" "}
-          <Link to="/terms" target="_blank" className="text-primary hover:underline font-medium">
+          <Link to="/naic/terms" target="_blank" className="text-primary hover:underline font-medium">
             Terms and Conditions
           </Link>
           {" "}and{" "}
-          <Link to="/privacy" target="_blank" className="text-primary hover:underline font-medium">
+          <Link to="/naic/privacy" target="_blank" className="text-primary hover:underline font-medium">
             Privacy Policy
           </Link>
           .
@@ -1019,11 +1019,11 @@ function ReviewStep({
         <h4 className="font-medium">Terms and Conditions</h4>
         <p className="text-sm text-muted-foreground">
           Please read and agree to the{" "}
-          <Link to="/terms" target="_blank" className="underline hover:text-foreground">
+          <Link to="/naic/terms" target="_blank" className="underline hover:text-foreground">
             terms and conditions
           </Link>{" "}
           and{" "}
-          <Link to="/privacy" target="_blank" className="underline hover:text-foreground">
+          <Link to="/naic/privacy" target="_blank" className="underline hover:text-foreground">
             privacy policy
           </Link>
           .

@@ -1,4 +1,4 @@
-import MeetTheTeamTemplate from "./MeetTheTeamTemplate";
+import MeetTheTeamTemplate from "./Template";
 import { Card, CardContent } from "@/components/ui/card";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
 import BlurFade from "@/components/ui/blur-fade";

@@ -1,11 +1,11 @@
 import Header from "@/components/Header";
-import EventOverview from "@/components/EventOverview";
-import Tracks from "@/components/Tracks";
-import Prizes from "@/components/Prizes";
-import HowToApply from "@/components/HowToApply";
-import Timeline from "@/components/Timeline";
-import CTA from "@/components/CTA";
-import FAQ from "@/components/FAQ";
+import EventOverview from "@/components/naic/EventOverview";
+import TracksSection from "@/components/naic/TracksSection";
+import Prizes from "@/components/naic/Prizes";
+import HowToApply from "@/components/naic/HowToApply";
+import Timeline from "@/components/naic/Timeline";
+import CTA from "@/components/naic/CTA";
+import FAQSection from "@/components/naic/FAQSection";
 import Footer from "@/components/Footer";
 import BlurFade from "@/components/ui/blur-fade";
 import AsSeenOn from "@/components/AsSeenOn";
@@ -65,7 +65,7 @@ const NewHero = () => {
                 </Button>
                 <p className="text-sm text-muted-foreground">
                   {t("hero.termsText")}
-                  <a href="/terms" className="underline hover:text-foreground transition-colors">
+                  <a href="/naic/terms" className="underline hover:text-foreground transition-colors">
                     {t("hero.termsLink")}
                   </a>
                 </p>
@@ -148,7 +148,7 @@ const Index = () => {
           <EventOverview />
         </BlurFade>
         <BlurFade inView>
-          <Tracks />
+          <TracksSection />
         </BlurFade>
         <BlurFade inView>
           <Prizes />
@@ -161,7 +161,7 @@ const Index = () => {
         </BlurFade>
         <CTA />
         <BlurFade inView>
-          <FAQ />
+          <FAQSection />
         </BlurFade>
       </main>
       <Footer />

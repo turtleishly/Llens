@@ -4,26 +4,33 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import { useEffect } from "react";
-import Index from "./pages/Index";
-import Register from "./pages/Register";
-import Privacy from "./pages/Privacy";
-import Terms from "./pages/Terms";
-import FAQ from "./pages/FAQ";
-import Contacts from "./pages/Contact";
-import RakanTutorContact from "./pages/RakanTutorContact";
-import Tracks from "./pages/Tracks";
-import RakanTutor from "./pages/RakanTutor";
-import RakanTutorAbout from "./pages/RakanTutorAbout";
-import RakanTutorHistory from "./pages/RakanTutorHistory";
-import RakanTutorImpact from "./pages/RakanTutorImpact";
-import RakanTutorNews from "./pages/RakanTutorNews";
-import RakanTutorTerms from "./pages/RakanTutorTerms";
-import RakanTutorPrivacy from "./pages/RakanTutorPrivacy";
-import MeetTheTeam from "./pages/MeetTheTeam";
-import MeetTheTeam2024 from "./pages/MeetTheTeam2024";
-import MeetTheTeam2023 from "./pages/MeetTheTeam2023";
-import MeetTheTeam2022 from "./pages/MeetTheTeam2022";
-import MeetTheTeam2021 from "./pages/MeetTheTeam2021";
+// NAIC Pages
+import NaicHome from "./pages/naic/NaicHome";
+import Register from "./pages/naic/Register";
+import NaicPrivacy from "./pages/naic/Privacy";
+import NaicTerms from "./pages/naic/Terms";
+import FAQ from "./pages/naic/FAQ";
+import NaicContact from "./pages/naic/Contact";
+import Tracks from "./pages/naic/Tracks";
+
+// Rakan Tutor Pages
+import RakanTutor from "./pages/rakantutor/Home";
+import RakanTutorAbout from "./pages/rakantutor/About";
+import RakanTutorContact from "./pages/rakantutor/Contact";
+import RakanTutorHistory from "./pages/rakantutor/History";
+import RakanTutorImpact from "./pages/rakantutor/Impact";
+import RakanTutorNews from "./pages/rakantutor/News";
+import RakanTutorTerms from "./pages/rakantutor/Terms";
+import RakanTutorPrivacy from "./pages/rakantutor/Privacy";
+
+// Team Pages
+import MeetTheTeam from "./pages/rakantutor/team/Current";
+import MeetTheTeam2024 from "./pages/rakantutor/team/Year2024";
+import MeetTheTeam2023 from "./pages/rakantutor/team/Year2023";
+import MeetTheTeam2022 from "./pages/rakantutor/team/Year2022";
+import MeetTheTeam2021 from "./pages/rakantutor/team/Year2021";
+
+// Other
 import NotFound from "./pages/NotFound";
 import ScrollToHash from "./components/ScrollToHash";
 import Seo from "./components/Seo";
@@ -110,13 +117,13 @@ const App = () => {
             <Route path="/meet-the-team-2023-2024" element={<MeetTheTeam2023 />} />
             <Route path="/meet-the-team-2022-2023" element={<MeetTheTeam2022 />} />
             <Route path="/meet-the-team-2021-2022" element={<MeetTheTeam2021 />} />
-            <Route path="/naic" element={<Index />} />
+            <Route path="/naic" element={<NaicHome />} />
             <Route path="/naic/register" element={<Register />} />
             <Route path="/naic/faq" element={<FAQ />} />
             <Route path="/naic/tracks" element={<Tracks />} />
-            <Route path="/naic/contact" element={<Contacts />} />
-            <Route path="/naic/privacy" element={<Privacy />} />
-            <Route path="/naic/terms" element={<Terms />} />
+            <Route path="/naic/contact" element={<NaicContact />} />
+            <Route path="/naic/privacy" element={<NaicPrivacy />} />
+            <Route path="/naic/terms" element={<NaicTerms />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>
