@@ -12,7 +12,7 @@ interface MeetTheTeamTemplateProps {
 
 const MeetTheTeamHero = ({ title }: { title: string }) => {
     return (
-        <section className="relative min-h-[40vh] flex items-center justify-center py-20 px-4 md:px-8 overflow-hidden">
+        <section className="relative min-h-[40vh] flex items-center justify-center pt-32 pb-20 md:pt-40 md:pb-24 px-4 md:px-8 overflow-hidden">
             <div className="absolute inset-0 bg-[linear-gradient(135deg,hsl(var(--hero-bg-from))_0%,hsl(var(--hero-bg-via))_45%,hsl(var(--hero-bg-to))_100%)]">
                 <DitheredBackground className="z-0" />
             </div>
