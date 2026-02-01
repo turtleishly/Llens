@@ -1,5 +1,5 @@
 # Kaveen's Notes on using vibecoding
-
+hi
 ## How to make changes with AI (Vibe Coding)
 
 If you're new to using AI for coding, don't worry! It's like having a helpful partner. Here is a simple guide to get you started:
