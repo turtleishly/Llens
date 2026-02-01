@@ -17,9 +17,9 @@ const Footer = () => {
       {isV2 && <div className="absolute inset-0 cyber-grid opacity-10 pointer-events-none" />}
 
       <div className="container mx-auto relative z-10">
-        <div className="flex flex-col md:flex-row items-start justify-between gap-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12">
           {/* Logo and Tagline */}
-          <div className="space-y-6 max-w-sm">
+          <div className="space-y-6 lg:col-span-2">
             <div className="flex items-center gap-3">
               <img
                 src={isRakanTutorPage ? rakanTutorIcon : "/naic_logo_mark.png"}
@@ -42,27 +42,92 @@ const Footer = () => {
             </p>
           </div>
 
-          {/* Navigation Links */}
-          <div className="space-y-4">
-            <p className={cn(
-              "text-xs font-semibold uppercase tracking-[0.3em]",
-              isV2 ? "text-cyan-500/40" : "text-muted-foreground/40"
-            )}>{isRakanTutorPage ? "Quick Links" : t("footer.support")}</p>
-            <nav className="flex flex-col gap-3">
-              {isRakanTutorPage ? (
-                <>
-                  <Link to="/naic" className="text-lg transition-colors font-light text-foreground/70 hover:text-foreground">
-                    NAIC 2026
-                  </Link>
+          {/* Rakan Tutor Footer - Multiple columns */}
+          {isRakanTutorPage ? (
+            <>
+              {/* About Column */}
+              <div className="space-y-4">
+                <p className={cn(
+                  "text-xs font-semibold uppercase tracking-[0.3em]",
+                  isV2 ? "text-cyan-500/40" : "text-muted-foreground/40"
+                )}>About</p>
+                <nav className="flex flex-col gap-3">
                   <Link to="/about" className="text-lg transition-colors font-light text-foreground/70 hover:text-foreground">
-                    About
+                    About Us
+                  </Link>
+                  <Link to="/history" className="text-lg transition-colors font-light text-foreground/70 hover:text-foreground">
+                    Our History
+                  </Link>
+                  <Link to="/impact" className="text-lg transition-colors font-light text-foreground/70 hover:text-foreground">
+                    Impact
+                  </Link>
+                  <Link to="/meet-the-team" className="text-lg transition-colors font-light text-foreground/70 hover:text-foreground">
+                    Meet the Team
+                  </Link>
+                </nav>
+              </div>
+
+              {/* NAIC & Resources Column */}
+              <div className="space-y-4">
+                <p className={cn(
+                  "text-xs font-semibold uppercase tracking-[0.3em]",
+                  isV2 ? "text-cyan-500/40" : "text-muted-foreground/40"
+                )}>NAIC 2026</p>
+                <nav className="flex flex-col gap-3">
+                  <Link to="/naic" className="text-lg transition-colors font-light text-foreground/70 hover:text-foreground">
+                    NAIC Home
+                  </Link>
+                  <Link to="/naic/tracks" className="text-lg transition-colors font-light text-foreground/70 hover:text-foreground">
+                    Competition Tracks
+                  </Link>
+                  <Link to="/naic/register" className="text-lg transition-colors font-light text-foreground/70 hover:text-foreground">
+                    Register
+                  </Link>
+                  <Link to="/naic/faq" className="text-lg transition-colors font-light text-foreground/70 hover:text-foreground">
+                    FAQ
+                  </Link>
+                </nav>
+              </div>
+
+              {/* Connect Column */}
+              <div className="space-y-4">
+                <p className={cn(
+                  "text-xs font-semibold uppercase tracking-[0.3em]",
+                  isV2 ? "text-cyan-500/40" : "text-muted-foreground/40"
+                )}>Connect</p>
+                <nav className="flex flex-col gap-3">
+                  <a
+                    href="https://www.notion.so/Rakan-Tutor-is-Recruiting-2ec310a98cfb813e84fcdf0937868586?source=copy_link"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-lg transition-colors font-light text-foreground/70 hover:text-foreground"
+                  >
+                    Join Us
+                  </a>
+                  <Link to="/news" className="text-lg transition-colors font-light text-foreground/70 hover:text-foreground">
+                    News
                   </Link>
                   <Link to="/contact" className="text-lg transition-colors font-light text-foreground/70 hover:text-foreground">
                     Contact
                   </Link>
-                </>
-              ) : (
-                <>
+                  <Link to="/privacy" className="text-lg transition-colors font-light text-foreground/70 hover:text-foreground">
+                    Privacy
+                  </Link>
+                  <Link to="/terms" className="text-lg transition-colors font-light text-foreground/70 hover:text-foreground">
+                    Terms
+                  </Link>
+                </nav>
+              </div>
+            </>
+          ) : (
+            <>
+              {/* NAIC Footer - Keep existing structure */}
+              <div className="space-y-4">
+                <p className={cn(
+                  "text-xs font-semibold uppercase tracking-[0.3em]",
+                  isV2 ? "text-cyan-500/40" : "text-muted-foreground/40"
+                )}>{t("footer.support")}</p>
+                <nav className="flex flex-col gap-3">
                   <Link to="/naic/tracks" className={cn(
                     "text-lg transition-colors font-light",
                     isV2 ? "text-zinc-500 hover:text-cyan-400" : "text-foreground/70 hover:text-foreground"
@@ -83,43 +148,40 @@ const Footer = () => {
                     "text-lg transition-colors font-light",
                     isV2 ? "text-zinc-500 hover:text-cyan-400" : "text-foreground/70 hover:text-foreground"
                   )}>{t("footer.terms")}</Link>
-                </>
-              )}
-            </nav>
-          </div>
+                </nav>
+              </div>
 
-          {/* Learn More - Only show on NAIC pages */}
-          {!isRakanTutorPage && (
-            <div className="space-y-4">
-              <p className={cn(
-                "text-xs font-semibold uppercase tracking-[0.3em]",
-                isV2 ? "text-cyan-500/40" : "text-muted-foreground/40"
-              )}>Learn More</p>
-              <nav className="flex flex-col gap-3">
-                <a
-                  href="https://rakantutor.org"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={cn(
-                    "text-lg transition-colors font-light",
-                    isV2 ? "text-zinc-500 hover:text-cyan-400" : "text-foreground/70 hover:text-foreground"
-                  )}
-                >
-                  Rakan Tutor
-                </a>
-                <a
-                  href="https://sunwayuniversity.edu.my/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={cn(
-                    "text-lg transition-colors font-light",
-                    isV2 ? "text-zinc-500 hover:text-cyan-400" : "text-foreground/70 hover:text-foreground"
-                  )}
-                >
-                  Sunway
-                </a>
-              </nav>
-            </div>
+              <div className="space-y-4">
+                <p className={cn(
+                  "text-xs font-semibold uppercase tracking-[0.3em]",
+                  isV2 ? "text-cyan-500/40" : "text-muted-foreground/40"
+                )}>Learn More</p>
+                <nav className="flex flex-col gap-3">
+                  <a
+                    href="https://rakantutor.org"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={cn(
+                      "text-lg transition-colors font-light",
+                      isV2 ? "text-zinc-500 hover:text-cyan-400" : "text-foreground/70 hover:text-foreground"
+                    )}
+                  >
+                    Rakan Tutor
+                  </a>
+                  <a
+                    href="https://sunwayuniversity.edu.my/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={cn(
+                      "text-lg transition-colors font-light",
+                      isV2 ? "text-zinc-500 hover:text-cyan-400" : "text-foreground/70 hover:text-foreground"
+                    )}
+                  >
+                    Sunway
+                  </a>
+                </nav>
+              </div>
+            </>
           )}
         </div>
 

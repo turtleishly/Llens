@@ -19,7 +19,9 @@ const Header = () => {
   const location = useLocation();
   const isV2 = location.pathname === "/v2";
   const [isNaicOpen, setIsNaicOpen] = useState(false);
+  const [isAboutOpen, setIsAboutOpen] = useState(false);
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const aboutTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   const handleMouseEnter = () => {
     if (timeoutRef.current) clearTimeout(timeoutRef.current);
@@ -32,8 +34,20 @@ const Header = () => {
     }, 300);
   };
 
+  const handleAboutMouseEnter = () => {
+    if (aboutTimeoutRef.current) clearTimeout(aboutTimeoutRef.current);
+    setIsAboutOpen(true);
+  };
+
+  const handleAboutMouseLeave = () => {
+    aboutTimeoutRef.current = setTimeout(() => {
+      setIsAboutOpen(false);
+    }, 300);
+  };
+
   useEffect(() => {
     setIsNaicOpen(false);
+    setIsAboutOpen(false);
   }, [location.pathname]);
 
   useEffect(() => {
@@ -57,10 +71,9 @@ const Header = () => {
   const isNaicPage = location.pathname.startsWith("/naic");
 
   const navLinks = [
-    { label: "About", href: "/about" },
-    { label: "History", href: "/history" },
+    { label: "About", href: "/about", isDropdown: true },
     { label: "Impact", href: "/impact" },
-    { label: "News & Media", href: "/news" },
+    { label: "News", href: "/news" },
     { label: "NAIC 2026", href: "/naic" },
     { label: "Contact", href: "/contact" },
   ];
@@ -97,6 +110,50 @@ const Header = () => {
             {/* Center: Desktop Navigation */}
             <nav className="hidden lg:flex items-center gap-10">
               {navLinks.map((link) => {
+                if (link.label === "About") {
+                  return (
+                    <DropdownMenu key={link.label} open={isAboutOpen} onOpenChange={setIsAboutOpen} modal={false}>
+                      <div
+                        onMouseEnter={handleAboutMouseEnter}
+                        onMouseLeave={handleAboutMouseLeave}
+                        className="flex items-center h-full"
+                      >
+                        <DropdownMenuTrigger
+                          className={cn(
+                            "flex items-center gap-1 text-base font-medium font-display transition-all tracking-wide outline-none",
+                            isV2
+                              ? "text-zinc-400 hover:text-cyan-400 uppercase font-black italic text-sm"
+                              : "text-foreground/70 hover:text-foreground"
+                          )}
+                          asChild
+                        >
+                          <Link to={link.href} className="flex items-center gap-1 py-2">
+                            {link.label}
+                            <ChevronDown className="h-4 w-4" />
+                          </Link>
+                        </DropdownMenuTrigger>
+                      </div>
+                      <DropdownMenuContent
+                        align="center"
+                        sideOffset={0}
+                        className="bg-background/95 backdrop-blur-md border-border/50 rounded-sm p-1 w-48 shadow-2xl"
+                        onMouseEnter={handleAboutMouseEnter}
+                        onMouseLeave={handleAboutMouseLeave}
+                      >
+                        <DropdownMenuItem asChild>
+                          <Link to="/about" className="cursor-pointer">About Us</Link>
+                        </DropdownMenuItem>
+                        <DropdownMenuItem asChild>
+                          <Link to="/history" className="cursor-pointer">Our History</Link>
+                        </DropdownMenuItem>
+                        <DropdownMenuItem asChild>
+                          <Link to="/meet-the-team" className="cursor-pointer">Meet the Team</Link>
+                        </DropdownMenuItem>
+                      </DropdownMenuContent>
+                    </DropdownMenu>
+                  );
+                }
+
                 if (link.label === "NAIC 2026") {
                   return (
                     <DropdownMenu key={link.label} open={isNaicOpen} onOpenChange={setIsNaicOpen} modal={false}>
@@ -269,6 +326,23 @@ const Header = () => {
             {/* Mobile Menu Content */}
             <nav className="flex-1 overflow-y-auto py-10 px-8 flex flex-col gap-8">
               {navLinks.map((link, index) => {
+                if (link.label === "About") {
+                  return (
+                    <div key={link.label} className="flex flex-col gap-4">
+                      <span className={cn(
+                        "text-2xl font-bold font-display tracking-tight text-primary",
+                        isV2 && "text-cyan-400 uppercase italic font-black"
+                      )}>
+                        {link.label}
+                      </span>
+                      <div className="flex flex-col gap-3 pl-4 border-l-2 border-primary/20">
+                        <Link to="/about" onClick={() => setIsMenuOpen(false)} className="text-xl font-medium text-foreground/80 hover:text-foreground">About Us</Link>
+                        <Link to="/history" onClick={() => setIsMenuOpen(false)} className="text-xl font-medium text-foreground/80 hover:text-foreground">Our History</Link>
+                        <Link to="/meet-the-team" onClick={() => setIsMenuOpen(false)} className="text-xl font-medium text-foreground/80 hover:text-foreground">Meet the Team</Link>
+                      </div>
+                    </div>
+                  );
+                }
                 if (link.label === "NAIC 2026") {
                   return (
                     <div key={link.label} className="flex flex-col gap-4">
