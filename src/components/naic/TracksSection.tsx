@@ -15,35 +15,35 @@ const Tracks = () => {
       title: t("tracks.innovation.title"),
       description: t("tracks.innovation.description"),
       bgColor: "bg-[#F0F4E8] dark:bg-emerald-950/20",
-      href: "/tracks#innovation"
+      href: "/naic/tracks#innovation"
     },
     {
       emoji: "⚙️",
       title: t("tracks.engineering.title"),
       description: t("tracks.engineering.description"),
       bgColor: "bg-[#FDF6E3] dark:bg-amber-950/20",
-      href: "/tracks#engineering"
+      href: "/naic/tracks#engineering"
     },
     {
       emoji: "🎬",
       title: t("tracks.genai.title"),
       description: t("tracks.genai.description"),
       bgColor: "bg-[#F5F0F9] dark:bg-purple-950/20",
-      href: "/tracks#genai"
+      href: "/naic/tracks#genai"
     },
     {
       emoji: "💻",
       title: t("tracks.computing.title"),
       description: t("tracks.computing.description"),
       bgColor: "bg-[#E6F4F1] dark:bg-cyan-950/20",
-      href: "/tracks#computing"
+      href: "/naic/tracks#computing"
     },
     {
       emoji: "🏛️",
       title: t("tracks.architecture.title"),
       description: t("tracks.architecture.description"),
       bgColor: "bg-[#FBE9E9] dark:bg-rose-950/20",
-      href: "/tracks#architecture"
+      href: "/naic/tracks#architecture"
     },
   ];
 
