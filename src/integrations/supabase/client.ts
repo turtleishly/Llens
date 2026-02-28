@@ -4,14 +4,44 @@ import type { Database } from './types';
 
 const SUPABASE_URL = import.meta.env.VITE_SUPABASE_URL;
 const SUPABASE_PUBLISHABLE_KEY = import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY;
+const hasSupabaseConfig = Boolean(SUPABASE_URL && SUPABASE_PUBLISHABLE_KEY);
 
 // Import the supabase client like this:
 // import { supabase } from "@/integrations/supabase/client";
 
-export const supabase = createClient<Database>(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY, {
-  auth: {
-    storage: localStorage,
-    persistSession: true,
-    autoRefreshToken: true,
-  }
-});
+const createMockSupabaseClient = () => {
+  const mockResponse = async () => ({ data: { mocked: true }, error: null });
+
+  return {
+    functions: {
+      invoke: mockResponse,
+    },
+    from: () => ({
+      insert: mockResponse,
+      update: mockResponse,
+      upsert: mockResponse,
+      delete: mockResponse,
+      select: mockResponse,
+      single: mockResponse,
+    }),
+    auth: {
+      getSession: mockResponse,
+      signInWithPassword: mockResponse,
+      signOut: mockResponse,
+    },
+  } as unknown as ReturnType<typeof createClient<Database>>;
+};
+
+export const supabase = hasSupabaseConfig
+  ? createClient<Database>(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY, {
+      auth: {
+        storage: localStorage,
+        persistSession: true,
+        autoRefreshToken: true,
+      },
+    })
+  : createMockSupabaseClient();
+
+if (!hasSupabaseConfig) {
+  console.warn('[Supabase] Missing VITE_SUPABASE_URL or VITE_SUPABASE_PUBLISHABLE_KEY. Using mock client.');
+}

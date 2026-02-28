@@ -18,6 +18,7 @@ const Header = () => {
   const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
   const isV2 = location.pathname === "/v2";
+  const isHome = location.pathname === "/";
   const [isNaicOpen, setIsNaicOpen] = useState(false);
   const [isAboutOpen, setIsAboutOpen] = useState(false);
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
@@ -252,6 +253,23 @@ const Header = () => {
               {i18n.language.startsWith("en") ? "EN" : "BM"}
             </Button> */}
 
+              {isHome && !isNaicPage && (
+                <div className="hidden lg:block">
+                  <Button
+                    asChild
+                    size="sm"
+                    variant="outline"
+                    className={cn(
+                      "h-10 rounded-full px-5 text-sm font-semibold",
+                      isV2
+                        ? "border-cyan-500 text-cyan-400 hover:bg-cyan-950"
+                        : "border-border text-foreground hover:bg-muted"
+                    )}
+                  >
+                    <Link to="/llens/start">LLens</Link>
+                  </Button>
+                </div>
+              )}
               <div className="hidden lg:block">
                 <Button
                   asChild

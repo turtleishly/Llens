@@ -96,6 +96,18 @@
       "destination": "/naic/privacy/index.html"
     },
     {
+      "source": "/llens/guide",
+      "destination": "/llens/guide/index.html"
+    },
+    {
+      "source": "/llens/chapter-1",
+      "destination": "/llens/chapter-1/index.html"
+    },
+    {
+      "source": "/llens/chapter-2",
+      "destination": "/llens/chapter-2/index.html"
+    },
+    {
       "source": "/(.*)",
       "destination": "/index.html"
     }

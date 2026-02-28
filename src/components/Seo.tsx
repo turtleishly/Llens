@@ -132,6 +132,21 @@ const ROUTE_OVERRIDES: Record<string, Partial<SeoConfig>> = {
     description:
       "NAIC '26 privacy policy outlining how personal data is collected and protected.",
   },
+  "/llens/chapter-1": {
+    title: "LLens Chapter 1 | Token Foundations",
+    description:
+      "Chapter 1 of LLens: learn how tokenization works and why whitespace changes meaning.",
+  },
+  "/llens/chapter-2": {
+    title: "LLens Chapter 2 | How LLMs Generate",
+    description:
+      "Chapter 2 of LLens: explore next-token prediction with a guided guessing game.",
+  },
+  "/llens/guide": {
+    title: "LLens Chapter 1 | Token Foundations",
+    description:
+      "Chapter 1 of LLens: learn how tokenization works and why whitespace changes meaning.",
+  },
 };
 
 const normalizePath = (pathname: string) => {
