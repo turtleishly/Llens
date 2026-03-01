@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { Input } from "@/components/ui/input";
 import Confetti from "react-confetti";
+import { getLlensWorker, isLlensModelReady, preloadLlensModel } from "@/workers/llensWorkerSingleton";
 
 const fallbackTokenize = (value: string) => value.match(/\s+|[^\s]+/g) ?? [];
 
@@ -164,9 +165,7 @@ export default function LlensHome() {
   const tokensMemo = useMemo(() => tokens, [tokens]);
 
   const createWorker = () => {
-    const worker = new Worker(new URL("../../workers/llens.worker.ts", import.meta.url), {
-      type: "module",
-    });
+    const worker = getLlensWorker();
 
     const requestLatestPredictions = (nextTokenIds: number[]) => {
       if (nextTokenIds.length === 0) {
@@ -265,13 +264,21 @@ export default function LlensHome() {
     }, 1200);
 
     const worker = createWorker();
-    setIsModelLoading(true);
-    worker.postMessage({ type: "load" });
+
+    if (isLlensModelReady()) {
+      // Model already loaded while on the start screen — skip the wait
+      setIsModelReady(true);
+      setIsModelLoading(false);
+      worker.postMessage({ type: "tokenize", text });
+    } else {
+      setIsModelLoading(true);
+      preloadLlensModel(); // no-op if already requested
+    }
 
     return () => {
       window.removeEventListener("resize", syncWindowSize);
       window.clearTimeout(hideTimeout);
-      worker.terminate();
+      // Don't terminate — worker is shared; just detach
       workerRef.current = null;
     };
   }, []);
@@ -917,7 +924,14 @@ export default function LlensHome() {
             )}
 
             {currentGuideStep.id === "guide-mismatch-found" && (
-              <div className="mt-3 flex items-center justify-end">
+              <div className="mt-3 flex items-center justify-between">
+                <button
+                  type="button"
+                  className="text-xs text-muted-foreground hover:text-foreground transition-colors"
+                  onClick={() => setGuideStepIndex(guideSteps.length - 1)}
+                >
+                  Skip
+                </button>
                 <Button type="button" size="sm" onClick={() => setGuideStepIndex(6)}>
                   Next
                 </Button>
@@ -929,6 +943,18 @@ export default function LlensHome() {
                 <Button type="button" size="sm" onClick={() => setIsGuideOpen(false)}>
                   Complete
                 </Button>
+              </div>
+            )}
+
+            {currentGuideStep.id !== "guide-mismatch-found" && currentGuideStep.id !== "guide-examples" && (
+              <div className="mt-3 flex items-center justify-end">
+                <button
+                  type="button"
+                  className="text-xs text-muted-foreground hover:text-foreground transition-colors"
+                  onClick={() => setGuideStepIndex(guideSteps.length - 1)}
+                >
+                  Skip
+                </button>
               </div>
             )}
 

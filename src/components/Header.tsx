@@ -296,6 +296,21 @@ const Header = () => {
 
               {/* Mobile Menu Button - now integrated into the right container */}
               <div className="flex items-center gap-4 lg:hidden">
+                {isHome && !isNaicPage && (
+                  <Button
+                    asChild
+                    size="sm"
+                    variant="outline"
+                    className={cn(
+                      "h-8 rounded-full px-4 text-xs font-semibold",
+                      isV2
+                        ? "border-cyan-500 text-cyan-400 hover:bg-cyan-950"
+                        : "border-border text-foreground hover:bg-muted"
+                    )}
+                  >
+                    <Link to="/llens/start">LLens</Link>
+                  </Button>
+                )}
                 {/* Language Switcher - Hidden */}
                 {/* <Button
                 variant="ghost"
@@ -411,7 +426,21 @@ const Header = () => {
                 );
               })}
 
-              <div className="mt-auto pt-10">
+              <div className="mt-auto pt-10 flex flex-col gap-3">
+                {isHome && !isNaicPage && (
+                  <Button
+                    asChild
+                    variant="outline"
+                    className={cn(
+                      "w-full h-12 text-lg font-semibold rounded-full",
+                      isV2
+                        ? "border-cyan-500 text-cyan-400 hover:bg-cyan-950"
+                        : "border-border text-foreground hover:bg-muted"
+                    )}
+                  >
+                    <Link to="/llens/start" onClick={() => setIsMenuOpen(false)}>LLens</Link>
+                  </Button>
+                )}
                 <Button
                   asChild
                   className={cn(

@@ -1,8 +1,14 @@
+import { useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
+import { preloadLlensModel } from "@/workers/llensWorkerSingleton";
 
 export default function LlensStart() {
   const navigate = useNavigate();
+
+  useEffect(() => {
+    preloadLlensModel();
+  }, []);
 
   return (
     <div className="group min-h-screen bg-background text-foreground flex items-center justify-center relative overflow-hidden">
