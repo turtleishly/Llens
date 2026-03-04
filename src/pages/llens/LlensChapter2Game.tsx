@@ -45,9 +45,12 @@ export default function LlensChapter2Game() {
   const [selectedPrediction, setSelectedPrediction] = useState<string | null>(null);
 
   const { flash, registerRef, activeId } = useGuideFlash();
+  const hasLockedAnswer = selectedPrediction !== null;
 
   // Flash question on mount, then guide eyes to the context box after 5 s
   useEffect(() => {
+    if (hasLockedAnswer) return;
+
     const t1 = window.setTimeout(() => flash("question-box"), 400);
     const t2 = window.setTimeout(() => flash("context-box"), 3400);
     const t3 = window.setTimeout(() => flash("predictions-box"), 8400);
@@ -56,8 +59,7 @@ export default function LlensChapter2Game() {
       window.clearTimeout(t2);
       window.clearTimeout(t3);
     };
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [flash, hasLockedAnswer]);
 
   const chapterTwoTokens = useMemo(() => chapterTwoStaticTokens, []);
   const chapterTwoOptions = useMemo(
@@ -71,7 +73,6 @@ export default function LlensChapter2Game() {
       chapterTwoOptions[0]
     );
   }, [chapterTwoOptions, selectedPrediction]);
-  const hasLockedAnswer = selectedPrediction !== null;
 
   // ── Sub-panels ───────────────────────────────────────────────────────────
 
@@ -84,7 +85,7 @@ export default function LlensChapter2Game() {
 
       <GuidedFlash
         ref={registerRef("question-box")}
-        isActive={activeId === "question-box"}
+        isActive={activeId === "question-box" && !hasLockedAnswer}
         className="rounded-2xl"
       >
       <div className="rounded-2xl border border-border/60 bg-card/85 p-6 shadow-sm space-y-4">
@@ -135,7 +136,7 @@ export default function LlensChapter2Game() {
       {/* Context */}
       <GuidedFlash
         ref={registerRef("context-box")}
-        isActive={activeId === "context-box"}
+        isActive={activeId === "context-box" && !hasLockedAnswer}
         className="rounded-2xl"
       >
       <div className="space-y-2">
@@ -159,7 +160,7 @@ export default function LlensChapter2Game() {
       {/* Predictions */}
       <GuidedFlash
         ref={registerRef("predictions-box")}
-        isActive={activeId === "predictions-box"}
+        isActive={activeId === "predictions-box" && !hasLockedAnswer}
         className="rounded-2xl"
       >
       <div className="space-y-3">

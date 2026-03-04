@@ -50,7 +50,7 @@ export function ChapterTopBar({
             to="/"
             className="text-base font-semibold uppercase tracking-[0.35em] text-muted-foreground hover:text-foreground transition"
           >
-            Rakan Tutor
+            Llens
           </Link>
 
           <div className="flex items-center gap-4 md:gap-6">

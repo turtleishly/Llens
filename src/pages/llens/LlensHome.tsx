@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { Input } from "@/components/ui/input";
 import Confetti from "react-confetti";
+import { GuidedFlash } from "@/components/llens/GuidedFlash";
 import { getLlensWorker, isLlensModelReady, preloadLlensModel } from "@/workers/llensWorkerSingleton";
 
 const fallbackTokenize = (value: string) => value.match(/\s+|[^\s]+/g) ?? [];
@@ -135,6 +136,7 @@ export default function LlensHome() {
   const [newTokenStartIndex, setNewTokenStartIndex] = useState<number | null>(null);
   const [activeExplanationQuestId, setActiveExplanationQuestId] = useState<string | null>(null);
   const [isExplanationOpen, setIsExplanationOpen] = useState(false);
+  const [flashingExplanationQuestId, setFlashingExplanationQuestId] = useState<string | null>(null);
   const [isGuideOpen, setIsGuideOpen] = useState(true);
   const [guideStepIndex, setGuideStepIndex] = useState(0);
   const [guideMismatchDetails, setGuideMismatchDetails] = useState<{
@@ -155,6 +157,7 @@ export default function LlensHome() {
   const interactiveTokensGuideTargetRef = useRef<HTMLDivElement | null>(null);
   const topKGuideTargetRef = useRef<HTMLDivElement | null>(null);
   const examplesGuideTargetRef = useRef<HTMLDivElement | null>(null);
+  const [activeGuideFlashId, setActiveGuideFlashId] = useState<string | null>(null);
   const pendingGuideMismatchRef = useRef<{ expectedNextToken: string } | null>(null);
   const isGuideOpenRef = useRef(isGuideOpen);
   const currentGuideStepIdRef = useRef<string | null>(guideSteps[0]?.id ?? null);
@@ -243,12 +246,25 @@ export default function LlensHome() {
         if (isGuideOpenRef.current && generationRequestRef.current) {
           const startIdx = generationRequestRef.current.inputTokenCount;
           const newCount = message.tokens.length - startIdx;
-          setNewTokenStartIndex(startIdx);
-          window.setTimeout(
-            () => setNewTokenStartIndex(null),
-            // keep state alive long enough for staggered animations to finish
-            1200 + newCount * 150,
-          );
+          const startFlash = () => {
+            setNewTokenStartIndex(startIdx);
+            window.setTimeout(
+              () => setNewTokenStartIndex(null),
+              // keep state alive long enough for staggered animations to finish
+              1200 + newCount * 150,
+            );
+          };
+
+          const target = interactiveTokensGuideTargetRef.current;
+          const rect = target?.getBoundingClientRect();
+          const isVisible = !!rect && rect.top >= 0 && rect.bottom <= window.innerHeight;
+
+          if (target && !isVisible) {
+            target.scrollIntoView({ behavior: "smooth", block: "start" });
+            window.setTimeout(startFlash, 280);
+          } else {
+            startFlash();
+          }
         }
 
         generationRequestRef.current = null;
@@ -317,6 +333,22 @@ export default function LlensHome() {
     isGuideOpenRef.current = isGuideOpen;
     currentGuideStepIdRef.current = isGuideOpen ? guideSteps[guideStepIndex]?.id ?? null : null;
   }, [isGuideOpen, guideStepIndex]);
+
+  useEffect(() => {
+    if (!isGuideOpen) {
+      setActiveGuideFlashId(null);
+      return;
+    }
+
+    const currentStep = guideSteps[guideStepIndex];
+    if (!currentStep) {
+      setActiveGuideFlashId(null);
+      return;
+    }
+
+    // Set active flash without scrolling - will continuously flash
+    setActiveGuideFlashId(currentStep.target);
+  }, [guideStepIndex, isGuideOpen]);
 
   useEffect(() => {
     if (!isGuideOpen) return;
@@ -521,6 +553,10 @@ export default function LlensHome() {
     setTemperature(quest.temperature);
     setSelectedIndex(null);
     setPredictions([]);
+
+    // Flash the View Explanation button 3 times
+    setFlashingExplanationQuestId(quest.id);
+    window.setTimeout(() => setFlashingExplanationQuestId(null), 3300); // 3 flashes at ~1.1s each
   };
 
 
@@ -624,6 +660,13 @@ export default function LlensHome() {
 
   return (
     <div className="min-h-screen overflow-x-hidden bg-background text-foreground">
+      {/* Override guide-flash animation to repeat infinitely for LlensHome only */}
+      <style>{`
+        .min-h-screen .animate-guide-flash {
+          animation: guide-flash 1.2s ease-out infinite;
+        }
+      `}</style>
+      
       {showConfetti && confettiSize.width > 0 && confettiSize.height > 0 && (
         <Confetti
           width={confettiSize.width}
@@ -664,10 +707,12 @@ export default function LlensHome() {
       <main className="relative">
         <section className="pt-20 pb-6 px-4 md:px-6">
           <div className="container max-w-6xl mx-auto">
-            <div
+            <GuidedFlash
               ref={examplesGuideTargetRef}
-              className="rounded-3xl border border-border/60 bg-card/80 p-4 md:p-6 shadow-sm"
+              isActive={isGuideOpen && activeGuideFlashId === "examples"}
+              className="rounded-3xl"
             >
+              <div className="rounded-3xl border border-border/60 bg-card/80 p-4 md:p-6 shadow-sm">
               <div className="mb-4 flex items-center justify-between gap-4">
                 <h2 className="text-lg md:text-xl font-semibold">Examples</h2>
                 <span className="rounded-full bg-primary/10 px-3 py-1 text-xs font-semibold text-primary">
@@ -723,6 +768,8 @@ export default function LlensHome() {
                               setActiveExplanationQuestId(quest.id);
                               setIsExplanationOpen(true);
                             }}
+                            className={flashingExplanationQuestId === quest.id ? "animate-guide-flash-token" : ""}
+                            style={flashingExplanationQuestId === quest.id ? { animationIterationCount: 3 } : undefined}
                           >
                             View Explanation
                           </Button>
@@ -732,7 +779,8 @@ export default function LlensHome() {
                   })}
                 </div>
               </div>
-            </div>
+              </div>
+            </GuidedFlash>
           </div>
         </section>
 
@@ -744,9 +792,10 @@ export default function LlensHome() {
                   <div className="flex items-center justify-between flex-wrap gap-3">
                     <h2 className="text-xl md:text-2xl font-semibold">Step 1 — Input</h2>
                     <div className="flex items-center gap-3 flex-wrap">
-                      <div
+                      <GuidedFlash
                         ref={tokensGuideTargetRef}
-                        className={isTokensGuideStepActive ? "rounded-lg ring-2 ring-primary/80 ring-offset-2 ring-offset-background" : ""}
+                        isActive={isGuideOpen && activeGuideFlashId === "tokens"}
+                        className={isTokensGuideStepActive ? "rounded-lg ring-2 ring-primary/80 ring-offset-2 ring-offset-background" : "rounded-lg"}
                       >
                         <div className="flex flex-col gap-1">
                           <div className="flex items-center gap-2">
@@ -770,10 +819,11 @@ export default function LlensHome() {
                           </div>
                           {tokensError && <p className="text-[11px] text-destructive">{tokensError}</p>}
                         </div>
-                      </div>
-                      <div
+                      </GuidedFlash>
+                      <GuidedFlash
                         ref={temperatureGuideTargetRef}
-                        className={isTemperatureGuideStepActive ? "rounded-lg ring-2 ring-primary/80 ring-offset-2 ring-offset-background" : ""}
+                        isActive={isGuideOpen && activeGuideFlashId === "temperature"}
+                        className={isTemperatureGuideStepActive ? "rounded-lg ring-2 ring-primary/80 ring-offset-2 ring-offset-background" : "rounded-lg"}
                       >
                         <div className="flex flex-col gap-1">
                           <div className="flex items-center gap-2">
@@ -801,10 +851,11 @@ export default function LlensHome() {
                           </div>
                           {tempError && <p className="text-[11px] text-destructive">{tempError}</p>}
                         </div>
-                      </div>
-                      <div
+                      </GuidedFlash>
+                      <GuidedFlash
                         ref={generateGuideTargetRef}
-                        className={isGenerateGuideStepActive ? "rounded-full ring-2 ring-primary/80 ring-offset-2 ring-offset-background" : ""}
+                        isActive={isGuideOpen && activeGuideFlashId === "generate"}
+                        className={isGenerateGuideStepActive ? "rounded-full ring-2 ring-primary/80 ring-offset-2 ring-offset-background" : "rounded-full"}
                       >
                         <Button
                           onClick={handleGenerate}
@@ -812,7 +863,7 @@ export default function LlensHome() {
                         >
                           {isWorking ? "Working..." : "Generate"}
                         </Button>
-                      </div>
+                      </GuidedFlash>
                     </div>
                   </div>
                   <Textarea
@@ -840,14 +891,18 @@ export default function LlensHome() {
                 </div>
               </div>
 
-              <div
+              <GuidedFlash
                 ref={interactiveTokensGuideTargetRef}
-                className={`rounded-3xl border border-border/60 bg-card/80 p-6 md:p-8 shadow-sm ${
-                  isInteractiveTokensGuideStepActive
-                    ? "ring-2 ring-primary/80 ring-offset-2 ring-offset-background"
-                    : ""
-                }`}
+                isActive={isGuideOpen && activeGuideFlashId === "interactiveTokens"}
+                className="rounded-3xl"
               >
+                <div
+                  className={`rounded-3xl border border-border/60 bg-card/80 p-6 md:p-8 shadow-sm ${
+                    isInteractiveTokensGuideStepActive
+                      ? "ring-2 ring-primary/80 ring-offset-2 ring-offset-background"
+                      : ""
+                  }`}
+                >
                 <h2 className="text-xl md:text-2xl font-semibold mb-4">Step 2 — Interactive Tokens</h2>
                 <div className="flex flex-wrap gap-1 leading-loose">
                   {tokensMemo.map((token, index) => {
@@ -879,16 +934,21 @@ export default function LlensHome() {
                     );
                   })}
                 </div>
-              </div>
+                </div>
+              </GuidedFlash>
             </div>
 
             <div className="lg:col-span-2 space-y-6">
-              <div
+              <GuidedFlash
                 ref={topKGuideTargetRef}
-                className={`rounded-3xl border border-border/60 bg-card/80 p-6 md:p-8 shadow-sm ${
-                  isTopKGuideStepActive ? "ring-2 ring-primary/80 ring-offset-2 ring-offset-background" : ""
-                }`}
+                isActive={isGuideOpen && activeGuideFlashId === "topKPredictions"}
+                className="rounded-3xl"
               >
+                <div
+                  className={`rounded-3xl border border-border/60 bg-card/80 p-6 md:p-8 shadow-sm ${
+                    isTopKGuideStepActive ? "ring-2 ring-primary/80 ring-offset-2 ring-offset-background" : ""
+                  }`}
+                >
                 <h2 className="text-xl md:text-2xl font-semibold mb-2">Step 3 — Top‑5 Predictions</h2>
                 <p className="text-sm text-muted-foreground mb-6">
                   {selectedIndex === null
@@ -933,7 +993,8 @@ export default function LlensHome() {
                     </div>
                   </div>
                 )}
-              </div>
+                </div>
+              </GuidedFlash>
             </div>
           </div>
         </section>
