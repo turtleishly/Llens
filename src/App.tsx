@@ -11,6 +11,7 @@ import LlensStart from "./pages/llens/LlensStart";
 import LlensChapter1 from "./pages/llens/LlensChapter1";
 import LlensChapter2 from "./pages/llens/LlensChapter2";
 import LlensChapter2Game from "./pages/llens/LlensChapter2Game";
+import LlensConclusion from "./pages/llens/LlensConclusion";
 
 // Other
 import NotFound from "./pages/NotFound";
@@ -69,6 +70,7 @@ const App = () => {
             <Route path="/llens/chapter-2" element={<LlensChapter2 />} />
             <Route path="/llens/chapter-2/game" element={<LlensChapter2Game />} />
             <Route path="/llens/guide" element={<LlensChapter1 />} />
+            <Route path="/llens/conclusion" element={<LlensConclusion />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>

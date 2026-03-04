@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState, type RefObject } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
@@ -358,133 +358,42 @@ export default function LlensHome() {
 
     const updateGuidePosition = () => {
       const viewportWidth = window.innerWidth;
+      const viewportHeight = window.innerHeight;
       const popupWidth = Math.min(360, Math.max(260, viewportWidth - 24));
       const clamp = (value: number, min: number, max: number) => Math.min(max, Math.max(min, value));
+      const POPUP_HEIGHT = 220; // generous estimate used for placement decisions
+      const GAP = 14;
 
-      if (currentStep.target === "generate") {
-        const rect = generateGuideTargetRef.current?.getBoundingClientRect();
-        if (!rect) {
-          setGuidePosition(null);
-          return;
-        }
+      const targetRefMap: Record<GuideStep["target"], RefObject<HTMLDivElement | null>> = {
+        generate: generateGuideTargetRef,
+        tokens: tokensGuideTargetRef,
+        temperature: temperatureGuideTargetRef,
+        interactiveTokens: interactiveTokensGuideTargetRef,
+        topKPredictions: topKGuideTargetRef,
+        examples: examplesGuideTargetRef,
+      };
 
-        const targetCenterX = rect.left + rect.width / 2;
-        const left = clamp(targetCenterX - popupWidth / 2, 12, viewportWidth - popupWidth - 12);
-        const arrowLeft = clamp(targetCenterX - left, 18, popupWidth - 18);
-
-        setGuidePosition({
-          top: Math.max(12, rect.top - 190),
-          left,
-          width: popupWidth,
-          arrowLeft,
-          arrowDirection: "down",
-        });
+      const rect = targetRefMap[currentStep.target]?.current?.getBoundingClientRect();
+      if (!rect) {
+        setGuidePosition(null);
         return;
       }
 
-      if (currentStep.target === "tokens") {
-        const rect = tokensGuideTargetRef.current?.getBoundingClientRect();
-        if (!rect) {
-          setGuidePosition(null);
-          return;
-        }
+      const targetCenterX = rect.left + rect.width / 2;
+      const left = clamp(targetCenterX - popupWidth / 2, 12, viewportWidth - popupWidth - 12);
+      const arrowLeft = clamp(targetCenterX - left, 18, popupWidth - 18);
 
-        const targetCenterX = rect.left + rect.width / 2;
-        const left = clamp(targetCenterX - popupWidth / 2, 12, viewportWidth - popupWidth - 12);
-        const arrowLeft = clamp(targetCenterX - left, 18, popupWidth - 18);
+      // Prefer above; fall back to below if there isn't enough room
+      const spaceAbove = rect.top;
+      const arrowDirection: "up" | "down" =
+        spaceAbove >= POPUP_HEIGHT + GAP + 12 ? "down" : "up";
 
-        setGuidePosition({
-          top: Math.max(12, rect.top - 180),
-          left,
-          width: popupWidth,
-          arrowLeft,
-          arrowDirection: "down",
-        });
-        return;
-      }
+      const top =
+        arrowDirection === "down"
+          ? clamp(rect.top - POPUP_HEIGHT - GAP, 12, viewportHeight - POPUP_HEIGHT - 12)
+          : clamp(rect.bottom + GAP, 12, viewportHeight - POPUP_HEIGHT - 12);
 
-      if (currentStep.target === "temperature") {
-        const rect = temperatureGuideTargetRef.current?.getBoundingClientRect();
-        if (!rect) {
-          setGuidePosition(null);
-          return;
-        }
-
-        const targetCenterX = rect.left + rect.width / 2;
-        const left = clamp(targetCenterX - popupWidth / 2, 12, viewportWidth - popupWidth - 12);
-        const arrowLeft = clamp(targetCenterX - left, 18, popupWidth - 18);
-
-        setGuidePosition({
-          top: Math.max(12, rect.top - 230),
-          left,
-          width: popupWidth,
-          arrowLeft,
-          arrowDirection: "down",
-        });
-        return;
-      }
-
-      if (currentStep.target === "interactiveTokens") {
-        const rect = interactiveTokensGuideTargetRef.current?.getBoundingClientRect();
-        if (!rect) {
-          setGuidePosition(null);
-          return;
-        }
-
-        const targetCenterX = rect.left + rect.width / 2;
-        const left = clamp(targetCenterX - popupWidth / 2, 12, viewportWidth - popupWidth - 12);
-        const arrowLeft = clamp(targetCenterX - left, 18, popupWidth - 18);
-
-        setGuidePosition({
-          top: Math.max(12, rect.top - 180),
-          left,
-          width: popupWidth,
-          arrowLeft,
-          arrowDirection: "down",
-        });
-        return;
-      }
-
-      if (currentStep.target === "topKPredictions") {
-        const rect = topKGuideTargetRef.current?.getBoundingClientRect();
-        if (!rect) {
-          setGuidePosition(null);
-          return;
-        }
-
-        const targetCenterX = rect.left + rect.width / 2;
-        const left = clamp(targetCenterX - popupWidth / 2, 12, viewportWidth - popupWidth - 12);
-        const arrowLeft = clamp(targetCenterX - left, 18, popupWidth - 18);
-
-        setGuidePosition({
-          top: Math.max(12, rect.top - 170),
-          left,
-          width: popupWidth,
-          arrowLeft,
-          arrowDirection: "down",
-        });
-        return;
-      }
-
-      if (currentStep.target === "examples") {
-        const rect = examplesGuideTargetRef.current?.getBoundingClientRect();
-        if (!rect) {
-          setGuidePosition(null);
-          return;
-        }
-
-        const targetCenterX = rect.left + rect.width / 2;
-        const left = clamp(targetCenterX - popupWidth / 2, 12, viewportWidth - popupWidth - 12);
-        const arrowLeft = clamp(targetCenterX - left, 18, popupWidth - 18);
-
-        setGuidePosition({
-          top: Math.min(window.innerHeight - 180, rect.bottom + 14),
-          left,
-          width: popupWidth,
-          arrowLeft,
-          arrowDirection: "up",
-        });
-      }
+      setGuidePosition({ top, left, width: popupWidth, arrowLeft, arrowDirection });
     };
 
     updateGuidePosition();
@@ -783,6 +692,36 @@ export default function LlensHome() {
             </GuidedFlash>
           </div>
         </section>
+
+        {/* All-examples-complete conclusion banner */}
+        {completedQuestIds.length === quests.length && !isGuideOpen && (
+          <section className="px-4 md:px-6 pb-4">
+            <div className="container max-w-6xl mx-auto">
+              <div className="relative overflow-hidden rounded-3xl border border-primary/40 bg-primary/5 p-6 md:p-8 shadow-sm">
+                <div className="pointer-events-none absolute inset-0 -z-10">
+                  <div className="absolute left-1/2 top-1/2 h-72 w-72 -translate-x-1/2 -translate-y-1/2 rounded-full bg-primary/10 blur-[80px]" />
+                </div>
+                <div className="flex flex-col sm:flex-row items-center gap-6 sm:gap-10">
+                  <div className="flex-1 space-y-2">
+                    <p className="text-xs uppercase tracking-[0.4em] text-primary font-semibold">All Examples Complete</p>
+                    <h2 className="text-xl md:text-2xl font-bold tracking-tight">
+                      Ready for the big picture?
+                    </h2>
+                    <p className="text-sm text-muted-foreground leading-relaxed">
+                      You've seen how LLMs actually work under the hood. Head to the conclusion to see what this all means.
+                    </p>
+                  </div>
+                  <Link
+                    to="/llens/conclusion"
+                    className="shrink-0 inline-flex items-center justify-center rounded-2xl bg-primary px-8 py-4 text-sm font-semibold text-primary-foreground shadow transition hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+                  >
+                    See Conclusion →
+                  </Link>
+                </div>
+              </div>
+            </div>
+          </section>
+        )}
 
         <section className="px-4 md:px-6 pb-24">
           <div className="container max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-5 gap-8">

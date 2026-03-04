@@ -109,15 +109,9 @@ export default function LlensChapter2Game() {
         </div>
         {chapterTwoAnswer && (
           <div className="rounded-xl border border-amber-400/30 bg-amber-400/10 p-4 text-sm md:text-base text-amber-900 dark:text-amber-200">
-            <span className="font-semibold">WRONG</span>, the answer is
-            <span className="mx-2 rounded-full bg-amber-300/30 px-3 py-1 text-sm font-semibold">
-              {chapterTwoAnswer}
-            </span>
-            because models don&apos;t always predict the highest probability token!{" "}
-            <br />
-            (Actually, you will always get this exercise wrong)
-            <br />
-            <br />
+            <span className="font-semibold">WRONG... (maybe)!</span> <br/> Although `John` is the most likely generation, there is no 'correct' answer
+            because models don&apos;t always predict the token with the highest probability!{" "}
+            <br />            <br />
             Which tokens are actually selected depends on <code>temperature</code>. More on
             that later!
             <br />

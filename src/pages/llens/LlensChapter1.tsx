@@ -54,6 +54,8 @@ export default function LlensChapter1() {
   const [showHelp, setShowHelp] = useState(false);
   const workerRef = useRef<Worker | null>(null);
   const helpTimerRef = useRef<number | null>(null);
+  // Track the previous value so confetti only fires on the false→true transition
+  const prevIsTaskCompleteRef = useRef(false);
 
   const tokensMemo = useMemo(() => tokens, [tokens]);
 
@@ -145,11 +147,10 @@ export default function LlensChapter1() {
   }, [stepIndex, isTaskComplete, showHelp, text]);
 
   useEffect(() => {
-    if (!isTaskComplete) {
-      setShowConfetti(false);
-      setConfettiActive(false);
-      return;
-    }
+    const justCompleted = isTaskComplete && !prevIsTaskCompleteRef.current;
+    prevIsTaskCompleteRef.current = isTaskComplete;
+
+    if (!justCompleted) return;
 
     setShowConfetti(true);
     setConfettiActive(false);
@@ -168,7 +169,7 @@ export default function LlensChapter1() {
       window.clearTimeout(timeout);
       window.clearTimeout(flashTimeout);
     };
-  }, [isTaskComplete]);
+  }, [isTaskComplete, flash]);
 
   const handleRetry = () => {
     if (!workerRef.current || isModelLoading) return;
@@ -199,12 +200,14 @@ export default function LlensChapter1() {
         >
           <div className="rounded-2xl border border-border/60 bg-card/80 p-6 shadow-sm space-y-4">
             <p className="text-2xl font-semibold text-foreground">Chapter 1: Tokenization</p>
-            <p className="text-base md:text-lg text-muted-foreground leading-relaxed whitespace-pre-line">
+            <p className="text-base md:text-lg text-muted-foreground leading-relaxed whitespace-pre-line text-left">
               Tokenization is how models like ChatGPT perceive our world. It may be words to us,
-              but to ChatGPT, they actually just see integers! What&apos;s more, tokenization is
-              weird in that if a word starts with a capital or not, it is a different token!{"\n\n"}
+              but to ChatGPT, they actually just see integers! Even weirder, whether a word starts 
+              with a space or not makes it a different token sometimes!{"\n\n"}
               (This is why it may not be so surprising that some models struggle to tell how many
-              R&apos;s there are in Strawberry)
+              R&apos;s there are in Strawberry){"\n\n"}
+
+              Let's try looking at the tokenizations of some text!
             </p>
             <Button
               size="lg"
@@ -255,7 +258,7 @@ export default function LlensChapter1() {
               <>
                 <p className="text-sm uppercase tracking-[0.45em] text-white/60">Task</p>
                 <div className="flex flex-wrap items-center gap-2 text-xl font-semibold">
-                  <span>Type</span>
+                  <span>Type EXACTLY:</span>
                   <span className="rounded-md bg-white/10 px-2 py-1 font-mono text-lg">dog</span>
                   <span
                     className="inline-flex h-6 w-6 items-center justify-center rounded-full bg-white/10 text-white"
