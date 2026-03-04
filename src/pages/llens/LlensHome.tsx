@@ -132,6 +132,7 @@ export default function LlensHome() {
   const [completedQuestIds, setCompletedQuestIds] = useState<string[]>([]);
   const [showConfetti, setShowConfetti] = useState(false);
   const [confettiSize, setConfettiSize] = useState({ width: 0, height: 0 });
+  const [newTokenStartIndex, setNewTokenStartIndex] = useState<number | null>(null);
   const [activeExplanationQuestId, setActiveExplanationQuestId] = useState<string | null>(null);
   const [isExplanationOpen, setIsExplanationOpen] = useState(false);
   const [isGuideOpen, setIsGuideOpen] = useState(true);
@@ -237,6 +238,18 @@ export default function LlensHome() {
         setTokens(message.tokens);
         setTokenIds(message.tokenIds);
         requestLatestPredictions(message.tokenIds);
+
+        // Flash the newly generated token chips during the guide phase
+        if (isGuideOpenRef.current && generationRequestRef.current) {
+          const startIdx = generationRequestRef.current.inputTokenCount;
+          const newCount = message.tokens.length - startIdx;
+          setNewTokenStartIndex(startIdx);
+          window.setTimeout(
+            () => setNewTokenStartIndex(null),
+            // keep state alive long enough for staggered animations to finish
+            1200 + newCount * 150,
+          );
+        }
 
         generationRequestRef.current = null;
         return;
@@ -632,7 +645,7 @@ export default function LlensHome() {
               to="/"
               className="text-sm font-semibold uppercase tracking-[0.3em] text-muted-foreground"
             >
-              Rakan Tutor
+              LLens
             </Link>
             {isGuideOpen && (
               <button
@@ -846,7 +859,18 @@ export default function LlensHome() {
                         type="button"
                         disabled={isGuideLocked && !isInteractiveTokensGuideStepActive}
                         onClick={() => handleTokenClick(index)}
-                        className={`rounded-md border px-2 py-1 text-sm font-mono transition ${bg} ${isSelected ? "border-primary text-primary" : "border-border/60 text-foreground"}`}
+                        style={
+                          newTokenStartIndex !== null && index >= newTokenStartIndex
+                            ? { animationDelay: `${(index - newTokenStartIndex) * 150}ms` }
+                            : undefined
+                        }
+                        className={`rounded-md border px-2 py-1 text-sm font-mono transition ${bg} ${
+                          isSelected ? "border-primary text-primary" : "border-border/60 text-foreground"
+                        } ${
+                          newTokenStartIndex !== null && index >= newTokenStartIndex
+                            ? "animate-guide-flash-token"
+                            : ""
+                        }`}
                       >
                         <span className="inline-flex flex-wrap items-center gap-0.5">
                           {renderTokenContent(token)}

@@ -1,4 +1,4 @@
-{
+﻿{
   "headers": [
     {
       "source": "/(.*)",
@@ -24,76 +24,12 @@
   ],
   "rewrites": [
     {
-      "source": "/about",
-      "destination": "/about/index.html"
+      "source": "/llens",
+      "destination": "/llens/index.html"
     },
     {
-      "source": "/history",
-      "destination": "/history/index.html"
-    },
-    {
-      "source": "/impact",
-      "destination": "/impact/index.html"
-    },
-    {
-      "source": "/news",
-      "destination": "/news/index.html"
-    },
-    {
-      "source": "/contact",
-      "destination": "/contact/index.html"
-    },
-    {
-      "source": "/terms",
-      "destination": "/terms/index.html"
-    },
-    {
-      "source": "/privacy",
-      "destination": "/privacy/index.html"
-    },
-    {
-      "source": "/meet-the-team",
-      "destination": "/meet-the-team/index.html"
-    },
-    {
-      "source": "/meet-the-team-2023-2024",
-      "destination": "/meet-the-team-2023-2024/index.html"
-    },
-    {
-      "source": "/meet-the-team-2022-2023",
-      "destination": "/meet-the-team-2022-2023/index.html"
-    },
-    {
-      "source": "/meet-the-team-2021-2022",
-      "destination": "/meet-the-team-2021-2022/index.html"
-    },
-    {
-      "source": "/naic",
-      "destination": "/naic/index.html"
-    },
-    {
-      "source": "/naic/register",
-      "destination": "/naic/register/index.html"
-    },
-    {
-      "source": "/naic/faq",
-      "destination": "/naic/faq/index.html"
-    },
-    {
-      "source": "/naic/tracks",
-      "destination": "/naic/tracks/index.html"
-    },
-    {
-      "source": "/naic/contact",
-      "destination": "/naic/contact/index.html"
-    },
-    {
-      "source": "/naic/terms",
-      "destination": "/naic/terms/index.html"
-    },
-    {
-      "source": "/naic/privacy",
-      "destination": "/naic/privacy/index.html"
+      "source": "/llens/start",
+      "destination": "/llens/start/index.html"
     },
     {
       "source": "/llens/guide",
@@ -106,6 +42,10 @@
     {
       "source": "/llens/chapter-2",
       "destination": "/llens/chapter-2/index.html"
+    },
+    {
+      "source": "/llens/chapter-2/game",
+      "destination": "/llens/chapter-2/game/index.html"
     },
     {
       "source": "/(.*)",

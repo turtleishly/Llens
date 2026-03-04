@@ -15,7 +15,7 @@ export default function LlensStart() {
       <div className="fixed top-0 left-0 right-0 z-20 opacity-0 pointer-events-none transition-opacity duration-300 group-hover:opacity-100 group-hover:pointer-events-auto">
         <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
           <Link to="/" className="text-sm font-semibold uppercase tracking-[0.3em] text-muted-foreground">
-            Rakan Tutor
+            LLens
           </Link>
         </div>
         <div className="h-px w-full bg-border" />

@@ -160,9 +160,13 @@ export default function LlensChapter1() {
 
     const timeout = window.setTimeout(() => setShowConfetti(false), 1200);
 
+    // Flash the completion message after the confetti settles
+    const flashTimeout = window.setTimeout(() => flash("cool-box"), 600);
+
     return () => {
       window.cancelAnimationFrame(rafId);
       window.clearTimeout(timeout);
+      window.clearTimeout(flashTimeout);
     };
   }, [isTaskComplete]);
 
@@ -230,6 +234,11 @@ export default function LlensChapter1() {
           >
           <div className="rounded-2xl bg-black/90 p-6 text-white shadow-sm space-y-4">
             {isTaskComplete ? (
+              <GuidedFlash
+                ref={registerRef("cool-box")}
+                isActive={activeId === "cool-box"}
+                className="rounded-xl"
+              >
               <div className="space-y-3">
                 <p className="text-xl font-semibold">Cool!</p>
                 <p className="text-base text-white/80 leading-relaxed">
@@ -241,6 +250,7 @@ export default function LlensChapter1() {
                   how the model wasn&apos;t trained on Malay text, so it doesn&apos;t support Malay words!
                 </p>
               </div>
+              </GuidedFlash>
             ) : (
               <>
                 <p className="text-sm uppercase tracking-[0.45em] text-white/60">Task</p>

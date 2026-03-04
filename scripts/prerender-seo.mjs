@@ -1,126 +1,37 @@
-import fs from "node:fs/promises";
+﻿import fs from "node:fs/promises";
 import path from "node:path";
 
-const SITE_URL = "https://rakantutor.org";
+const SITE_URL = "https://llens.space";
 const OUTPUT_DIR = path.resolve(process.cwd(), "dist");
 const INDEX_PATH = path.join(OUTPUT_DIR, "index.html");
 
 // Keep in sync with src/components/Seo.tsx
-const RAKAN_TUTOR_BASE = {
-  title: "Rakan Tutor | AI Education for Youth",
+const LLENS_BASE = {
+  title: "LLens | See Inside a Language Model",
   description:
-    "Rakan Tutor provides hybrid AI programs, hands-on workshops, and an accessible digital learning platform for ASEAN youth.",
-  ogImage: "/rakan_tutor_hero.png",
-  ogImageAlt: "Rakan Tutor community learning AI",
-  siteName: "Rakan Tutor",
-  twitterSite: "@RakanTutor",
-  twitterCard: "summary_large_image",
-};
-
-const NAIC_BASE = {
-  title: "NAIC '26 | National AI Competition 2026",
-  description:
-    "National AI Competition 2026 (NAIC '26), organized by Rakan Tutor & Sunway University. Join Malaysia's largest youth AI challenge.",
-  ogImage: "/og-image.svg",
-  ogImageAlt: "National AI Competition 2026",
-  siteName: "NAIC '26",
-  twitterSite: "@RakanTutor",
+    "LLens is an interactive, browser-based tool that lets you see exactly how a language model tokenizes text, predicts next tokens, and generates text — all running locally.",
+  ogImage: "/llens-og.png",
+  ogImageAlt: "LLens — interactive language model explorer",
+  siteName: "LLens",
+  twitterSite: "@LLens",
   twitterCard: "summary_large_image",
 };
 
 const ROUTE_OVERRIDES = {
   "/": {
-    title: "Rakan Tutor | AI Education for Youth",
+    title: "LLens | See Inside a Language Model",
     description:
-      "AI education for ASEAN youth through workshops, a digital learning platform, and community partnerships.",
+      "An interactive, in-browser tool for exploring tokenization, next-token prediction, and text generation with GPT-2.",
   },
-  "/about": {
-    title: "Rakan Tutor | About",
+  "/llens": {
+    title: "LLens | Interactive Demo",
     description:
-      "Learn about Rakan Tutor's mission, vision, and volunteer-driven team empowering youth through AI education.",
+      "Try the LLens interactive demo: run GPT-2 in your browser, inspect tokens, and explore how temperature affects generation.",
   },
-  "/history": {
-    title: "Rakan Tutor | Our History",
+  "/llens/start": {
+    title: "LLens | See Inside a Language Model",
     description:
-      "How Rakan Tutor grew from pandemic-era tutoring to AI upskilling for youth across ASEAN.",
-  },
-  "/impact": {
-    title: "Rakan Tutor | Impact Report",
-    description:
-      "Read the 2021-2024 Rakan Tutor program impact report and outcomes for youth AI education.",
-  },
-  "/news": {
-    title: "Rakan Tutor | News & Media",
-    description: "Press coverage and media features about Rakan Tutor's work.",
-  },
-  "/contact": {
-    title: "Contact Rakan Tutor",
-    description:
-      "Contact Rakan Tutor to partner, volunteer, or bring AI education to your community.",
-  },
-  "/terms": {
-    title: "Terms & Conditions | Rakan Tutor",
-    description:
-      "Read Rakan Tutor's Terms and Conditions for using our website and educational services.",
-  },
-  "/privacy": {
-    title: "Privacy Policy | Rakan Tutor",
-    description:
-      "Learn how Rakan Tutor collects, uses, and protects your personal information.",
-  },
-  "/meet-the-team": {
-    title: "Meet the Team | Rakan Tutor",
-    description:
-      "Meet the team (2025-2026). Students and professionals driving education impact.",
-  },
-  "/meet-the-team-2023-2024": {
-    title: "Meet the Team (2023-2024) | Rakan Tutor",
-    description:
-      "Meet the team (2023-2024). Students and professionals driving education impact.",
-  },
-  "/meet-the-team-2022-2023": {
-    title: "Meet the Team (2022-2023) | Rakan Tutor",
-    description:
-      "Meet the team (2022-2023). Students and professionals driving education impact.",
-  },
-  "/meet-the-team-2021-2022": {
-    title: "Meet the Team (2021-2022) | Rakan Tutor",
-    description:
-      "Meet the team (2021-2022). Students and professionals driving education impact. Kai Song. Co-Founder. Kaveen. Co-Founder. Wen Wen Teh. Program Director.",
-  },
-  "/naic": {
-    title: "NAIC '26 | National AI Competition 2026",
-    description:
-      "Join the National AI Competition 2026 across Innovation, Engineering, GenAI, Computing, and Architecture tracks.",
-  },
-  "/naic/register": {
-    title: "Register | NAIC '26",
-    description:
-      "Register your team for NAIC '26 and compete in Malaysia's largest youth AI competition.",
-  },
-  "/naic/faq": {
-    title: "FAQ | NAIC '26",
-    description:
-      "Answers on eligibility, registration, submissions, and judging for NAIC '26.",
-  },
-  "/naic/tracks": {
-    title: "Tracks | NAIC '26",
-    description:
-      "Explore NAIC '26 tracks: Innovation, Engineering, GenAI, Computing, and Architecture.",
-  },
-  "/naic/contact": {
-    title: "Contact | NAIC '26",
-    description: "Contact the NAIC '26 organizing team for competition inquiries.",
-  },
-  "/naic/terms": {
-    title: "Terms & Conditions | NAIC '26",
-    description:
-      "Official NAIC '26 terms, eligibility rules, participation guidelines, and judging policies.",
-  },
-  "/naic/privacy": {
-    title: "Privacy Policy | NAIC '26",
-    description:
-      "NAIC '26 privacy policy outlining how personal data is collected and protected.",
+      "An interactive, in-browser tool for exploring tokenization, next-token prediction, and text generation with GPT-2.",
   },
   "/llens/chapter-1": {
     title: "LLens Chapter 1 | Token Foundations",
@@ -184,10 +95,8 @@ const replaceLink = (html, rel, href) => {
 
 const buildHtml = (baseHtml, routePath) => {
   const normalizedPath = normalizePath(routePath);
-  const isNaicRoute = normalizedPath.startsWith("/naic");
-  const base = isNaicRoute ? NAIC_BASE : RAKAN_TUTOR_BASE;
   const overrides = ROUTE_OVERRIDES[normalizedPath] ?? {};
-  const data = { ...base, ...overrides };
+  const data = { ...LLENS_BASE, ...overrides };
 
   const canonical = `${SITE_URL}${normalizedPath === "/" ? "" : normalizedPath}`;
   const ogImage = resolveUrl(data.ogImage);
@@ -211,12 +120,7 @@ const buildHtml = (baseHtml, routePath) => {
   html = replaceMeta(html, "name", "twitter:title", ogTitle);
   html = replaceMeta(html, "name", "twitter:description", ogDescription);
   html = replaceMeta(html, "name", "twitter:image", ogImage);
-  html = replaceMeta(
-    html,
-    "name",
-    "twitter:image:alt",
-    data.ogImageAlt ?? ogTitle
-  );
+  html = replaceMeta(html, "name", "twitter:image:alt", data.ogImageAlt ?? ogTitle);
 
   html = replaceLink(html, "canonical", canonical);
 

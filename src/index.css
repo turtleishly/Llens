@@ -271,4 +271,15 @@
   .animate-guide-flash {
     animation: guide-flash 1.2s ease-out forwards;
   }
+
+  /* Variant for inline/button elements — only box-shadow, no opacity so the element stays visible */
+  @keyframes guide-flash-token {
+    0%   { box-shadow: 0 0 0 0px rgba(255, 255, 255, 0.85); }
+    40%  { box-shadow: 0 0 0 6px rgba(255, 255, 255, 0.35); }
+    100% { box-shadow: 0 0 0 14px rgba(255, 255, 255, 0.00); }
+  }
+
+  .animate-guide-flash-token {
+    animation: guide-flash-token 1.1s ease-out forwards;
+  }
 }

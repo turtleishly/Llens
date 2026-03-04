@@ -1,10 +1,12 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { ChapterShell } from "@/components/llens/ChapterShell";
 import { ChapterTopBar } from "@/components/llens/ChapterTopBar";
 import { ChapterTwoPanel } from "@/components/llens/ChapterTwoPanel";
+import { GuidedFlash } from "@/components/llens/GuidedFlash";
 import { TokenChip } from "@/components/llens/TokenChip";
+import { useGuideFlash } from "@/hooks/useGuideFlash";
 
 const chapter = {
   number: "02",
@@ -42,6 +44,21 @@ const chapterTwoPredictions = [
 export default function LlensChapter2Game() {
   const [selectedPrediction, setSelectedPrediction] = useState<string | null>(null);
 
+  const { flash, registerRef, activeId } = useGuideFlash();
+
+  // Flash question on mount, then guide eyes to the context box after 5 s
+  useEffect(() => {
+    const t1 = window.setTimeout(() => flash("question-box"), 400);
+    const t2 = window.setTimeout(() => flash("context-box"), 3400);
+    const t3 = window.setTimeout(() => flash("predictions-box"), 8400);
+    return () => {
+      window.clearTimeout(t1);
+      window.clearTimeout(t2);
+      window.clearTimeout(t3);
+    };
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   const chapterTwoTokens = useMemo(() => chapterTwoStaticTokens, []);
   const chapterTwoOptions = useMemo(
     () => chapterTwoPredictions.map((prediction) => prediction.token),
@@ -65,6 +82,11 @@ export default function LlensChapter2Game() {
       </p>
       <h1 className="text-3xl md:text-5xl lg:text-6xl font-semibold">{chapter.title}</h1>
 
+      <GuidedFlash
+        ref={registerRef("question-box")}
+        isActive={activeId === "question-box"}
+        className="rounded-2xl"
+      >
       <div className="rounded-2xl border border-border/60 bg-card/85 p-6 shadow-sm space-y-4">
         <p className="text-sm uppercase tracking-[0.4em] text-muted-foreground">Question</p>
         <p className="text-lg font-semibold">Which do you think is the next generated token?</p>
@@ -104,18 +126,25 @@ export default function LlensChapter2Game() {
           </div>
         )}
       </div>
+      </GuidedFlash>
     </div>
   );
 
   const rightPanel = (
     <div className="rounded-3xl border border-border/60 bg-card/90 p-6 md:p-8 shadow-sm space-y-5">
       {/* Context */}
+      <GuidedFlash
+        ref={registerRef("context-box")}
+        isActive={activeId === "context-box"}
+        className="rounded-2xl"
+      >
       <div className="space-y-2">
         <p className="text-sm uppercase tracking-[0.4em] text-muted-foreground">Context</p>
         <div className="rounded-2xl border border-border/60 bg-background/60 px-4 py-3 text-sm md:text-base text-foreground">
           {chapterTwoContext}
         </div>
       </div>
+      </GuidedFlash>
 
       {/* Static tokens */}
       <div className="space-y-3">
@@ -128,6 +157,11 @@ export default function LlensChapter2Game() {
       </div>
 
       {/* Predictions */}
+      <GuidedFlash
+        ref={registerRef("predictions-box")}
+        isActive={activeId === "predictions-box"}
+        className="rounded-2xl"
+      >
       <div className="space-y-3">
         <p className="text-sm uppercase tracking-[0.4em] text-muted-foreground">Top-5 Predictions</p>
         <div className="grid gap-3">
@@ -157,6 +191,7 @@ export default function LlensChapter2Game() {
           ))}
         </div>
       </div>
+      </GuidedFlash>
 
       {/* CTA after answering */}
       {hasLockedAnswer && (
