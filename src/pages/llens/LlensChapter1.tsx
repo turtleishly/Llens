@@ -17,6 +17,8 @@ const chapter = {
   summary: "Why models split text into pieces and how models perceive the world.",
 };
 
+const expectedSequence = "dog\n dog";
+
 
 
 const confettiPieces = [
@@ -61,7 +63,37 @@ export default function LlensChapter1() {
 
   const { flash, registerRef, activeId } = useGuideFlash();
 
-  const isTaskComplete = hasCompletedTask || text.toLowerCase() === "dog\n dog";
+  const isTaskComplete = hasCompletedTask || text === expectedSequence;
+
+  const sequenceError = useMemo(() => {
+    if (stepIndex !== 1 || isTaskComplete || text.length === 0) {
+      return null;
+    }
+
+    for (let index = 0; index < text.length; index += 1) {
+      if (index >= expectedSequence.length) {
+        return "There is extra text at the end. Type exactly: dog, Enter, space, dog.";
+      }
+
+      if (text[index] !== expectedSequence[index]) {
+        if (index < 3) {
+          return "The first word must be exactly \"dog\" in lowercase.";
+        }
+
+        if (index === 3) {
+          return "After the first \"dog\", press Enter once.";
+        }
+
+        if (index === 4) {
+          return "Add one space at the start of the second line.";
+        }
+
+        return "The second word must be exactly \"dog\" after the space.";
+      }
+    }
+
+    return null;
+  }, [isTaskComplete, stepIndex, text]);
 
   useEffect(() => {
     preloadLlensModel();
@@ -124,7 +156,7 @@ export default function LlensChapter1() {
   }, [text, isModelReady]);
 
   useEffect(() => {
-    if (!hasCompletedTask && text.toLowerCase() === "dog\n dog") {
+    if (!hasCompletedTask && text === expectedSequence) {
       setHasCompletedTask(true);
     }
   }, [hasCompletedTask, text]);
@@ -306,6 +338,14 @@ export default function LlensChapter1() {
                     newline
                   </span>
                 </div>
+                {sequenceError && (
+                  <div
+                    role="alert"
+                    className="rounded-xl border border-destructive/40 bg-destructive/20 px-4 py-3"
+                  >
+                    <p className="text-sm leading-relaxed text-white/90">{sequenceError}</p>
+                  </div>
+                )}
                 {showHelp && (
                   <div className="flex items-center gap-3 pt-1">
                     <button
