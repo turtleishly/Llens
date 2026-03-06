@@ -1,0 +1,32 @@
+{
+  "rewrites": [
+    {
+      "source": "/",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/llens",
+      "destination": "/llens/index.html"
+    },
+    {
+      "source": "/llens/start",
+      "destination": "/llens/start/index.html"
+    },
+    {
+      "source": "/llens/chapter-1",
+      "destination": "/llens/chapter-1/index.html"
+    },
+    {
+      "source": "/llens/chapter-2",
+      "destination": "/llens/chapter-2/index.html"
+    },
+    {
+      "source": "/llens/guide",
+      "destination": "/llens/guide/index.html"
+    },
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
+  ]
+}
