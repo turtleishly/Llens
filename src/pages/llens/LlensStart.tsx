@@ -374,6 +374,7 @@ export default function LlensStart() {
           >
             github.com/turtleishly
           </a>
+            Contact me at aidendev16(at)gmail(.)com
         </div>
       </footer>
     </div>
