@@ -305,7 +305,7 @@ export default function LlensStart() {
                 size="lg"
                 variant="secondary"
                 className="w-full rounded-2xl border-2 border-amber-400/70 bg-amber-100/80 px-8 py-8 text-lg font-semibold text-amber-950 shadow-sm transition-colors hover:bg-amber-200"
-                onClick={() => navigate("/llens/chapter-2")}
+                onClick={() => navigate("/llens")}
               >
                 Skip tutorial! I know this stuff!
               </Button>
