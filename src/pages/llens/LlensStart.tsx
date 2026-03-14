@@ -289,16 +289,27 @@ export default function LlensStart() {
               </div>
             </div>
 
-            <Button
-              size="lg"
-              className={`text-lg px-10 py-7 rounded-2xl transition-all duration-500 ${
-                isReady ? "opacity-100 scale-100" : "opacity-40 scale-95 cursor-not-allowed"
-              }`}
-              disabled={!isReady}
-              onClick={() => navigate("/llens/chapter-1")}
-            >
-              {isReady ? "Start" : "Loading..."}
-            </Button>
+            <div className="space-y-4">
+              <Button
+                size="lg"
+                className={`text-lg px-10 py-7 rounded-2xl transition-all duration-500 ${
+                  isReady ? "opacity-100 scale-100" : "opacity-40 scale-95 cursor-not-allowed"
+                }`}
+                disabled={!isReady}
+                onClick={() => navigate("/llens/chapter-1")}
+              >
+                {isReady ? "Start" : "Loading..."}
+              </Button>
+
+              <Button
+                size="lg"
+                variant="secondary"
+                className="w-full rounded-2xl border-2 border-amber-400/70 bg-amber-100/80 px-8 py-8 text-lg font-semibold text-amber-950 shadow-sm transition-colors hover:bg-amber-200"
+                onClick={() => navigate("/llens/chapter-2")}
+              >
+                Skip tutorial! I know this stuff!
+              </Button>
+            </div>
           </div>
         </section>
 
