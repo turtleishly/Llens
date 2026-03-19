@@ -57,6 +57,11 @@ const ROUTE_OVERRIDES: Record<string, Partial<SeoConfig>> = {
     description:
       "Chapter 1 of LLens: learn how tokenization works and why whitespace changes meaning.",
   },
+  "/llens/the-problem": {
+    title: "The Problem | Why AI Literacy Matters",
+    description:
+      "AI is everywhere, but most people still cannot explain how language models work. Explore why that understanding gap matters.",
+  },
 };
 
 const normalizePath = (pathname: string) => {

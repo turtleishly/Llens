@@ -71,6 +71,9 @@ const TOKEN_POOL = [
 ];
 
 const DISPLAY_COUNT = 36;
+const AI_READY_ICON = "/AI%20ready%20icon.png";
+const MECHANISTIC_INTERPRETABILITY_URL = "https://www.google.com/search?q=mechanistic+interpretability&rlz=1C1GCEA_enMY1014MY1014&oq=mechanistic+int&gs_lcrp=EgZjaHJvbWUqBwgAEAAYgAQyBwgAEAAYgAQyBggBEEUYOTIHCAIQABiABDIHCAMQABiABDIHCAQQABiABDIGCAUQRRhBMgYIBhBFGD0yBggHEEUYPdIBCDQ3NzlqMGo3qAIAsAIA&sourceid=chrome&ie=UTF-8";
+
 
 const HOW_IT_WORKS = [
   {
@@ -93,16 +96,29 @@ const KEY_BENEFITS = [
     body: "See why a model can answer the same question differently across runs, especially when temperature is non-zero.",
   },
   {
-    title: "See what models actually process",
-    body: "You type words, but the model operates on token IDs and probabilities. LLens makes that representation visible.",
+    title: "Build intuition quickly",
+    body: "Short guides make LLM concepts concrete and easy. Understand through hands-on experience!",
   },
   {
-    title: "Challenge the ‘AI is good at math’ assumption",
+    title: "Challenge the 'AI is good at math' assumption",
     body: "You learn that confidence and correctness are different, and language models are not deterministic calculators.",
   },
   {
-    title: "Build intuition quickly",
-    body: "Short guided chapters turn abstract LLM concepts into concrete interactions you can test yourself.",
+    title: "Accelerate scientific discovery",
+    body: (
+      <>
+        Llens provides a transparent testing ground for AI research, enabling rapid iteration and experiments
+        especially in the research field of{" "}
+        <a
+          href={MECHANISTIC_INTERPRETABILITY_URL}
+          target="_blank"
+          rel="noreferrer"
+          className="font-medium underline underline-offset-4"
+        >
+          Mechanistic Interpretability
+        </a>
+      </>
+    ),
   },
 ];
 
@@ -165,7 +181,16 @@ export default function LlensStart() {
   const [sampleTokens, setSampleTokens] = useState<string[]>(() =>
     shuffleArray(TOKEN_POOL).slice(0, DISPLAY_COUNT)
   );
+  const [popupOffset, setPopupOffset] = useState({ x: 0, y: 0 });
   const tickRef = useRef<number | null>(null);
+  const popupDragRef = useRef<{
+    pointerId: number;
+    startX: number;
+    startY: number;
+    originX: number;
+    originY: number;
+  } | null>(null);
+  const draggedPopupRef = useRef(false);
 
   useEffect(() => {
     if (isLlensModelReady()) {
@@ -217,6 +242,51 @@ export default function LlensStart() {
       }
     };
   }, [isReady]);
+
+  const handlePopupPointerDown = (event: React.PointerEvent<HTMLButtonElement>) => {
+    if (event.button !== 0) {
+      return;
+    }
+
+    draggedPopupRef.current = false;
+    popupDragRef.current = {
+      pointerId: event.pointerId,
+      startX: event.clientX,
+      startY: event.clientY,
+      originX: popupOffset.x,
+      originY: popupOffset.y,
+    };
+    event.currentTarget.setPointerCapture(event.pointerId);
+  };
+
+  const handlePopupPointerMove = (event: React.PointerEvent<HTMLButtonElement>) => {
+    if (!popupDragRef.current || popupDragRef.current.pointerId !== event.pointerId) {
+      return;
+    }
+
+    const deltaX = event.clientX - popupDragRef.current.startX;
+    const deltaY = event.clientY - popupDragRef.current.startY;
+
+    if (Math.abs(deltaX) > 3 || Math.abs(deltaY) > 3) {
+      draggedPopupRef.current = true;
+    }
+
+    setPopupOffset({
+      x: popupDragRef.current.originX + deltaX,
+      y: popupDragRef.current.originY + deltaY,
+    });
+  };
+
+  const handlePopupPointerEnd = (event: React.PointerEvent<HTMLButtonElement>) => {
+    if (!popupDragRef.current || popupDragRef.current.pointerId !== event.pointerId) {
+      return;
+    }
+
+    if (event.currentTarget.hasPointerCapture(event.pointerId)) {
+      event.currentTarget.releasePointerCapture(event.pointerId);
+    }
+    popupDragRef.current = null;
+  };
 
   return (
     <div className="min-h-screen bg-background text-foreground">
@@ -373,6 +443,55 @@ export default function LlensStart() {
           </div>
         </section>
       </main>
+
+      <div
+        className="fixed right-4 top-20 z-40 w-[min(92vw,420px)]"
+        style={{ transform: `translate(${popupOffset.x}px, ${popupOffset.y}px)` }}
+      >
+        <div className="relative">
+          <button
+            type="button"
+            aria-label="Drag popup"
+            className="absolute left-2 top-2 z-10 inline-flex items-center gap-1 rounded-md border border-border/70 bg-background px-2 py-1 text-[11px] font-semibold uppercase tracking-[0.12em] text-muted-foreground shadow-sm touch-none select-none cursor-grab active:cursor-grabbing"
+            onPointerDown={handlePopupPointerDown}
+            onPointerMove={handlePopupPointerMove}
+            onPointerUp={handlePopupPointerEnd}
+            onPointerCancel={handlePopupPointerEnd}
+            onLostPointerCapture={handlePopupPointerEnd}
+          >
+            <span aria-hidden="true">::</span>
+            Drag
+          </button>
+        <Link
+          to="/llens/the-problem"
+          draggable={false}
+          className="block rounded-2xl border border-border/70 bg-background/95 p-4 pt-10 shadow-xl backdrop-blur transition-colors hover:bg-background"
+          onDragStart={(event) => event.preventDefault()}
+          onClick={(event) => {
+            if (draggedPopupRef.current) {
+              event.preventDefault();
+              draggedPopupRef.current = false;
+            }
+          }}
+        >
+          <div className="flex items-start gap-3">
+            <img
+              src={AI_READY_ICON}
+              alt="AI Ready icon"
+              draggable={false}
+              onDragStart={(event) => event.preventDefault()}
+              className="mt-0.5 h-10 w-10 shrink-0 rounded-md object-cover"
+            />
+            <p className="text-sm leading-relaxed text-foreground">
+              This is Rakan Tutor&apos;s project for the AI Reader ASEAN Youth Challenge. {" "}
+              <span className="font-semibold underline underline-offset-4">
+                Click here to see our proposal!
+              </span>
+            </p>
+          </div>
+        </Link>
+        </div>
+      </div>
 
       <footer className="border-t border-border/80">
         <div className="mx-auto flex w-full max-w-6xl flex-col items-center justify-between gap-3 px-6 py-6 text-sm text-muted-foreground md:flex-row">

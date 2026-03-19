@@ -25,6 +25,10 @@
       "destination": "/llens/guide/index.html"
     },
     {
+      "source": "/llens/the-problem",
+      "destination": "/llens/the-problem/index.html"
+    },
+    {
       "source": "/(.*)",
       "destination": "/index.html"
     }

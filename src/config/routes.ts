@@ -10,4 +10,5 @@ export const LLENS_ROUTES = [
   "/llens/chapter-2",
   "/llens/chapter-2/game",
   "/llens/guide",
+  "/llens/the-problem",
 ] as const;
