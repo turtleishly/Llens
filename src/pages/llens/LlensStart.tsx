@@ -359,11 +359,13 @@ export default function LlensStart() {
               </div>
             </div>
 
-            <div className="space-y-4">
+            <div className="flex w-full items-center justify-center gap-4">
               <Button
                 size="lg"
-                className={`text-lg px-10 py-7 rounded-2xl transition-all duration-500 ${
-                  isReady ? "opacity-100 scale-100" : "opacity-40 scale-95 cursor-not-allowed"
+                className={`flex-1 border-2 border-transparent text-lg py-8 rounded-2xl transition-all duration-500 shadow-md ${
+                  isReady 
+                    ? "opacity-100 scale-100 bg-primary hover:scale-[1.02]" 
+                    : "opacity-40 scale-95 cursor-not-allowed"
                 }`}
                 disabled={!isReady}
                 onClick={() => navigate("/llens/chapter-1")}
@@ -373,11 +375,11 @@ export default function LlensStart() {
 
               <Button
                 size="lg"
-                variant="secondary"
-                className="w-full rounded-2xl border-2 border-amber-400/70 bg-amber-100/80 px-8 py-8 text-lg font-semibold text-amber-950 shadow-sm transition-colors hover:bg-amber-200"
+                variant="outline"
+                className="flex-1 rounded-2xl border-2 border-slate-300 bg-slate-100/50 py-8 text-lg font-medium text-slate-600 transition-all hover:bg-slate-200 hover:text-slate-800"
                 onClick={() => navigate("/llens")}
               >
-                Skip tutorial! I know about tokens already!
+                Skip tutorial
               </Button>
             </div>
           </div>
@@ -485,7 +487,7 @@ export default function LlensStart() {
             <p className="text-sm leading-relaxed text-foreground">
               This is Rakan Tutor&apos;s project for the AI Reader ASEAN Youth Challenge. {" "}
               <span className="font-semibold underline underline-offset-4">
-                Click here to see our proposal!
+                Click here to learn more!
               </span>
             </p>
           </div>
