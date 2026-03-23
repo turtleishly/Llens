@@ -353,7 +353,7 @@ export default function LlensStart() {
                     <span className="relative inline-flex h-2 w-2 rounded-full bg-primary" />
                   </span>
                   <p className="text-xs uppercase tracking-[0.4em] text-muted-foreground">
-                    Loading model... This may take &gt 5 minuntes..
+                    Loading model... This may take &gt; 5 minuntes..
                   </p>
                 </div>
               </div>
